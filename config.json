@@ -1,0 +1,18 @@
+{
+  "stream": "http://REPLACE_WITH_IP:REPLACE_WITH_PORT/video",
+  "model": "mdining_food_seg.pt",
+  "plate_class": "plate",
+  "axis": "y",
+  "direction": 1,
+  "count_line": 0.5,
+  "arming_margin": 0.03,
+  "roi": [0.05, 0.05, 0.95, 0.95],
+  "confidence": 0.5,
+  "match_distance": 0.12,
+  "track_ttl_s": 1.0,
+  "foods": {
+    "rice": {"serving_g": 150, "grams_per_plate_fraction": null},
+    "chicken": {"serving_g": 120, "grams_per_plate_fraction": null},
+    "broccoli": {"serving_g": 80, "grams_per_plate_fraction": null}
+  }
+}
