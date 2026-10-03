@@ -1,6 +1,26 @@
 #!/usr/bin/env python3
 """MDining pilot: custom segmentation -> plate crossing -> calibrated waste.
-See README.md before interpreting percentages. No trained weights are bundled.
+Only three menu items are supported (MODEL CLASS NAMES):
+  dominos_cheese_pizza_slice: large 14-inch hand tossed, regular cheese,
+      pizza sauce; 1/8 pizza. August 2026 guide p.12: 61 + 1.8 + 21 + 37
+      = 120.8 g, summing crust, garlic oil, sauce, and cheese.
+  costco_oatmeal_raisin_cookie: 1 cookie (50 g), 230 kcal;
+      from the user-supplied nutrition screenshot.
+  doritos_nacho_cheese: about 12 chips (28 g), from the supplied label.
+
+Quick setup: python waste_monitor.py --init-config menu_config.json
+Edit the generated stream URL and grams_per_plate_fraction for all items.
+For an existing config, set cookie serving_g to 50 and serving_kcal to 230.
+Run: python waste_monitor.py --config menu_config.json --servings servings.csv
+
+servings.csv counts whole slices, whole cookies, and 28-g chip portions,
+including fully eaten servings. Area-to-grams calibration requires WEIGHED
+leftovers of each item on your plate/camera setup. Nutrition labels do not
+provide that coefficient. Custom segmentation weights are required with class
+names above plus plate. Plate masks must include the entire plate silhouette,
+including food-covered regions. Keep plates spaced and moving one direction.
+Only estimates: camera area cannot recover hidden food or pile thickness.
+No trained weights are bundled.
 """
 import argparse
 import csv
@@ -13,20 +33,93 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
+DEFAULT_FOODS = {
+    "dominos_cheese_pizza_slice": {
+        "display_name": "Domino's large hand-tossed cheese pizza slice",
+        "serving_description": "1 slice = 1/8 of a 14-inch pizza; regular cheese and pizza sauce",
+        "serving_g": 120.8,
+        "serving_kcal": 285,
+        "grams_per_plate_fraction": None,
+        "source": "NutritionGuide_August 2026[5].pdf, page 12; sum crust + garlic oil + pizza sauce + regular cheese",
+    },
+    "costco_oatmeal_raisin_cookie": {
+        "display_name": "Costco oatmeal raisin cookie",
+        "serving_description": "1 whole cookie (50 g)",
+        "serving_g": 50.0,
+        "serving_kcal": 230,
+        "nutrition_per_serving": {
+            "total_fat_g": 9,
+            "saturated_fat_g": 0,
+            "trans_fat_g": None,
+            "cholesterol_mg": 0,
+            "sodium_mg": 90,
+            "total_carbohydrate_g": 20,
+            "net_carbohydrate_g": 20,
+            "fiber_g": 0,
+            "sugar_g": None,
+            "protein_g": 2,
+        },
+        "grams_per_plate_fraction": None,
+        "source": "User-supplied nutrition screenshot: Screenshot 2026-10-03 at 3.21.33 PM.png; values transcribed as shown, not independently verified",
+    },
+    "doritos_nacho_cheese": {
+        "display_name": "Nacho Cheese Doritos",
+        "serving_description": "About 12 chips (28 g)",
+        "serving_g": 28.0,
+        "serving_kcal": 150,
+        "grams_per_plate_fraction": None,
+        "source": "User-supplied Doritos Nutrition Facts image",
+    },
+}
+
+
+def default_config():
+    # JSON round-trip gives an independent copy; editing calibration never changes defaults.
+    return {
+        "stream": "http://REPLACE_WITH_IP:REPLACE_WITH_PORT/video",
+        "model": "mdining_food_seg.pt",
+        "plate_class": "plate",
+        "axis": "y", "direction": 1, "count_line": 0.5,
+        "arming_margin": 0.03, "roi": [0.05, 0.05, 0.95, 0.95],
+        "confidence": 0.5, "match_distance": 0.12, "track_ttl_s": 1.0,
+        "foods": json.loads(json.dumps(DEFAULT_FOODS)),
+    }
+
+
+def validate_foods(foods):
+    if set(foods) != set(DEFAULT_FOODS):
+        raise ValueError('foods must contain exactly: ' + ', '.join(DEFAULT_FOODS)
+                         + '. Generate a new config with --init-config menu_config.json.')
+    for item, spec in foods.items():
+        for key in ('serving_g', 'grams_per_plate_fraction'):
+            value = spec.get(key)
+            if value is not None and (isinstance(value, bool)
+                    or not isinstance(value, (int, float))
+                    or not math.isfinite(value) or value <= 0):
+                raise ValueError(key + ' must be a finite positive number or null: ' + item)
+
+
 def summarize(events, servings, foods):
     totals = defaultdict(float)
     for row in events:
-        totals[row['item']] += float(row['estimated_waste_g'])
+        if row['item'] not in foods:
+            raise ValueError('Event contains an unsupported item: ' + row['item'])
+        value = float(row['estimated_waste_g'])
+        if not math.isfinite(value) or value < 0:
+            raise ValueError('Invalid estimated_waste_g for ' + row['item'])
+        totals[row['item']] += value
     output = []
     for item, spec in foods.items():
         count = servings.get(item, 0)
         grams = totals[item]
-        denominator = count * spec['serving_g']
+        serving_g = spec.get('serving_g')
+        denominator = count * serving_g if serving_g else 0
         pct = 100 * grams / denominator if denominator else None
         output.append(dict(item=item, servings=count, estimated_waste_g=round(grams, 2),
                            estimated_waste_g_per_serving=round(grams / count, 2) if count else None,
                            estimated_waste_percent=round(pct, 2) if pct is not None else None,
-                           status='missing_servings' if not count else
+                           status='missing_serving_weight' if not serving_g else
+                           'missing_servings' if not count else
                            'check_calibration_or_counts' if pct > 100 else 'estimate'))
     return sorted(output, key=lambda r: r['estimated_waste_percent'] if r['estimated_waste_percent'] is not None else -1, reverse=True)
 
@@ -112,16 +205,25 @@ def observations(result, foods, plate_class, shape, roi):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--config', default='config.json')
+    ap.add_argument('--init-config', metavar='PATH',
+                    help='Write a three-item config template without overwriting an existing file')
     ap.add_argument('--servings', default='servings.csv')
     ap.add_argument('--output', default='runs')
     ap.add_argument('--headless', action='store_true')
     ap.add_argument('--report-only', help='Recompute a run summary from its events.csv')
     a = ap.parse_args()
-    cfg = json.loads(Path(a.config).read_text())
+    if a.init_config:
+        with open(a.init_config, 'x') as f:
+            json.dump(default_config(), f, indent=2)
+            f.write('\n')
+        print('Created', a.init_config, '- fill stream URL and all calibration coefficients.')
+        return
+    config_path = Path(a.config)
+    if not config_path.is_file():
+        raise FileNotFoundError('Generate a config first: python waste_monitor.py --init-config ' + a.config)
+    cfg = json.loads(config_path.read_text())
     foods = cfg['foods']
-    for item, spec in foods.items():
-        if spec['serving_g'] <= 0:
-            raise ValueError('serving_g must be positive: ' + item)
+    validate_foods(foods)
     counts = read_servings(a.servings, foods)
     if a.report_only:
         with open(a.report_only, newline='') as f:
@@ -129,6 +231,9 @@ def main():
         print(json.dumps(summarize(rows, counts, foods), indent=2))
         return
     for item, spec in foods.items():
+        if spec.get('serving_g') is None:
+            raise ValueError('Provide label or measured serving_g for ' + item
+                             + '; use the item label or a measured serving weight.')
         value = spec.get('grams_per_plate_fraction')
         if value is None or value <= 0:
             raise ValueError('Supply measured grams_per_plate_fraction for ' + item)
