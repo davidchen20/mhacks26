@@ -3,6 +3,7 @@ import DataTable from "@/components/shared/DataTable";
 import StatusPill from "@/components/shared/StatusPill";
 import { STATUS, statusFor, THRESHOLDS } from "@/lib/status";
 import { currency, percent } from "@/lib/format";
+import { portionLabel } from "@/lib/foodWeights";
 import type { MenuItem } from "@/lib/mockData";
 export default function MenuTable({
   items,
@@ -40,6 +41,9 @@ export default function MenuTable({
                 onClick={() => onSelect(i.id)}
               >
                 {i.name}
+                <span className="muted block font-normal">
+                  {portionLabel(i)}
+                </span>
               </button>
             ),
           },

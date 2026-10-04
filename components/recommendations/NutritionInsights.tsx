@@ -1,19 +1,24 @@
 "use client";
 import { useState } from "react";
-import { TODAY_SERVICES, hallName, makeRecommendation } from "@/lib/mockData";
+import { type ServiceData, hallName, makeRecommendation } from "@/lib/mockData";
 import { THRESHOLDS } from "@/lib/status";
-import { number, percent } from "@/lib/format";
+import { portionLabel } from "@/lib/foodWeights";
+import { number, percent, title } from "@/lib/format";
 import { useRecommendations } from "./RecommendationsProvider";
 import { EmptyState } from "@/components/shared/DataState";
-export default function NutritionInsights() {
+export default function NutritionInsights({
+  services,
+}: {
+  services: ServiceData[];
+}) {
   const { create, recommendations } = useRecommendations();
   const [message, setMessage] = useState("");
-  const insights = TODAY_SERVICES.filter((s) => s.meal === "brunch")
+  const insights = services
     .flatMap((service) =>
       service.items
         .filter(
           (item) =>
-            item.nutrition.nutrientDensity === "high" &&
+            item.nutrition.nutrientDensity !== "unknown" &&
             item.remainingPct > THRESHOLDS.remaining.monitor,
         )
         .map((item) => ({
@@ -34,9 +39,10 @@ export default function NutritionInsights() {
           Nutritious food that comes back
         </h2>
         <p className="mt-3 text-sm text-slate-200">
-          AI-generated mock insights requiring manager review. Ranked by
-          remaining % × illustrative nutrient-density score. Estimates describe
-          food left on trays, not students’ intake or health.
+          AI-generated mock insights, manager review required, no medical
+          claims. Ranked by simulated waste % × densityScore, an operational
+          proxy derived from fiber, protein and calories. Historical nutrition
+          is illustrative; today uses published nutrition.
         </p>
       </div>
       <p role="status" className="mb-3 text-sm font-semibold text-emerald-800">
@@ -56,16 +62,18 @@ export default function NutritionInsights() {
                 aria-label={`Nutrition insight for ${item.name} at ${hallName(service.hallId)}`}
               >
                 <p className="muted">
-                  {hallName(service.hallId)} · Brunch · Ranking score {score}
+                  {hallName(service.hallId)} · {title(service.meal)} · Ranking
+                  score {number(score, 1)}
                 </p>
                 <h3 className="mt-3 text-lg font-semibold text-rose-800">
-                  ! High Waste Alert · {percent(item.remainingPct)} of{" "}
+                  ! Simulated high waste · {percent(item.remainingPct)} of{" "}
                   {item.name} remains uneaten
                 </h3>
                 <p className="mt-3 text-sm">
                   <strong>Estimated nutrition impact:</strong>{" "}
                   {number(
-                    (item.nutrition.fiberGrams * item.remainingPct) / 100,
+                    ((item.nutrition.fiberGrams ?? 0) * item.remainingPct) /
+                      100,
                     1,
                   )}{" "}
                   g of the modeled {item.nutrition.fiberGrams} g fiber per
@@ -73,11 +81,16 @@ export default function NutritionInsights() {
                   consumption is unknown.
                 </p>
                 <p className="muted mt-2">
-                  Per-serving mock nutrition: {item.nutrition.fiberGrams} g
-                  fiber · {item.nutrition.proteinGrams} g protein ·{" "}
-                  {item.nutrition.calories} calories · High nutrient density (
+                  Per-serving nutrition (
+                  {service.menuSource === "mdining"
+                    ? "M Dining"
+                    : "illustrative"}
+                  ): {item.nutrition.fiberGrams} g fiber ·{" "}
+                  {item.nutrition.proteinGrams} g protein ·{" "}
+                  {item.nutrition.calories} calories · Density proxy (
                   {item.nutrition.densityScore}/5).
                 </p>
+                <p className="muted mt-2">{portionLabel(item)}</p>
                 <p className="mt-4 text-sm">
                   <strong>Culinary suggestion:</strong>{" "}
                   {item.culinarySuggestion}.

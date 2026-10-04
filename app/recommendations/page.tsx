@@ -1,6 +1,12 @@
+import { Suspense } from "react";
+import { Skeleton } from "@/components/shared/DataState";
 // Server component; decisions, animation and history are client components.
 import RecommendationsDashboard from "@/components/recommendations/RecommendationsDashboard";
 export const metadata = { title: "AI Recommendations" };
 export default function Page() {
-  return <RecommendationsDashboard />;
+  return (
+    <Suspense fallback={<Skeleton />}>
+      <RecommendationsDashboard />
+    </Suspense>
+  );
 }

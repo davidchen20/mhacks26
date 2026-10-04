@@ -1,0 +1,13 @@
+{
+  "attemptedAt": "2026-10-03T21:31:17.303842+00:00",
+  "date": "2026-10-03",
+  "successfulHalls": [
+    "bursley",
+    "south-quad",
+    "east-quad",
+    "mosher-jordan",
+    "markley",
+    "twigs"
+  ],
+  "failures": {}
+}

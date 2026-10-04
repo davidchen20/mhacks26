@@ -1,0 +1,4 @@
+requests>=2.31
+beautifulsoup4>=4.12
+# Optional model integration: also install Ollama and pull the configured model.
+ollama>=0.4

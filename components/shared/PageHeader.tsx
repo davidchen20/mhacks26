@@ -1,4 +1,4 @@
-import { LAST_UPDATED } from "@/lib/mockData";
+import scrapeStatus from "@/lib/scrapeStatus.json";
 import { timestamp } from "@/lib/format";
 export default function PageHeader({
   title,
@@ -17,9 +17,11 @@ export default function PageHeader({
       </h1>
       <p className="mt-2 text-slate-600">{description}</p>
       <p className="muted mt-3">
-        Last updated{" "}
-        <time dateTime={LAST_UPDATED}>{timestamp(LAST_UPDATED)}</time> · Fixed
-        demo snapshot · All waste data is simulated
+        Last scrape attempt{" "}
+        <time dateTime={scrapeStatus.attemptedAt}>
+          {timestamp(scrapeStatus.attemptedAt)}
+        </time>{" "}
+        · All waste readings and costs are simulated
       </p>
     </div>
   );

@@ -1,14 +1,24 @@
 "use client";
 import { useState } from "react";
-import { hallName } from "@/lib/mockData";
+import { hallName, type ServiceData } from "@/lib/mockData";
 import { timestamp } from "@/lib/format";
 import { useRecommendations } from "./RecommendationsProvider";
 import SegmentedControl from "@/components/shared/SegmentedControl";
 import DataTable from "@/components/shared/DataTable";
-export default function HistoryLog() {
+export default function HistoryLog({ services }: { services: ServiceData[] }) {
   const { history, reopen } = useRecommendations();
   const [filter, setFilter] = useState<"All" | "Accepted" | "Dismissed">("All");
-  const rows = history.filter((h) => filter === "All" || h.decision === filter);
+  const rows = history
+    .filter((h) =>
+      services.some(
+        (s) =>
+          s.date === h.recommendation.date &&
+          s.hallId === h.recommendation.hallId &&
+          s.meal === h.recommendation.meal &&
+          s.items.some((i) => i.id === h.recommendation.itemId),
+      ),
+    )
+    .filter((h) => filter === "All" || h.decision === filter);
   return (
     <section
       className="panel overflow-hidden"

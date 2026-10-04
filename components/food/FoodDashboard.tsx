@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import {
-  DEMO_DATE,
+  getToday,
+  serviceLabel,
   HALLS,
   getService,
   mealsForDate,
@@ -18,6 +19,9 @@ import { EmptyState } from "@/components/shared/DataState";
 import KpiTile from "@/components/shared/KpiTile";
 import MenuTable from "./MenuTable";
 import TrayFeed from "./TrayFeed";
+import SourceNotice from "@/components/shared/SourceNotice";
+import ItemWastePanel from "./ItemWastePanel";
+import DayWastePanel from "./DayWastePanel";
 export default function FoodDashboard() {
   const { params, setQuery } = useQueryState();
   const hall = (
@@ -26,7 +30,7 @@ export default function FoodDashboard() {
       : "south-quad"
   ) as HallId;
   const rawDate = params.get("date");
-  const date = rawDate && validDate(rawDate) ? rawDate : DEMO_DATE;
+  const date = rawDate && validDate(rawDate) ? rawDate : getToday();
   const allowed = mealsForDate(date);
   const requested = params.get("meal");
   const meal = (
@@ -40,14 +44,19 @@ export default function FoodDashboard() {
       );
       setQuery({ meal }, true);
     }
-  }, [requested, meal]); // URL correction happens atomically; no request can use an invalid meal.
+  }, [requested, meal]); // eslint-disable-line react-hooks/exhaustive-deps
   const service = useMemo(
     () => getService(hall, date, meal),
     [hall, date, meal],
   );
   const total = totals([service]);
   const item = params.get("item");
-  const selectedId = service.items.some((i) => i.id === item) ? item : null;
+  const selectedId = service.items.some((i) => i.id === item)
+    ? item!
+    : (service.items[0]?.id ?? null);
+  useEffect(() => {
+    if (selectedId && item !== selectedId) setQuery({ item: selectedId }, true);
+  }, [selectedId, item]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="space-y-6">
       <PageHeader
@@ -115,37 +124,17 @@ export default function FoodDashboard() {
         )}
         {rawDate && !validDate(rawDate) && (
           <p className="text-sm text-amber-900">
-            Invalid date in URL; showing the demo date.
+            Invalid date in URL; showing today.
           </p>
         )}
       </div>
-      {service.source === "unavailable" ? (
-        <>
-          <EmptyState
-            title={
-              date > DEMO_DATE
-                ? "Future service · no data yet"
-                : hall === "twigs"
-                  ? "Twigs · No data yet"
-                  : "No menu for this service"
-            }
-          >
-            {date > DEMO_DATE
-              ? "Future dates do not generate menus, trays, or recommendations. Choose October 3, 2026 or an earlier date."
-              : "This hall is closed / non-reporting in the demo. Select another dining hall."}
-          </EmptyState>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <EmptyState title="No menu items" />
-            <EmptyState title="No tray readings" />
-          </div>
-        </>
+      {service.availability !== "available" ? (
+        <EmptyState title={serviceLabel(service)}>
+          Choose an available hall, date and meal.
+        </EmptyState>
       ) : (
         <>
-          <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-            {service.source === "illustrative"
-              ? "Illustrative data · This historical menu is generated deterministically from hall + date + meal. It is not an archive of actual dining menus."
-              : "Demo snapshot · Fictional menu and simulated waste, nutrition and tray data."}
-          </p>
+          <SourceNotice services={[service]} />
           <div className="grid gap-4 sm:grid-cols-3">
             <KpiTile
               label="Service waste"
@@ -165,22 +154,17 @@ export default function FoodDashboard() {
             />
           </div>
           <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_370px]">
-            <div className="min-w-0">
+            <div className="min-w-0 space-y-6">
+              <ItemWastePanel
+                items={service.items}
+                selectedId={selectedId!}
+                onSelect={(id) => setQuery({ item: id })}
+              />
               <MenuTable
                 items={service.items}
                 selectedId={selectedId}
-                onSelect={(id) =>
-                  setQuery({ item: selectedId === id ? null : id })
-                }
+                onSelect={(id) => setQuery({ item: id })}
               />
-              {selectedId && (
-                <button
-                  className="btn mt-4"
-                  onClick={() => setQuery({ item: null })}
-                >
-                  Clear selected item
-                </button>
-              )}
             </div>
             <TrayFeed
               key={`${hall}|${date}|${meal}`}
@@ -190,6 +174,7 @@ export default function FoodDashboard() {
           </div>
         </>
       )}
+      <DayWastePanel hall={hall} date={date} />
     </div>
   );
 }

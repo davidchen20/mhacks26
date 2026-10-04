@@ -1,0 +1,34 @@
+name: Scrape M Dining menus
+
+on:
+  schedule:
+    # 06:15 America/Detroit year-round-ish; GitHub cron is UTC
+    - cron: "15 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install scraper dependencies
+        run: pip install requests beautifulsoup4
+      - name: Scrape today's menus and merge JSON
+        run: python scripts/scrape_all.py
+      - name: Commit archive if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lib/scrapedMenus.json
+          if git diff --staged --quiet; then
+            echo "No menu changes"
+          else
+            git commit -m "Archive M Dining menus for $(date -u +%F)"
+            git push
+          fi

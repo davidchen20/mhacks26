@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2020",
+    "noEmit": false,
+    "outDir": ".test-build",
+    "rootDir": ".",
+    "incremental": false,
+    "isolatedModules": false,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "lib/types.ts",
+    "lib/dates.ts",
+    "lib/random.ts",
+    "lib/foodWeights.ts",
+    "lib/scrapedItems.ts",
+    "lib/mockData.ts",
+    "tests/**/*.test.ts"
+  ],
+  "exclude": ["node_modules", ".test-build"]
+}

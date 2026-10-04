@@ -13,7 +13,13 @@ import {
   ReferenceLine,
   Tooltip,
 } from "recharts";
-import { foodLink, type HallSummary, type ServiceData } from "@/lib/mockData";
+import {
+  getToday,
+  mealsForDate,
+  foodLink,
+  type HallSummary,
+  type ServiceData,
+} from "@/lib/mockData";
 import { STATUS, statusFor, THRESHOLDS } from "@/lib/status";
 import { lbs, number } from "@/lib/format";
 import SegmentedControl from "@/components/shared/SegmentedControl";
@@ -31,8 +37,8 @@ export default function HallBarChart({
     foodLink(
       services.find((s) => s.hallId === h.hall.id && s.items.length) ?? {
         hallId: h.hall.id,
-        date: services[0]?.date ?? "2026-10-03",
-        meal: "brunch",
+        date: services[0]?.date ?? getToday(),
+        meal: mealsForDate(services[0]?.date ?? getToday())[0],
       },
     );
   const data = halls.map((h) => ({
@@ -73,15 +79,15 @@ export default function HallBarChart({
       {!totalMeals ? (
         <div className="mt-5">
           <EmptyState title="No reporting services for this selection">
-            Weekend Breakfast and Lunch are combined into Brunch. Choose All or
-            Dinner.
+            Unavailable: menu not published or scrape failed. Try another date
+            or meal.
           </EmptyState>
         </div>
       ) : (
         <>
           <div
             role="img"
-            aria-label={`Hall comparison in ${mode === "rate" ? "pounds per meal served" : "pounds"}. Twigs has no data, not zero waste. Links and exact values follow.`}
+            aria-label={`Hall comparison in ${mode === "rate" ? "pounds per meal served" : "pounds"}. Unavailable halls have no values, not zero waste. Links and exact values follow.`}
             className="mt-5 h-[340px]"
           >
             <ResponsiveContainer width="100%" height="100%">

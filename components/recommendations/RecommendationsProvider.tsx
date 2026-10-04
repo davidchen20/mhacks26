@@ -9,13 +9,15 @@ import {
 } from "react";
 import {
   HALLS,
-  INITIAL_RECOMMENDATIONS,
+  getInitialRecommendations,
   validDate,
+  getToday,
+  getService,
   type Recommendation,
   type HistoryEntry,
   type Decision,
 } from "@/lib/mockData";
-const KEY = "wolverlean:recommendations:v1";
+const KEY = "wolverlean:recommendations:v2";
 interface State {
   recommendations: Recommendation[];
   history: HistoryEntry[];
@@ -32,10 +34,10 @@ type Action =
       historyId: string;
     }
   | { type: "reopen"; historyId: string; at: string };
-const initial: State = {
-  recommendations: INITIAL_RECOMMENDATIONS,
+const initial = (): State => ({
+  recommendations: getInitialRecommendations(),
   history: [],
-};
+});
 export function recommendationsReducer(state: State, action: Action): State {
   if (action.type === "load") return action.state;
   if (action.type === "create")
@@ -107,7 +109,7 @@ export function parseStored(value: string): State | null {
     const v: unknown = JSON.parse(value);
     if (
       !object(v) ||
-      v.version !== 1 ||
+      v.version !== 2 ||
       !Array.isArray(v.recommendations) ||
       !Array.isArray(v.history) ||
       !v.recommendations.every(isRecommendation)
@@ -133,10 +135,16 @@ export function parseStored(value: string): State | null {
     return {
       recommendations: [
         ...new Map(
-          [...INITIAL_RECOMMENDATIONS, ...v.recommendations].map((r) => [
-            r.id,
-            r,
-          ]),
+          [
+            ...getInitialRecommendations(),
+            ...v.recommendations.filter(
+              (r) =>
+                r.date <= getToday() &&
+                getService(r.hallId, r.date, r.meal).items.some(
+                  (i) => i.id === r.itemId,
+                ),
+            ),
+          ].map((r) => [r.id, r]),
         ).values(),
       ],
       history,
@@ -156,7 +164,11 @@ interface ContextValue extends State {
 }
 const Context = createContext<ContextValue | null>(null);
 export function RecommendationsProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(recommendationsReducer, initial);
+  const [state, dispatch] = useReducer(
+    recommendationsReducer,
+    undefined,
+    initial,
+  );
   const [ready, setReady] = useState(false);
   const [storageAvailable, setStorageAvailable] = useState(true);
   useEffect(() => {
@@ -174,7 +186,7 @@ export function RecommendationsProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!ready) return;
     try {
-      localStorage.setItem(KEY, JSON.stringify({ version: 1, ...state }));
+      localStorage.setItem(KEY, JSON.stringify({ version: 2, ...state }));
     } catch {
       setStorageAvailable(false);
     }

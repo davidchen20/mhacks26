@@ -1,7 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { makeTray, type ServiceData, type Tray } from "@/lib/mockData";
+import {
+  makeTray,
+  type ServiceData,
+  type Tray,
+  type Category,
+} from "@/lib/mockData";
 import { THRESHOLDS, STATUS, statusFor } from "@/lib/status";
+import { portionLabel } from "@/lib/foodWeights";
 import { percent } from "@/lib/format";
 import { EmptyState } from "@/components/shared/DataState";
 
@@ -35,23 +41,16 @@ function vesselFor(tray: Tray): Vessel {
 
 const GRAMS_PER_OZ = 28.3495;
 
-/** Simulated weight of food still on the vessel for one item, in grams. */
-function itemGrams(tray: Tray, itemId: string, remainingPct: number): number {
-  const rand = seeded(`weight-${tray.id}-${itemId}`);
-  const servedGrams = 70 + rand() * 150; // 70–220 g originally served
-  return Math.max(1, Math.round((servedGrams * remainingPct) / 100));
-}
-
 function formatWeight(grams: number): string {
-  const oz = grams / GRAMS_PER_OZ;
-  return `${oz.toFixed(1)} oz (${grams} g)`;
+  return `${(grams / GRAMS_PER_OZ).toFixed(1)} oz (${grams.toFixed(1)} g)`;
 }
-
-function foodColor(itemId: string): string {
-  if (itemId === "broccoli" || itemId === "salad") return "#047857";
-  if (itemId === "rice") return "#d6b16c";
-  if (itemId === "yogurt") return "#cbd5e1";
-  return "#b7793d";
+function foodColor(category: Category): string {
+  return {
+    Produce: "#047857",
+    Grains: "#a16207",
+    Dairy: "#64748b",
+    Protein: "#b7793d",
+  }[category];
 }
 
 /* ---------- vessel illustration ---------- */
@@ -84,7 +83,14 @@ function VesselThumbnail({ tray, vessel }: { tray: Tray; vessel: Vessel }) {
       {isBowl ? (
         <>
           {/* outer rim */}
-          <circle cx="60" cy="60" r="52" fill="#cbd5e1" stroke="#64748b" strokeWidth="2" />
+          <circle
+            cx="60"
+            cy="60"
+            r="52"
+            fill="#cbd5e1"
+            stroke="#64748b"
+            strokeWidth="2"
+          />
           {/* sloped wall */}
           <circle cx="60" cy="60" r="44" fill="#e2e8f0" stroke="#94a3b8" />
           {/* deep well */}
@@ -102,7 +108,14 @@ function VesselThumbnail({ tray, vessel }: { tray: Tray; vessel: Vessel }) {
       ) : (
         <>
           {/* flat rim */}
-          <circle cx="60" cy="60" r="54" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="2" />
+          <circle
+            cx="60"
+            cy="60"
+            r="54"
+            fill="#f1f5f9"
+            stroke="#94a3b8"
+            strokeWidth="2"
+          />
           {/* eating surface */}
           <circle cx="60" cy="60" r="42" fill="#fff" stroke="#cbd5e1" />
         </>
@@ -114,9 +127,18 @@ function VesselThumbnail({ tray, vessel }: { tray: Tray; vessel: Vessel }) {
           Math.max(4, 5 + (Math.sqrt(r.remainingPct) / 10) * (maxR - 5)),
         );
         return (
-          <g key={r.itemId} transform={`translate(${spots[i].x},${spots[i].y})`}>
-            <circle r={radius} fill={foodColor(r.itemId)} />
-            <circle cx={-radius / 3} cy={-radius / 3} r={Math.max(1.5, radius / 6)} fill="#fff" opacity=".45" />
+          <g
+            key={r.itemId}
+            transform={`translate(${spots[i].x},${spots[i].y})`}
+          >
+            <circle r={radius} fill={foodColor(r.category)} />
+            <circle
+              cx={-radius / 3}
+              cy={-radius / 3}
+              r={Math.max(1.5, radius / 6)}
+              fill="#fff"
+              opacity=".45"
+            />
           </g>
         );
       })}
@@ -173,8 +195,8 @@ export default function TrayFeed({
           {paused ? "Ⅱ Paused" : "● Live · simulated"}
         </p>
         <p className="muted mt-1">
-          Illustrated plates and bowls arrive every 6.5 seconds. Seeded by
-          hall, date, meal and tray number.
+          Illustrated plates and bowls arrive every 6.5 seconds. Seeded by hall,
+          date, meal and tray number.
         </p>
       </div>
       {!trays.length ? (
@@ -192,9 +214,7 @@ export default function TrayFeed({
               (r) => r.remainingPct >= THRESHOLDS.highTray,
             );
             const related = tray.readings.some((r) => r.itemId === selectedId);
-            const weights = tray.readings.map((r) =>
-              itemGrams(tray, r.itemId, r.remainingPct),
-            );
+            const weights = tray.readings.map((r) => r.remainingGrams);
             const totalGrams = weights.reduce((sum, g) => sum + g, 0);
 
             return (
@@ -223,6 +243,9 @@ export default function TrayFeed({
                         >
                           <span>
                             {r.name}
+                            <span className="block font-normal text-slate-600">
+                              {portionLabel(r)}
+                            </span>
                             {selectedId === r.itemId ? (
                               <span className="sr-only">, selected item</span>
                             ) : null}
@@ -234,6 +257,7 @@ export default function TrayFeed({
                                 color: STATUS[statusFor(r.remainingPct)].color,
                               }}
                             >
+                              {STATUS[statusFor(r.remainingPct)].label} ·{" "}
                               {percent(r.remainingPct)}
                             </span>
                             <span className="block text-slate-600">

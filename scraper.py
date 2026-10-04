@@ -16,7 +16,8 @@ import json
 import re
 import sys
 import time
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
@@ -68,7 +69,7 @@ def fetch_menu(hall: str = "bursley", menu_date: str | None = None) -> dict:
         Dict with hall, date, and meals (each containing stations and items).
     """
     if menu_date is None:
-        menu_date = date.today().isoformat()
+        menu_date = datetime.now(ZoneInfo("America/Detroit")).date().isoformat()
 
     url = BASE_URL.format(hall=hall)
     params = {"menuDate": menu_date}

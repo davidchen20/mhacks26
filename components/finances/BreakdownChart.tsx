@@ -22,7 +22,7 @@ export default function BreakdownChart({ rows }: { rows: BreakdownRow[] }) {
       <div
         className="h-72"
         role="img"
-        aria-label="Waste cost by selected grouping, US dollars today. Exact values in the accessible table and sortable table below."
+        aria-label="Waste cost by selected grouping, US dollars for selection. Exact values in the accessible table and sortable table below."
       >
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -36,7 +36,7 @@ export default function BreakdownChart({ rows }: { rows: BreakdownRow[] }) {
               type="number"
               tickFormatter={(v) => String(v)}
               label={{
-                value: "USD today",
+                value: "USD for selection",
                 position: "insideBottom",
                 offset: -3,
                 fill: "#475569",
@@ -44,10 +44,12 @@ export default function BreakdownChart({ rows }: { rows: BreakdownRow[] }) {
               }}
             />
             <YAxis dataKey="name" type="category" width={125} />
-            <Tooltip formatter={(v) => currency(Number(v), "today", 2)} />
+            <Tooltip
+              formatter={(v) => currency(Number(v), "for selection", 2)}
+            />
             <Bar
               dataKey="value"
-              name="Waste cost today"
+              name="Waste cost for selection"
               fill="#00274c"
               radius={[0, 5, 5, 0]}
               maxBarSize={26}
@@ -61,7 +63,7 @@ export default function BreakdownChart({ rows }: { rows: BreakdownRow[] }) {
         <thead>
           <tr>
             <th scope="col">Group</th>
-            <th scope="col">Cost today</th>
+            <th scope="col">Cost for selection</th>
             <th scope="col">Illustrative annual cost</th>
           </tr>
         </thead>
@@ -69,7 +71,7 @@ export default function BreakdownChart({ rows }: { rows: BreakdownRow[] }) {
           {rows.map((r) => (
             <tr key={r.name}>
               <th scope="row">{r.name}</th>
-              <td>{currency(r.value, "today", 2)}</td>
+              <td>{currency(r.value, "for selection", 2)}</td>
               <td>{currency(r.annual, "per year", 2)}</td>
             </tr>
           ))}

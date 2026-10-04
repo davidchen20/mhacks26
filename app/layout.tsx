@@ -4,13 +4,14 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import { RecommendationsProvider } from "@/components/recommendations/RecommendationsProvider";
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: {
     default: "WolverLean · University Dining Services",
     template: "%s · WolverLean",
   },
   description:
-    "University dining waste analytics. A frontend demonstration using illustrative data.",
+    "University dining waste analytics. M Dining menus with simulated waste readings and illustrative history.",
 };
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -33,8 +34,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </main>
         </RecommendationsProvider>
         <footer className="mx-auto max-w-[1280px] border-t border-slate-200 px-5 py-6 text-[13px] text-slate-600 sm:px-8">
-          WolverLean · Demo calendar: October 3, 2026 · Mock analytics and AI
-          insights · Decisions do not change dining production.
+          WolverLean · M Dining menus · Simulated waste and illustrative history
+          · AI-generated mock insights, manager review required, no medical
+          claims. Decisions do not change dining production.
         </footer>
       </body>
     </html>

@@ -1,73 +1,38 @@
+// Server route: serve the same date-governed snapshot as every dashboard.
 import { NextRequest, NextResponse } from "next/server";
-import { spawn } from "child_process";
-import path from "path";
-
+import {
+  HALLS,
+  getToday,
+  validDate,
+  servicesForDay,
+  type HallId,
+  type OverviewMeal,
+} from "@/lib/mockData";
+export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-
-  const hall = searchParams.get("hall") ?? "south-quad";
-  const date = searchParams.get("date");
-  const meal = searchParams.get("meal");
-  const compact = searchParams.get("compact") ?? "true";
-
-  const scraperPath = path.join(process.cwd(), "scraper.py");
-
-  const args = [scraperPath, "--hall", hall];
-
-  if (date) {
-    args.push("--date", date);
-  }
-
-  if (meal) {
-    args.push("--meal", meal);
-  }
-
-  if (compact === "true") {
-    args.push("--compact");
-  }
-
-  return new Promise((resolve) => {
-    const python = spawn("python3", args);
-
-    let stdout = "";
-    let stderr = "";
-
-    python.stdout.on("data", (data) => {
-      stdout += data.toString();
+  const p = request.nextUrl.searchParams;
+  const date = p.get("date") ?? getToday(),
+    hall = p.get("hall") ?? "all",
+    meal = p.get("meal") ?? "all";
+  if (
+    !validDate(date) ||
+    !(hall === "all" || HALLS.some((h) => h.id === hall)) ||
+    !["all", "breakfast", "brunch", "lunch", "dinner"].includes(meal)
+  )
+    return NextResponse.json(
+      { error: "Invalid hall, date or meal" },
+      { status: 400 },
+    );
+  if (date > getToday())
+    return NextResponse.json({
+      message: "No data for future dates",
+      services: [],
     });
-
-    python.stderr.on("data", (data) => {
-      stderr += data.toString();
-    });
-
-    python.on("close", (code) => {
-      if (code !== 0) {
-        resolve(
-          NextResponse.json(
-            {
-              error: "Failed to run scraper",
-              details: stderr,
-            },
-            { status: 500 }
-          )
-        );
-        return;
-      }
-
-      try {
-        const data = JSON.parse(stdout);
-        resolve(NextResponse.json(data));
-      } catch {
-        resolve(
-          NextResponse.json(
-            {
-              error: "Scraper did not return valid JSON",
-              rawOutput: stdout,
-            },
-            { status: 500 }
-          )
-        );
-      }
-    });
+  return NextResponse.json({
+    services: servicesForDay(
+      date,
+      hall as HallId | "all",
+      meal as OverviewMeal,
+    ),
   });
 }
