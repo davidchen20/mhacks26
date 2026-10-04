@@ -11,6 +11,7 @@ PENDING_DIR = CAPTURES_DIR / "pending"
 PROCESSING_DIR = CAPTURES_DIR / "processing"
 PROCESSED_DIR = CAPTURES_DIR / "processed"
 FAILED_DIR = CAPTURES_DIR / "failed"
+PER_PLATE_RESULTS_DIR = CAPTURES_DIR / "plate_results"
 RESULTS_FILE = BASE_DIR / "waste_results.csv"
 
 MODEL_FILE = Path(
@@ -62,6 +63,25 @@ def append_rows(rows):
         writer.writerows(rows)
 
 
+def write_plate_csv(image_name, rows):
+    """Write this captured plate's detections to its own CSV file."""
+    PER_PLATE_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    output_file = PER_PLATE_RESULTS_DIR / f"{Path(image_name).stem}.csv"
+    fieldnames = [
+        "image",
+        "food",
+        "confidence",
+        "mask_fraction_of_image",
+    ]
+
+    with output_file.open("w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+    return output_file
+
+
 def main():
     for folder in (PENDING_DIR, PROCESSING_DIR, PROCESSED_DIR, FAILED_DIR):
         folder.mkdir(parents=True, exist_ok=True)
@@ -108,15 +128,16 @@ def main():
                 result = model.predict(
                     source=plate_crop,
                     imgsz=960,
-                    conf=0.1,
+                    conf=0.01,
                     verbose=False,
                 )[0]
 
                 rows = make_result_rows(processing_file.name, result, model)
                 append_rows(rows)
+                plate_csv = write_plate_csv(processing_file.name, rows)
 
                 processing_file.replace(PROCESSED_DIR / processing_file.name)
-                print(f"Processed: {processing_file.name}")
+                print(f"Processed: {processing_file.name} -> {plate_csv}")
 
             except Exception as error:
                 print(f"Failed: {processing_file.name}: {error}")
