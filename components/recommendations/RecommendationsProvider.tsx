@@ -9,21 +9,21 @@ import {
 } from "react";
 import {
   HALLS,
-  getInitialRecommendations,
-  validDate,
+  servicesForDay,
   getToday,
-  getService,
+  validDate,
   type Recommendation,
   type HistoryEntry,
   type Decision,
 } from "@/lib/mockData";
-const KEY = "wolverlean:recommendations:v2";
+const KEY = "wolverlean:recommendations:v1";
 interface State {
   recommendations: Recommendation[];
   history: HistoryEntry[];
 }
 type Action =
   | { type: "load"; state: State }
+  | { type: "generated"; recommendations: Recommendation[] }
   | { type: "create"; recommendation: Recommendation }
   | {
       type: "decide";
@@ -34,12 +34,16 @@ type Action =
       historyId: string;
     }
   | { type: "reopen"; historyId: string; at: string };
-const initial = (): State => ({
-  recommendations: getInitialRecommendations(),
+const initial: State = {
+  recommendations: [],
   history: [],
-});
+};
 export function recommendationsReducer(state: State, action: Action): State {
   if (action.type === "load") return action.state;
+  if (action.type === "generated") {
+    const nutrition = state.recommendations.filter((r) => r.origin === "nutrition");
+    return { ...state, recommendations: [...action.recommendations, ...nutrition] };
+  }
   if (action.type === "create")
     return state.recommendations.some((r) => r.id === action.recommendation.id)
       ? state
@@ -90,6 +94,7 @@ function isRecommendation(v: unknown): v is Recommendation {
     validDate(v.date) &&
     ["breakfast", "brunch", "lunch", "dinner"].includes(String(v.meal)) &&
     ["itemId", "itemName", "title"].every((k) => typeof v[k] === "string") &&
+    (v.engineSource === undefined || typeof v.engineSource === "string") &&
     typeof v.remainingPct === "number" &&
     Number.isFinite(v.remainingPct) &&
     v.remainingPct >= 0 &&
@@ -109,7 +114,7 @@ export function parseStored(value: string): State | null {
     const v: unknown = JSON.parse(value);
     if (
       !object(v) ||
-      v.version !== 2 ||
+      v.version !== 1 ||
       !Array.isArray(v.recommendations) ||
       !Array.isArray(v.history) ||
       !v.recommendations.every(isRecommendation)
@@ -133,20 +138,7 @@ export function parseStored(value: string): State | null {
       history.push(h as unknown as HistoryEntry);
     }
     return {
-      recommendations: [
-        ...new Map(
-          [
-            ...getInitialRecommendations(),
-            ...v.recommendations.filter(
-              (r) =>
-                r.date <= getToday() &&
-                getService(r.hallId, r.date, r.meal).items.some(
-                  (i) => i.id === r.itemId,
-                ),
-            ),
-          ].map((r) => [r.id, r]),
-        ).values(),
-      ],
+      recommendations: [...new Map(v.recommendations.map((r) => [r.id, r])).values()],
       history,
     };
   } catch {
@@ -155,6 +147,8 @@ export function parseStored(value: string): State | null {
 }
 interface ContextValue extends State {
   ready: boolean;
+  generating: boolean;
+  generationError: string | null;
   storageAvailable: boolean;
   pending: Recommendation[];
   decide: (id: string, decision: Decision, note: string) => string;
@@ -164,13 +158,11 @@ interface ContextValue extends State {
 }
 const Context = createContext<ContextValue | null>(null);
 export function RecommendationsProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(
-    recommendationsReducer,
-    undefined,
-    initial,
-  );
+  const [state, dispatch] = useReducer(recommendationsReducer, initial);
   const [ready, setReady] = useState(false);
   const [storageAvailable, setStorageAvailable] = useState(true);
+  const [generating, setGenerating] = useState(false);
+  const [generationError, setGenerationError] = useState<string | null>(null);
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
@@ -185,8 +177,67 @@ export function RecommendationsProvider({ children }: { children: ReactNode }) {
   }, []);
   useEffect(() => {
     if (!ready) return;
+    let cancelled = false;
+    const items = servicesForDay(getToday()).flatMap((service) =>
+      service.items.map((item) => ({
+        id: `production:${service.hallId}:${service.date}:${service.meal}:${item.id}`,
+        hallId: service.hallId,
+        date: service.date,
+        meal: service.meal,
+        itemId: item.id,
+        itemName: item.name,
+        remainingPct: item.remainingPct,
+        wasteRatio: item.remainingPct / 100,
+        wasteLbs: item.wasteLbs,
+        wasteCost: item.wasteCost,
+        reductionRange: item.reductionRange,
+        origin: "production" as const,
+        dietaryCategory: "none",
+      })),
+    )
+      .filter((item) => item.remainingPct > 20 && item.wasteLbs > 0)
+      .sort((a, b) => b.remainingPct - a.remainingPct)
+      .slice(0, 12);
+
+    setGenerating(true);
+    fetch("/api/recommendations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items }),
+    })
+      .then(async (response) => {
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Recommendation engine failed");
+        if (
+          !Array.isArray(data.recommendations) ||
+          !data.recommendations.every(isRecommendation)
+        ) {
+          throw new Error("Invalid recommendation response");
+        }
+        return data.recommendations as Recommendation[];
+      })
+      .then((recommendations) => {
+        if (!cancelled) {
+          dispatch({ type: "generated", recommendations });
+          setGenerationError(null);
+        }
+      })
+      .catch((error: unknown) => {
+        if (!cancelled) {
+          setGenerationError(error instanceof Error ? error.message : "Recommendation engine unavailable");
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setGenerating(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [ready]);
+  useEffect(() => {
+    if (!ready) return;
     try {
-      localStorage.setItem(KEY, JSON.stringify({ version: 2, ...state }));
+      localStorage.setItem(KEY, JSON.stringify({ version: 1, ...state }));
     } catch {
       setStorageAvailable(false);
     }
@@ -200,6 +251,8 @@ export function RecommendationsProvider({ children }: { children: ReactNode }) {
   const value: ContextValue = {
     ...state,
     ready,
+    generating,
+    generationError,
     storageAvailable,
     pending,
     create: (r) => dispatch({ type: "create", recommendation: r }),

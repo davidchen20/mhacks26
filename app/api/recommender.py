@@ -127,13 +127,14 @@ def generate_recommendation(food_name, waste_ratio, category, model="qwen2.5"):
                 format="json"
             )
             data = json.loads(response["message"]["content"])
+            print("recommendation recieved from ollama:", data)
             return {
                 "recommendation": data.get("recommendation", ""),
                 "source": f"Ollama AI ({model})"
             }
         except Exception:
             pass
-
+    print("failed")
     return generate_rule_based_recommendation(food_name, waste_ratio, category)
 
 
