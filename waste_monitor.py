@@ -455,7 +455,9 @@ def process_csv(args, cfg):
     for key in sorted({row['food'] for row in records}):
         group = [row for row in records if row['food'] == key]
         measured = [row['waste_percent'] for row in group if row['waste_percent'] is not None]
-        summary.append({'food': key, 'input_rows': len(group), 'estimated_rows': len(measured),
+        summary.append({'food': key, 'dining_hall': 'Bursley' if simulated else 'Unknown',
+                        'simulated': simulated,
+                        'input_rows': len(group), 'estimated_rows': len(measured),
                         'excluded_rows': len(group) - len(measured),
                         'mean_waste_percent': round(statistics.mean(measured), 2) if measured else None,
                         'scope': 'Simulated random percentages for demonstration.' if simulated else

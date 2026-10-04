@@ -13,7 +13,8 @@ def upload_run(run, server, database, token):
     marker = run / "spacetime_uploaded.json"
     if marker.exists():
         uploaded = json.loads(marker.read_text(encoding="utf-8"))
-        if uploaded.get("server") == server and uploaded.get("database") == database:
+        if (uploaded.get("server") == server and uploaded.get("database") == database
+                and uploaded.get("schema_version") == 2):
             return
     # This file is written after summary.json, so its presence signals completion.
     if not (run / "csv_references_used.json").exists():
@@ -29,12 +30,15 @@ def upload_run(run, server, database, token):
         observations = summary.get("estimated_rows", 0)
         if percentage is None or not observations:
             continue
+        simulated = summary.get("simulated", summary.get("scope", "").startswith("Simulated"))
+        dining_hall = "Bursley" if simulated else summary.get("dining_hall", "Unknown")
         arguments = [
             f"{run.name}:{summary['food']}",
             summary["food"],
             float(percentage),
             int(observations),
-            summary.get("scope", "").startswith("Simulated"),
+            simulated,
+            dining_hall,
         ]
         request = Request(url, data=json.dumps(arguments).encode("utf-8"),
                           headers=headers, method="POST")
@@ -44,7 +48,7 @@ def upload_run(run, server, database, token):
         except HTTPError as error:
             raise RuntimeError(f"HTTP {error.code}: {error.read().decode('utf-8', errors='replace')}") from error
         count += 1
-    marker.write_text(json.dumps({"server": server, "database": database,
+    marker.write_text(json.dumps({"server": server, "database": database, "schema_version": 2,
                                  "uploaded_food_summaries": count}, indent=2), encoding="utf-8")
     print(f"Uploaded {run.name}: {count} food summaries", flush=True)
 

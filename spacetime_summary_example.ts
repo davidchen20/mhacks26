@@ -10,6 +10,7 @@ const wasteSummary = table(
     wastePercent: t.f64(),
     observations: t.u32(),
     simulated: t.bool(),
+    diningHall: t.string().default("Unknown"),
   }
 );
 
@@ -23,8 +24,10 @@ export const recordSummary = spacetimedb.reducer(
     wastePercent: t.f64(),
     observations: t.u32(),
     simulated: t.bool(),
+    diningHall: t.string(),
   },
   (ctx, row) => {
+    row = { ...row, diningHall: row.simulated ? "Bursley" : row.diningHall };
     if (!Number.isFinite(row.wastePercent) || row.wastePercent < 0 ||
         row.observations === 0) {
       throw new Error("Invalid summary.");
