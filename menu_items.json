@@ -1,0 +1,42 @@
+{
+  "dominos_cheese_pizza_slice": {
+    "station": "Pizza",
+    "name": "Domino's cheese pizza slice",
+    "servingSize": "1 slice (120.8g)",
+    "calories": null,
+    "fiber": null,
+    "protein": null,
+    "traits": [],
+    "allergens": []
+  },
+  "costco_oatmeal_raisin_cookie": {
+    "station": "Dessert",
+    "name": "Costco oatmeal raisin cookie",
+    "servingSize": "1 cookie (50g)",
+    "calories": 230,
+    "fiber": null,
+    "protein": null,
+    "traits": [],
+    "allergens": []
+  },
+  "lays_potato_chips_original": {
+    "station": "Snacks",
+    "name": "Lay's Original Potato Chips",
+    "servingSize": "",
+    "calories": null,
+    "fiber": null,
+    "protein": null,
+    "traits": [],
+    "allergens": []
+  },
+  "doritos_nacho_cheese": {
+    "station": "Snacks",
+    "name": "Nacho Cheese Doritos",
+    "servingSize": "1 portion (28g)",
+    "calories": null,
+    "fiber": null,
+    "protein": null,
+    "traits": [],
+    "allergens": []
+  }
+}

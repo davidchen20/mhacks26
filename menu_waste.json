@@ -1,0 +1,50 @@
+{
+  "bursley": {
+    "2026-10-04": {
+      "breakfast": [
+        {
+          "station": "Pizza",
+          "name": "Domino's cheese pizza slice",
+          "servingSize": "1 slice (120.8g)",
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": [],
+          "foodId": "dominos_cheese_pizza_slice",
+          "wastePercent": 57.96,
+          "observations": 6,
+          "simulated": true
+        },
+        {
+          "station": "Snacks",
+          "name": "Nacho Cheese Doritos",
+          "servingSize": "1 portion (28g)",
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": [],
+          "foodId": "doritos_nacho_cheese",
+          "wastePercent": 55.1,
+          "observations": 8,
+          "simulated": true
+        },
+        {
+          "station": "Snacks",
+          "name": "Lay's Original Potato Chips",
+          "servingSize": "",
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": [],
+          "foodId": "lays_potato_chips_original",
+          "wastePercent": 43.79,
+          "observations": 29,
+          "simulated": true
+        }
+      ]
+    }
+  }
+}

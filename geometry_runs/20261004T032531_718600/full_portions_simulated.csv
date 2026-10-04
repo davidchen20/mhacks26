@@ -1,3 +1,0 @@
-image,food,confidence,mask_fraction_of_image,simulated
-test_plate.jpg,dominos_cheese_pizza_slice,0.95,0.29740429314538974,True
-test_plate.jpg,costco_oatmeal_raisin_cookie,0.9,0.1511166298415439,True

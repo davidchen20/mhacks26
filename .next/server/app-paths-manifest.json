@@ -1,0 +1,8 @@
+{
+  "/api/waste/route": "app/api/waste/route.js",
+  "/finances/page": "app/finances/page.js",
+  "/recommendations/page": "app/recommendations/page.js",
+  "/page": "app/page.js",
+  "/food/page": "app/food/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
+}

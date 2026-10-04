@@ -11,7 +11,7 @@ Examples:
 No scale, serving weight, density coefficient, trained YOLO model, or serving-count
 file is required. Food identity is explicitly supplied: this is a geometry/color
 prototype for one chosen food per plate, not a general mixed-food classifier.
-The built-in chips reference is the user-approved IMG_7487 pile = 100%.
+Lay's Original needs its own full-portion reference for measured-area estimates.
 Cookie/pizza can use a full-portion photo; pizza also supports a preserved crust
 chord and known original slice angle, and cookies three points on an intact rim.
 See README.md for examples, supported camera setup, and limitations.
@@ -36,7 +36,8 @@ except ImportError:
     cv2 = np = Image = ImageOps = None
 
 ALIASES = {
-    'chips': 'doritos_nacho_cheese', 'doritos': 'doritos_nacho_cheese',
+    'chips': 'lays_potato_chips_original', 'lays': 'lays_potato_chips_original',
+    'doritos': 'doritos_nacho_cheese',
     'pizza': 'dominos_cheese_pizza_slice', 'cookie': 'costco_oatmeal_raisin_cookie',
 }
 DEFAULT_CONFIG = {
@@ -50,6 +51,12 @@ DEFAULT_CONFIG = {
     'axis': 'y', 'direction': 1, 'count_line': 0.5,
     'arming_margin': 0.04, 'match_distance': 0.15, 'track_ttl_s': 1.5,
     'foods': {
+        'lays_potato_chips_original': {
+            'display_name': "Lay's Original Potato Chips",
+            'hsv_lower': [0, 65, 35], 'hsv_upper': [40, 255, 255],
+            'reference_fraction': None,
+            'reference_description': "Use a full-portion Lay's Original reference from the same camera setup",
+        },
         'doritos_nacho_cheese': {
             'display_name': 'Nacho Cheese Doritos',
             'hsv_lower': [0, 95, 45], 'hsv_upper': [36, 255, 255],
@@ -325,6 +332,9 @@ def csv_food_id(value):
     """Normalize labels; permit arbitrary foods with their own CSV reference."""
     key = '_'.join(value.strip().lower().replace('-', ' ').split())
     aliases = {
+        'lays_potato_chips_original': 'lays_potato_chips_original',
+        "lay's_original_potato_chips": 'lays_potato_chips_original',
+        'lays_original_potato_chips': 'lays_potato_chips_original',
         'nacho_cheese_doritos': 'doritos_nacho_cheese',
         'dominos_cheese_pizza': 'dominos_cheese_pizza_slice',
         "domino's_cheese_pizza_slice": 'dominos_cheese_pizza_slice',
@@ -455,7 +465,9 @@ def process_csv(args, cfg):
     for key in sorted({row['food'] for row in records}):
         group = [row for row in records if row['food'] == key]
         measured = [row['waste_percent'] for row in group if row['waste_percent'] is not None]
-        summary.append({'food': key, 'dining_hall': 'Bursley' if simulated else 'Unknown',
+        summary.append({'food': key, 'dining_hall': 'bursley' if simulated else 'unknown',
+                        'service_date': args.service_date or datetime.now().strftime('%Y-%m-%d'),
+                        'meal': args.meal,
                         'simulated': simulated,
                         'input_rows': len(group), 'estimated_rows': len(measured),
                         'excluded_rows': len(group) - len(measured),
@@ -531,6 +543,9 @@ def main():
     ap.add_argument('--simulate-reference', action='store_true',
                     help='Generate demo reference CSVs with random 20–80 percent waste; outputs are marked simulated')
     ap.add_argument('--min-confidence', type=float, default=0.5, help='CSV quality threshold in 0..1 (default 0.5)')
+    ap.add_argument('--service-date', help='Dining service date, YYYY-MM-DD; defaults to local date when processed')
+    ap.add_argument('--meal', choices=['breakfast', 'lunch', 'brunch', 'dinner'], default='breakfast',
+                    help='Service meal for CSV summaries (default breakfast)')
     ap.add_argument('--set-reference', action='store_true', help='Use the single input image as 100%; writes --config')
     ap.add_argument('--region', type=lambda s: normalized_points(s), help='Food search polygon: x1,y1,x2,y2,... in 0..1')
     ap.add_argument('--outline', type=lambda s: normalized_points(s), help='Manually supplied visible food silhouette polygon')
@@ -540,6 +555,12 @@ def main():
     ap.add_argument('--output', type=Path, default=Path('geometry_runs'))
     ap.add_argument('--headless', action='store_true', help='No video preview window')
     args = ap.parse_args()
+    if args.service_date:
+        try:
+            if datetime.strptime(args.service_date, '%Y-%m-%d').strftime('%Y-%m-%d') != args.service_date:
+                raise ValueError()
+        except ValueError:
+            ap.error('--service-date must be a valid YYYY-MM-DD date.')
     if not math.isfinite(args.min_confidence) or not 0 <= args.min_confidence <= 1:
         ap.error('--min-confidence must be between 0 and 1.')
     cfg = read_config(args.config)
