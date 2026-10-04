@@ -1,4 +1,6 @@
 requests>=2.31
 beautifulsoup4>=4.12
 # Optional model integration: also install Ollama and pull the configured model.
-ollama>=0.4
+# Ollama is optional; the deployed service uses the existing rule-based fallback.
+fastapi==0.115.0
+uvicorn[standard]==0.30.6

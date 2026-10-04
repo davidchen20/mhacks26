@@ -1,6 +1,5 @@
-import { spawn } from "child_process";
+import { recommenderUrl } from "@/lib/serviceUrls.server";
 import { NextResponse } from "next/server";
-import { join } from "path";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -21,51 +20,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Expected up to 30 recommendation items" }, { status: 400 });
   }
 
-  const script = join(process.cwd(), "app", "api", "recommender_worker.py");
-  return new Promise<NextResponse>((resolve) => {
-    const python = spawn(process.env.PYTHON_BIN || "python3", [script], {
-      stdio: ["pipe", "pipe", "pipe"],
-      cwd: join(process.cwd(), "app", "api"),
+  try {
+    const response = await fetch(recommenderUrl(), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      cache: "no-store",
+      signal: AbortSignal.timeout(115_000),
     });
-    let stdout = "";
-    let stderr = "";
-    let settled = false;
-    const finish = (response: NextResponse) => {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      resolve(response);
-    };
-    const timer = setTimeout(() => {
-      python.kill("SIGTERM");
-      finish(NextResponse.json({ error: "Recommendation generation timed out" }, { status: 504 }));
-    }, 115_000);
-
-    python.stdout.setEncoding("utf8");
-    python.stderr.setEncoding("utf8");
-    python.stdout.on("data", (chunk: string) => (stdout += chunk));
-    python.stderr.on("data", (chunk: string) => (stderr += chunk));
-    python.on("error", () => {
-      finish(NextResponse.json({ error: "Python runtime is unavailable" }, { status: 503 }));
-    });
-    python.on("close", (code) => {
-      if (settled) return;
-      if (code !== 0) {
-        finish(
-          NextResponse.json(
-            { error: "Recommendation engine failed", details: stderr.slice(-1500) },
-            { status: 502 },
-          ),
-        );
-        return;
-      }
-      try {
-        finish(NextResponse.json(JSON.parse(stdout)));
-      } catch {
-        finish(NextResponse.json({ error: "Recommendation engine returned invalid data" }, { status: 502 }));
-      }
-    });
-
-    python.stdin.end(JSON.stringify(body));
-  });
+    return NextResponse.json(await response.json(), { status: response.status });
+  } catch (error) {
+    const timedOut = error instanceof Error && error.name === "TimeoutError";
+    return NextResponse.json(
+      { error: timedOut ? "Recommendation generation timed out" : "Recommendation service unavailable; check RECOMMENDER_URL and service logs" },
+      { status: timedOut ? 504 : 502 },
+    );
+  }
 }
