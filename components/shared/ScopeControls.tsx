@@ -15,11 +15,14 @@ export function useScope() {
   const rawDate = params.get("date");
   const date = rawDate && validDate(rawDate) ? rawDate : getToday();
   const rawHall = params.get("hall");
-  const hall: HallId | "all" = HALLS.some((h) => h.id === rawHall)
+  const hall: HallId | "all" = rawHall === "mhacks-demo" ? "mhacks-demo" : HALLS.some((h) => h.id === rawHall)
     ? (rawHall as HallId)
     : "all";
   const requested = params.get("meal");
-  const meal = correctOverviewMeal(requested, [date]);
+  const demoMeals = ["all", "breakfast", "brunch", "lunch", "dinner"] as const;
+  const meal = hall === "mhacks-demo"
+    ? demoMeals.find((m) => m === requested) ?? "all"
+    : correctOverviewMeal(requested, [date]);
   return { params, setQuery, date, hall, meal, requested };
 }
 export default function ScopeControls({
@@ -51,6 +54,7 @@ export default function ScopeControls({
                 {h.name}
               </option>
             ))}
+            <option value="mhacks-demo">MHacks Demo</option>
           </select>
         </label>
         <label className="text-sm font-semibold">
@@ -74,7 +78,7 @@ export default function ScopeControls({
               setQuery({ meal: e.target.value });
             }}
           >
-            {mealOptionsForDates([date]).map((m) => (
+            {(hall === "mhacks-demo" ? ["all", "breakfast", "brunch", "lunch", "dinner"] : mealOptionsForDates([date])).map((m) => (
               <option key={m} value={m}>
                 {title(m)}
               </option>

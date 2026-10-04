@@ -8,10 +8,10 @@ def hello_fast_api():
     return {"message": "Hello from FastAPI"}
 from pydantic import BaseModel, Field
 from fastapi import HTTPException
-from recommender import analyze_food_waste, load_food_database
+from recommender import analyze_food_waste
 
 class WasteRequest(BaseModel):
-    waste_entries: list[tuple[str, float] | tuple[str, float, str]] = Field(max_length=2000)
+    waste_entries: list[tuple[str, float, str]] = Field(max_length=2000)
     served_data: dict[str, float]
     menu_items: list[str | dict] | None = None
     aliases: dict[str, str] = Field(default_factory=dict)
@@ -20,14 +20,14 @@ class WasteRequest(BaseModel):
 @app.post('/api/py/recommendations')
 def recommendations(payload: WasteRequest):
     try:
-        return analyze_food_waste([(row[0], row[1]) for row in payload.waste_entries],
-                                 payload.served_data, load_food_database('database.json'),
-                                 threshold=payload.threshold)
+        return analyze_food_waste(payload.waste_entries, payload.served_data,
+                                 payload.threshold, menu_items=payload.menu_items,
+                                 aliases=payload.aliases)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 
 from api.waste import WasteService, MOCK_SERVICE, financial_summary, calculate_item
-from api.recommendation_adapter import analyze_waste_vectors
+from recommender import analyze_waste_vectors
 
 def service_response(service: WasteService, simulated=False):
     return {'hall': service.hall, 'date': service.date, 'meal': service.meal,
@@ -46,3 +46,40 @@ def analyze_service(service: WasteService):
         return service_response(service)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+# MHacks Demo only; existing endpoints above are unchanged.
+from datetime import date as Date
+from typing import Literal
+import logging
+import httpx
+from api.demo_store import query_observations, summarize
+
+@app.get('/api/py/demo/waste')
+def demo_waste(service_date: Date,
+               meal: Literal['all', 'breakfast', 'brunch', 'lunch', 'dinner'] = 'all'):
+    try:
+        rows = query_observations(service_date.isoformat(), meal)
+        return dict(dining_hall='MHacks Demo', service_date=service_date.isoformat(),
+                    meal=meal, inference='mock', observations=rows, **summarize(rows))
+    except (httpx.HTTPError, KeyError, ValueError, TypeError, OverflowError):
+        logging.exception('Demo database read failed')
+        raise HTTPException(status_code=502,
+                            detail='Demo database unavailable or misconfigured')
+
+# Live observations for the existing Home/Finances/Recommendations dashboards.
+from api.demo_store import query_observations_range, food_specs
+
+@app.get('/api/py/demo/waste/range')
+def demo_waste_range(date_from: Date, date_to: Date):
+    if not 0 <= (date_to - date_from).days <= 89:
+        raise HTTPException(status_code=422, detail='Demo range must be 1–90 days')
+    try:
+        rows = query_observations_range(date_from.isoformat(), date_to.isoformat())
+        # Validate rows and configured costs before returning the UI payload.
+        result = summarize(rows)
+        return dict(dining_hall='MHacks Demo', inference='mock',
+                    observations=rows, food_specs=food_specs(), **result)
+    except (httpx.HTTPError, KeyError, ValueError, TypeError, OverflowError):
+        logging.exception('Demo range read failed')
+        raise HTTPException(status_code=502,
+                            detail='Demo database unavailable or misconfigured')

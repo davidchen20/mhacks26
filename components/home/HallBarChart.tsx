@@ -27,9 +27,11 @@ import { EmptyState } from "@/components/shared/DataState";
 export default function HallBarChart({
   halls,
   services,
+  captured = false,
 }: {
   halls: HallSummary[];
   services: ServiceData[];
+  captured?: boolean;
 }) {
   const [mode, setMode] = useState<"rate" | "total">("rate");
   const router = useRouter();
@@ -71,7 +73,7 @@ export default function HallBarChart({
           value={mode}
           onChange={setMode}
           options={[
-            { value: "rate", label: "Waste per meal served" },
+            { value: "rate", label: captured ? "Waste per captured portion" : "Waste per meal served" },
             { value: "total", label: "Total waste (lbs)" },
           ]}
         />
@@ -87,7 +89,7 @@ export default function HallBarChart({
         <>
           <div
             role="img"
-            aria-label={`Hall comparison in ${mode === "rate" ? "pounds per meal served" : "pounds"}. Unavailable halls have no values, not zero waste. Links and exact values follow.`}
+            aria-label={`Hall comparison in ${mode === "rate" ? (captured ? "pounds per captured portion" : "pounds per meal served") : "pounds"}. Unavailable halls have no values, not zero waste. Links and exact values follow.`}
             className="mt-5 h-[340px]"
           >
             <ResponsiveContainer width="100%" height="100%">
@@ -113,7 +115,7 @@ export default function HallBarChart({
                 <Tooltip
                   formatter={(v) =>
                     mode === "rate"
-                      ? `${number(Number(v), 4)} lbs per meal served`
+                      ? `${number(Number(v), 4)} lbs per ${captured ? "captured portion" : "meal served"}`
                       : lbs(Number(v))
                   }
                 />
@@ -124,7 +126,7 @@ export default function HallBarChart({
                 />
                 <Bar
                   dataKey="value"
-                  name={mode === "rate" ? "Waste per meal served" : "Waste"}
+                  name={mode === "rate" ? (captured ? "Waste per captured portion" : "Waste per meal served") : "Waste"}
                   radius={[0, 5, 5, 0]}
                   maxBarSize={24}
                   isAnimationActive={false}
@@ -144,9 +146,9 @@ export default function HallBarChart({
           <p className="muted">
             Dashed line:{" "}
             {mode === "rate"
-              ? "target of 0.10 lbs per meal served"
-              : "reference volume at 0.10 lbs × average reporting-hall meal count"}
-            . Colors use waste per meal: {STATUS["on-track"].icon}{" "}
+              ? (captured ? "illustrative reference of 0.10 lbs per captured portion" : "target of 0.10 lbs per meal served")
+              : (captured ? "reference volume at 0.10 lbs × captured portion count" : "reference volume at 0.10 lbs × average reporting-hall meal count")}
+            . Colors use waste per {captured ? "captured portion" : "meal"}: {STATUS["on-track"].icon}{" "}
             {STATUS["on-track"].label} ≤{THRESHOLDS.perMeal.onTrack.toFixed(2)}{" "}
             · {STATUS.monitor.icon} {STATUS.monitor.label} ≤
             {THRESHOLDS.perMeal.monitor.toFixed(2)} · {STATUS.review.icon}{" "}
@@ -171,8 +173,8 @@ export default function HallBarChart({
           <tr>
             <th>Hall</th>
             <th>Waste lbs</th>
-            <th>Meals served</th>
-            <th>lbs per meal served</th>
+            <th>{captured ? "Captured portions" : "Meals served"}</th>
+            <th>lbs per {captured ? "captured portion" : "meal served"}</th>
             <th>Status</th>
           </tr>
         </thead>

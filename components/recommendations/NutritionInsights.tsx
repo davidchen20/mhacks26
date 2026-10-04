@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { type ServiceData, hallName, makeRecommendation } from "@/lib/mockData";
-import { wasteAdvice } from "@/lib/wasteAdvice";
+import { THRESHOLDS } from "@/lib/status";
 import { portionLabel } from "@/lib/foodWeights";
 import { number, percent, title } from "@/lib/format";
 import { useRecommendations } from "./RecommendationsProvider";
@@ -11,6 +11,7 @@ export default function NutritionInsights({
 }: {
   services: ServiceData[];
 }) {
+  const isDemo = services.some((s) => s.menuSource === "spacetimedb");
   const { create, recommendations } = useRecommendations();
   const [message, setMessage] = useState("");
   const insights = services
@@ -19,7 +20,7 @@ export default function NutritionInsights({
         .filter(
           (item) =>
             item.nutrition.nutrientDensity !== "unknown" &&
-            wasteAdvice(item).result !== null,
+            item.remainingPct > THRESHOLDS.remaining.monitor,
         )
         .map((item) => ({
           service,
@@ -39,10 +40,7 @@ export default function NutritionInsights({
           Nutritious food that comes back
         </h2>
         <p className="mt-3 text-sm text-slate-200">
-          Hardcoded culinary rules, manager review required, no medical
-          claims. Ranked by simulated waste % × densityScore, an operational
-          proxy derived from fiber, protein and calories. Historical nutrition
-          is illustrative; today uses published nutrition.
+          {isDemo ? "Mock insights from captured SpacetimeDB waste % × densityScore. Nutrition is dummy demo data. Manager review required; no medical claims." : "AI-generated mock insights, manager review required, no medical claims. Ranked by simulated waste % × densityScore, an operational proxy derived from fiber, protein and calories. Historical nutrition is illustrative; today uses published nutrition."}
         </p>
       </div>
       <p role="status" className="mb-3 text-sm font-semibold text-emerald-800">
@@ -66,7 +64,7 @@ export default function NutritionInsights({
                   score {number(score, 1)}
                 </p>
                 <h3 className="mt-3 text-lg font-semibold text-rose-800">
-                  ! Simulated high waste · {percent(item.remainingPct)} of{" "}
+                  ! {isDemo ? "Captured high waste (mock inference)" : "Simulated high waste"} · {percent(item.remainingPct)} of{" "}
                   {item.name} remains uneaten
                 </h3>
                 <p className="mt-3 text-sm">
@@ -84,7 +82,7 @@ export default function NutritionInsights({
                   Per-serving nutrition (
                   {service.menuSource === "mdining"
                     ? "M Dining"
-                    : "illustrative"}
+                    : service.menuSource === "spacetimedb" ? "dummy demo data" : "illustrative"}
                   ): {item.nutrition.fiberGrams} g fiber ·{" "}
                   {item.nutrition.proteinGrams} g protein ·{" "}
                   {item.nutrition.calories} calories · Density proxy (
@@ -93,9 +91,13 @@ export default function NutritionInsights({
                 <p className="muted mt-2">{portionLabel(item)}</p>
                 <p className="mt-4 text-sm">
                   <strong>Culinary suggestion:</strong>{" "}
-                  {rec.title}
+                  {item.culinarySuggestion}.
                 </p>
-                <p className="muted mt-2">Hardcoded category rule · manager review required.</p>
+                <p className="mt-2 text-sm">
+                  <strong>Expected relative waste reduction:</strong>{" "}
+                  {item.reductionRange[0]}–{item.reductionRange[1]}% ·
+                  illustrative, unvalidated estimate.
+                </p>
                 <button
                   className="btn mt-5"
                   disabled={exists}

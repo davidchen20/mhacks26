@@ -77,6 +77,7 @@ export default function FoodDashboard() {
                 {h.name}
               </option>
             ))}
+            <option value="mhacks-demo">MHacks Demo</option>
           </select>
         </label>
         <label className="text-sm font-semibold">

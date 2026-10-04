@@ -25,14 +25,11 @@ export default function RecommendationCard({
       <h3 className="mt-4 text-xl font-semibold leading-snug text-navy">
         {r.title}
       </h3>
-      {r.recommendationEngine === "hardcoded" ? <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-        <div><dt>Waste / served weight</dt><dd className="font-semibold">{r.wasteRatio === undefined ? "Unavailable" : percent(r.wasteRatio * 100)} · simulated</dd></div>
-        <div><dt>Rule category / dietary tags</dt><dd className="font-semibold">{r.ruleCategory ?? "UNKNOWN"} · {r.dietary ?? "none"}</dd></div>
-      </dl> : (<dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+      <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
         <div>
           <dt className="text-slate-600">Observed portion remaining</dt>
           <dd className="font-semibold">
-            {percent(r.remainingPct)} · simulated
+            {percent(r.remainingPct)} · {r.hallId === "mhacks-demo" ? "captured · mocked inference" : "simulated"}
           </dd>
         </div>
         <div>
@@ -45,7 +42,7 @@ export default function RecommendationCard({
             {r.reductionRange[0]}–{r.reductionRange[1]}% · illustrative
           </dd>
         </div>
-      </dl>)}
+      </dl>
       <p className="muted mt-3">
         Waste cost: {currency(r.wasteCost, "per service", 2)} ·{" "}
         {r.origin === "nutrition"

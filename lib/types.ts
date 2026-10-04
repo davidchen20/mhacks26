@@ -4,7 +4,8 @@ export type HallId =
   | "east-quad"
   | "mosher-jordan"
   | "markley"
-  | "twigs";
+  | "twigs"
+  | "mhacks-demo";
 import type { Meal } from "./dates";
 export type { Meal, Range, OverviewMeal } from "./dates";
 export type Category = "Protein" | "Produce" | "Grains" | "Dairy";
@@ -53,7 +54,7 @@ export interface ServiceData {
   meal: Meal;
   mealsServed: number;
   items: MenuItem[];
-  menuSource: "mdining" | "illustrative";
+  menuSource: "mdining" | "illustrative" | "spacetimedb";
   availability: "available" | "future" | "unavailable" | "no-service";
 }
 export interface Hall {
@@ -88,10 +89,6 @@ export interface Recommendation {
   origin: "production" | "nutrition";
   wasteOrigin?: "batch" | "portion" | "menu-review" | "monitor";
   severity?: string;
-  recommendationEngine?: "hardcoded";
-  wasteRatio?: number;
-  ruleCategory?: string;
-  dietary?: string;
   kitchenWasteCost?: number;
   plateWasteCost?: number;
 }

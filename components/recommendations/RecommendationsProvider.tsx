@@ -1,6 +1,7 @@
 "use client";
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useReducer,
@@ -17,7 +18,9 @@ import {
   type Recommendation,
   type HistoryEntry,
   type Decision,
+  type ServiceData,
 } from "@/lib/mockData";
+import { mergeDemoRecommendations } from "@/lib/demoData";
 const KEY = "wolverlean:recommendations:v2";
 interface State {
   recommendations: Recommendation[];
@@ -26,6 +29,7 @@ interface State {
 type Action =
   | { type: "load"; state: State }
   | { type: "create"; recommendation: Recommendation }
+  | { type: "sync-demo"; recommendations: Recommendation[]; scope: string[]; services: ServiceData[] }
   | {
       type: "decide";
       id: string;
@@ -41,6 +45,11 @@ const initial = (): State => ({
 });
 export function recommendationsReducer(state: State, action: Action): State {
   if (action.type === "load") return action.state;
+  if (action.type === "sync-demo") {
+    const recommendations = mergeDemoRecommendations(state.recommendations,
+      action.recommendations, action.scope, action.services, makeRecommendation);
+    return recommendations === state.recommendations ? state : {...state, recommendations};
+  }
   if (action.type === "create")
     return state.recommendations.some((r) => r.id === action.recommendation.id)
       ? state
@@ -86,7 +95,7 @@ function isRecommendation(v: unknown): v is Recommendation {
     object(v) &&
     typeof v.id === "string" &&
     typeof v.hallId === "string" &&
-    HALLS.some((h) => h.id === v.hallId) &&
+    (v.hallId === "mhacks-demo" || HALLS.some((h) => h.id === v.hallId)) &&
     typeof v.date === "string" &&
     validDate(v.date) &&
     ["breakfast", "brunch", "lunch", "dinner"].includes(String(v.meal)) &&
@@ -141,14 +150,15 @@ export function parseStored(value: string): State | null {
             ...v.recommendations.filter(
               (r) =>
                 r.date <= getToday() &&
-                getService(r.hallId, r.date, r.meal).items.some(
+                (r.hallId === "mhacks-demo" || getService(r.hallId, r.date, r.meal).items.some(
                   (i) => i.id === r.itemId,
-                ),
+                )),
             ).map(r => {
+              if (r.hallId === "mhacks-demo") return r;
               const service = getService(r.hallId, r.date, r.meal);
               const item = service.items.find(i => i.id === r.itemId);
               return item ? makeRecommendation(service, item, r.origin) : r;
-            }).filter(r => r.wasteRatio !== undefined && r.wasteRatio > .20),
+            }),
           ].map((r) => [r.id, r]),
         ).values(),
       ],
@@ -166,6 +176,7 @@ interface ContextValue extends State {
   reopen: (historyId: string) => void;
   undo: (historyId: string) => void;
   create: (r: Recommendation) => void;
+  syncDemo: (r: Recommendation[], scope: string[], services?: ServiceData[]) => void;
 }
 const Context = createContext<ContextValue | null>(null);
 export function RecommendationsProvider({ children }: { children: ReactNode }) {
@@ -174,6 +185,8 @@ export function RecommendationsProvider({ children }: { children: ReactNode }) {
     undefined,
     initial,
   );
+  const syncDemo = useCallback((recommendations: Recommendation[], scope: string[], services: ServiceData[] = []) =>
+    dispatch({type: "sync-demo", recommendations, scope, services}), []);
   const [ready, setReady] = useState(false);
   const [storageAvailable, setStorageAvailable] = useState(true);
   useEffect(() => {
@@ -207,6 +220,7 @@ export function RecommendationsProvider({ children }: { children: ReactNode }) {
     ready,
     storageAvailable,
     pending,
+    syncDemo,
     create: (r) => dispatch({ type: "create", recommendation: r }),
     reopen,
     undo: (historyId) => {

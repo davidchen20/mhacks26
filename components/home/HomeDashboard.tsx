@@ -18,6 +18,7 @@ import {
   OPERATING_DAYS,
   type Range,
   type OverviewMeal,
+  recommendationsForServices,
 } from "@/lib/mockData";
 import { useQueryState } from "@/lib/useQueryState";
 import { currency, dateLabel, lbs, percent } from "@/lib/format";
@@ -30,8 +31,12 @@ import TrendChart from "@/components/shared/TrendChart";
 import { EmptyState } from "@/components/shared/DataState";
 import { useRecommendations } from "@/components/recommendations/RecommendationsProvider";
 import HallBarChart from "./HallBarChart";
+import { useDemoServices } from "@/lib/useDemoServices";
+import { DEMO_HALL_ID, DEMO_MEALS, selectDemoServices, demoWasteTrend } from "@/lib/demoData";
+import { addDays } from "@/lib/dates";
 export default function HomeDashboard() {
   const { params, setQuery } = useQueryState();
+  const isDemo = params.get("hall") === DEMO_HALL_ID;
   const range: Range = ["today", "yesterday", "week"].includes(
     params.get("range") ?? "",
   )
@@ -41,7 +46,7 @@ export default function HomeDashboard() {
   const anchor = rawDate && validDate(rawDate) ? rawDate : getToday();
   const days = datesForRange(range, 0, anchor);
   const requested = params.get("meal");
-  const meal: OverviewMeal = correctOverviewMeal(requested, days);
+  const meal: OverviewMeal = isDemo ? DEMO_MEALS.find((m) => m === requested) ?? "all" : correctOverviewMeal(requested, days);
   const [notice, setNotice] = useState("");
   useEffect(() => {
     if (requested && requested !== meal) {
@@ -51,11 +56,18 @@ export default function HomeDashboard() {
       setQuery({ meal: "all" }, true);
     }
   }, [requested, meal, range]); // eslint-disable-line react-hooks/exhaustive-deps
-  const services = servicesForRange(range, meal, 0, anchor),
+  const live = useDemoServices(isDemo, addDays(anchor, -40), anchor);
+  const services = isDemo ? selectDemoServices(live.services, days, meal) : servicesForRange(range, meal, 0, anchor),
     total = totals(services),
-    halls = summarizeHalls(services),
-    previous = totals(servicesForRange(range, meal, -7, anchor));
-  const { pending, ready } = useRecommendations();
+    halls = summarizeHalls(services, isDemo),
+    previous = totals(isDemo ? selectDemoServices(live.services, datesForRange(range, -7, anchor), meal) : servicesForRange(range, meal, -7, anchor));
+  const { pending, ready, syncDemo } = useRecommendations();
+  const demoCandidates = isDemo ? recommendationsForServices(services) : [];
+  const demoKey = JSON.stringify(demoCandidates);
+  const demoScope = JSON.stringify(days.flatMap((date) => (meal === "all" ? DEMO_MEALS.filter((m) => m !== "all") : [meal]).map((m) => `${date}|${m}`)));
+  useEffect(() => {
+    if (isDemo && live.loaded && ready) syncDemo(demoCandidates, JSON.parse(demoScope), services);
+  }, [isDemo, live.loaded, ready, demoKey, demoScope, syncDemo]); // eslint-disable-line react-hooks/exhaustive-deps
   const selectedPending = pending.filter((r) =>
     services.some(
       (s) =>
@@ -91,9 +103,17 @@ export default function HomeDashboard() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title={`University Overview · ${range === "week" ? `${dateLabel(days[0])}–${dateLabel(referenceDate)}` : `${range === "today" ? "Today" : "Yesterday"}, ${dateLabel(referenceDate)}`}`}
+        title={`${isDemo ? "MHacks Demo Overview" : "University Overview"} · ${range === "week" ? `${dateLabel(days[0])}–${dateLabel(referenceDate)}` : `${range === "today" ? "Today" : "Yesterday"}, ${dateLabel(referenceDate)}`}`}
         description="Compare dining halls, investigate high-waste items, and review production opportunities."
       />
+      <label className="text-sm font-semibold">
+        Dining hall
+        <select className="input mt-2" value={isDemo ? "mhacks-demo" : "all"}
+          onChange={(e) => setQuery({ hall: e.target.value })}>
+          <option value="all">All halls</option>
+          <option value="mhacks-demo">MHacks Demo</option>
+        </select>
+      </label>
       <div className="flex flex-wrap gap-6">
         <SegmentedControl
           label="Date range"
@@ -112,13 +132,13 @@ export default function HomeDashboard() {
             setNotice("");
             setQuery({ meal: v });
           }}
-          options={mealOptionsForDates(days).map((value) => ({
+          options={(isDemo ? DEMO_MEALS : mealOptionsForDates(days)).map((value) => ({
             value,
             label: value.charAt(0).toUpperCase() + value.slice(1),
           }))}
         />
       </div>
-      {range === "week" && (
+      {range === "week" && !isDemo && (
         <p className="muted">
           Breakfast and Lunch: weekdays. Brunch: weekends. This week is the
           trailing seven days.
@@ -132,12 +152,13 @@ export default function HomeDashboard() {
           {notice}
         </p>
       )}
+      {isDemo && <p role="status" className="muted">{live.error ? `${live.error}. ${live.loaded ? "Showing last successful data." : ""}` : live.loading ? "Loading SpacetimeDB captures…" : "SpacetimeDB · polling every 2 seconds · captured portions only"}</p>}
       {futureOnly ? (
         <EmptyState title="No data for future dates" />
       ) : (
         <>
-          <SourceNotice services={services} />
-          {days.some((d) => d < getToday()) && (
+          <SourceNotice services={services} demo={isDemo} />
+          {!isDemo && days.some((d) => d < getToday()) && (
             <p className="muted">
               Includes illustrative data. Historical comparisons and projections
               are illustrative.
@@ -156,7 +177,7 @@ export default function HomeDashboard() {
                   ? currency(total.wasteCost, period, 2)
                   : "Unavailable"
               }
-              detail="Food cost only · simulated"
+              detail={isDemo ? "Captured tray food cost · estimated" : "Food cost only · simulated"}
               tone="warning"
             />
             <KpiTile
@@ -187,7 +208,7 @@ export default function HomeDashboard() {
               value={ready ? selectedPending.length : "…"}
               detail={
                 <Link
-                  href="/recommendations"
+                  href={isDemo ? `/recommendations?hall=mhacks-demo&date=${anchor}&meal=${meal}` : "/recommendations"}
                   className="inline-flex min-h-10 items-center font-semibold text-navy underline"
                 >
                   Review pending →
@@ -195,8 +216,8 @@ export default function HomeDashboard() {
               }
             />
           </div>
-          {total.hasData && <WasteCostSplit plate={total.plateWasteDollars} kitchen={total.unservedOverproductionDollars} plateLbs={total.plateWasteLbs} kitchenLbs={total.unservedLbs} days={days.length} />}
-          <HallBarChart halls={halls} services={services} />
+          {total.hasData && <WasteCostSplit plate={total.plateWasteDollars} kitchen={total.unservedOverproductionDollars} plateLbs={total.plateWasteLbs} kitchenLbs={total.unservedLbs} days={days.length} kitchenKnown={!isDemo} />}
+          <HallBarChart halls={halls} services={services} captured={isDemo} />
           <section className="panel p-5" aria-label="Items needing attention">
             <h2 className="section-title">Needs attention</h2>
             <p className="muted mt-1">
@@ -241,8 +262,8 @@ export default function HomeDashboard() {
           </section>
           {total.mealsServed ? (
             <TrendChart
-              title={`University waste · 28 days ending ${dateLabel(referenceDate)}`}
-              data={universityTrend(referenceDate, meal)}
+              title={`${isDemo ? "MHacks Demo waste" : "University waste"} · 28 days ending ${dateLabel(referenceDate)}`}
+              data={isDemo ? demoWasteTrend(live.services, referenceDate, meal) : universityTrend(referenceDate, meal)}
               average
             />
           ) : (

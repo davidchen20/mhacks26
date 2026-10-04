@@ -23,12 +23,17 @@ import SourceNotice from "@/components/shared/SourceNotice";
 import ScopeControls, { useScope } from "@/components/shared/ScopeControls";
 import { EmptyState } from "@/components/shared/DataState";
 import BreakdownChart from "./BreakdownChart";
+import { useDemoServices } from "@/lib/useDemoServices";
+import { DEMO_HALL_ID, selectDemoServices, demoCostTrend } from "@/lib/demoData";
+import { addDays } from "@/lib/dates";
 export default function FinanceDashboard() {
   const scope = useScope();
   const { date, hall, meal } = scope;
   const [group, setGroup] = useState<"category" | "hall">("category");
   const [reduction, setReduction] = useState<"5" | "10" | "15" | "20">("15");
-  const services = servicesForDay(date, hall, meal),
+  const isDemo = hall === DEMO_HALL_ID;
+  const live = useDemoServices(isDemo, addDays(date, -83), date);
+  const services = isDemo ? selectDemoServices(live.services, [date], meal) : servicesForDay(date, hall, meal),
     total = totals(services);
   const annual = total.wasteCost * OPERATING_DAYS;
   const rows = financeBreakdown(group, services).sort(
@@ -41,13 +46,14 @@ export default function FinanceDashboard() {
     <div className="space-y-6">
       <PageHeader
         title={`Finances · ${dateLabel(date)}`}
-        description="Translate simulated food waste into a budget estimate and compare savings scenarios."
+        description={isDemo ? "Translate captured demo tray waste into estimated costs and compare savings scenarios." : "Translate simulated food waste into a budget estimate and compare savings scenarios."}
       />
       <ScopeControls scope={scope} />
+      {isDemo && <p role="status" className="muted">{live.error ? `${live.error}. ${live.loaded ? "Showing last successful data." : ""}` : live.loading ? "Loading SpacetimeDB captures…" : "SpacetimeDB · polling every 2 seconds · captured portions only"}</p>}
       {date > getToday() ? (
         <EmptyState title="No data for future dates" />
       ) : !total.hasData ? (
-        <EmptyState title="Unavailable: menu not published or scrape failed" />
+        <EmptyState title={isDemo ? "No captured demo observations for this selection" : "Unavailable: menu not published or scrape failed"} />
       ) : (
         <>
           <SourceNotice services={services} />
@@ -77,7 +83,7 @@ export default function FinanceDashboard() {
               tone="good"
             />
           </div>
-          <WasteCostSplit plate={total.plateWasteDollars} kitchen={total.unservedOverproductionDollars} plateLbs={total.plateWasteLbs} kitchenLbs={total.unservedLbs} />
+          <WasteCostSplit plate={total.plateWasteDollars} kitchen={total.unservedOverproductionDollars} plateLbs={total.plateWasteLbs} kitchenLbs={total.unservedLbs} kitchenKnown={!isDemo} />
           <div className="panel p-5">
             <SegmentedControl
               label="Savings scenario · reduction in waste cost"
@@ -91,13 +97,13 @@ export default function FinanceDashboard() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <KpiTile
-              label="Waste cost per meal served"
+              label={isDemo ? "Waste cost per captured portion" : "Waste cost per meal served"}
               value={currency(
                 total.wasteCost / total.mealsServed,
-                "per meal served",
+                isDemo ? "per captured portion" : "per meal served",
                 3,
               )}
-              detail={`${currency(total.wasteCost, "selected services", 2)} ÷ ${total.mealsServed} simulated meals served`}
+              detail={`${currency(total.wasteCost, "selected services", 2)} ÷ ${total.mealsServed} ${isDemo ? "captured food portions" : "simulated meals served"}`}
             />
             {evidence && (
               <section
@@ -191,18 +197,18 @@ export default function FinanceDashboard() {
             <p className="muted border-t border-slate-200 p-5">
               Total: {currency(total.wasteCost, "selected services", 2)}.
               Illustrative costs per lb:{" "}
-              {Object.entries(COST_PER_LB)
+              {Object.entries(isDemo ? Object.fromEntries(services.flatMap((s) => s.items.map((i) => [i.name, i.costPerLb]))) : COST_PER_LB)
                 .map(([c, v]) => `${c} $${v.toFixed(2)}`)
                 .join(" · ")}
               . Unavailable services are excluded.
             </p>
           </section>
           <p className="muted">
-            Includes illustrative data in historical trend points.
+            {isDemo ? "Historical points use recorded demo captures only. Gaps mean no captures; annual projections are illustrative extrapolations of captured samples." : "Includes illustrative data in historical trend points."}
           </p>
           <TrendChart
-            title="Waste cost per meal served · last 12 weeks"
-            data={costTrend(date, hall, meal)}
+            title={isDemo ? "Waste cost per captured portion · last 12 weeks" : "Waste cost per meal served · last 12 weeks"}
+            data={isDemo ? demoCostTrend(live.services, date, meal) : costTrend(date, hall, meal)}
             unit="cost"
           />
         </>

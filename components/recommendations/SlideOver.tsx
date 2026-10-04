@@ -167,14 +167,11 @@ export default function SlideOver({
             </div>
           ) : (
             <>
-              {r.recommendationEngine === "hardcoded" ? <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-        <div><dt>Waste / served weight</dt><dd className="font-semibold">{r.wasteRatio === undefined ? "Unavailable" : percent(r.wasteRatio * 100)} · simulated</dd></div>
-        <div><dt>Rule category / dietary tags</dt><dd className="font-semibold">{r.ruleCategory ?? "UNKNOWN"} · {r.dietary ?? "none"}</dd></div>
-      </dl> : (<dl className="mt-6 space-y-4 rounded-xl bg-slate-50 p-5 text-sm">
+              <dl className="mt-6 space-y-4 rounded-xl bg-slate-50 p-5 text-sm">
                 <div>
                   <dt className="text-slate-600">Observed remaining portion</dt>
                   <dd className="font-semibold">
-                    {percent(r.remainingPct)} · simulated service aggregate
+                    {percent(r.remainingPct)} · {r.hallId === "mhacks-demo" ? "captured service aggregate · mocked inference" : "simulated service aggregate"}
                   </dd>
                 </div>
                 <div>
@@ -193,7 +190,7 @@ export default function SlideOver({
                     {currency(r.wasteCost, "per service", 2)}
                   </dd>
                 </div>
-              </dl>)}
+              </dl>
               <Link
                 className="mt-4 inline-flex min-h-10 items-center text-sm font-semibold text-navy underline"
                 href={foodLink(r, r.itemId)}

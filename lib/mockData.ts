@@ -42,7 +42,7 @@ export function hasScrapedMenu(
     (m) => (menus[id]?.[date]?.[m]?.length ?? 0) > 0,
   );
 }
-const hallNames: Record<HallId, string> = {
+const hallNames: Record<Exclude<HallId, "mhacks-demo">, string> = {
   bursley: "Bursley",
   "south-quad": "South Quad",
   "east-quad": "East Quad",
@@ -50,14 +50,14 @@ const hallNames: Record<HallId, string> = {
   markley: "Markley",
   twigs: "Twigs",
 };
-export const HALLS: Hall[] = (Object.keys(hallNames) as HallId[]).map((id) => ({
+export const HALLS: Hall[] = (Object.keys(hallNames) as Exclude<HallId, "mhacks-demo">[]).map((id) => ({
   id,
   name: hallNames[id],
   get reporting() {
     return hasScrapedMenu(id);
   },
 }));
-export const hallName = (id: HallId) => hallNames[id];
+export const hallName = (id: HallId) => id === "mhacks-demo" ? "MHacks Demo" : hallNames[id];
 const illustrative: ScrapedItem[] = [
   {
     name: "Roasted chicken",
@@ -117,6 +117,7 @@ export function getService(
     menuSource: historical ? "illustrative" : "mdining",
     availability: "unavailable",
   };
+  if (hallId === "mhacks-demo") return { ...base, menuSource: "spacetimedb" };
   if (!validDate(date)) return base;
   if (date > today) return { ...base, availability: "future" };
   if (!mealsForDate(date).includes(meal))
@@ -136,6 +137,8 @@ export const serviceLabel = (s: ServiceData) =>
       ? "No service for the selected meal"
       : s.availability === "unavailable"
         ? "Unavailable: menu not published or scrape failed"
+        : s.menuSource === "spacetimedb"
+          ? "SpacetimeDB camera captures · mocked inference · estimated costs and nutrition"
         : s.menuSource === "mdining"
           ? "Menu from M Dining · waste readings simulated"
           : "Illustrative data";
@@ -145,6 +148,8 @@ export function sourceLabel(services: ServiceData[]) {
     return services.some((s) => s.availability === "future")
       ? "No data for future dates"
       : "Unavailable: menu not published or scrape failed";
+  if (available.every((s) => s.menuSource === "spacetimedb"))
+    return "SpacetimeDB camera captures · mocked inference · estimated weights, costs and nutrition · captured portions only";
   const historical = available.some((s) => s.menuSource === "illustrative");
   const real = available.some((s) => s.menuSource === "mdining");
   return historical && real
@@ -191,8 +196,10 @@ export function totals(services: ServiceData[]) {
     mealsServed: available.reduce((n, s) => n + s.mealsServed, 0),
   };
 }
-export function summarizeHalls(services: ServiceData[]): HallSummary[] {
-  return HALLS.map((hall) => {
+export function summarizeHalls(services: ServiceData[], demo = false): HallSummary[] {
+  const scopeHalls: Hall[] = demo || services.some((s) => s.hallId === "mhacks-demo")
+    ? [{ id: "mhacks-demo", name: "MHacks Demo", reporting: true }] : HALLS;
+  return scopeHalls.map((hall) => {
     const selected = services.filter(
       (s) => s.hallId === hall.id && s.items.length,
     );
@@ -294,25 +301,31 @@ export function makeRecommendation(
     itemId: item.id,
     itemName: item.name,
     remainingPct: item.remainingPct,
-    reductionRange: [0, 0], // supplied engine returns prose, not a numeric estimate
-    recommendationEngine: "hardcoded",
-    wasteRatio: wasteAdvice(item).result?.waste_ratio,
-    ruleCategory: wasteAdvice(item).result?.category,
-    dietary: wasteAdvice(item).result?.dietary,
+    reductionRange: origin === "nutrition" ? item.reductionRange : [Math.round(Math.abs(wasteAdvice(item).change) * 100), Math.round(Math.abs(wasteAdvice(item).change) * 100)],
     wasteOrigin: wasteAdvice(item).origin,
     severity: wasteAdvice(item).severity,
-    kitchenWasteCost: item.unservedOverproductionDollars,
+    kitchenWasteCost: service.menuSource === "spacetimedb" ? undefined : item.unservedOverproductionDollars,
     plateWasteCost: item.plateWasteDollars,
     wasteCost: item.wasteCost,
     origin,
-    title: wasteAdvice(item).title,
+    title:
+      origin === "nutrition"
+        ? item.culinarySuggestion
+        : wasteAdvice(item).title,
   };
 }
 export function recommendationsForServices(services: ServiceData[]) {
-  return services.flatMap(service => service.items
-    .filter(item => wasteAdvice(item).result !== null)
-    .map(item => makeRecommendation(service, item)))
-    .sort((a,b) => (b.wasteRatio ?? 0) - (a.wasteRatio ?? 0));
+  const scopeHalls = services.some((s) => s.hallId === "mhacks-demo")
+    ? [{id: "mhacks-demo"}] : HALLS;
+  return scopeHalls.flatMap((h) => {
+    const candidates = services
+      .filter((s) => s.hallId === h.id)
+      .flatMap((service) => service.items.map((item) => ({ service, item })))
+      .sort((a, b) => b.item.wasteLbs - a.item.wasteLbs);
+    return candidates.length
+      ? [makeRecommendation(candidates[0].service, candidates[0].item)]
+      : [];
+  });
 }
 export const getInitialRecommendations = () =>
   recommendationsForServices(servicesForDay(getToday()));

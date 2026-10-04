@@ -1,3 +1,4 @@
+import DemoGate from "@/components/demo/DemoGate";
 // Server component; interactive controls and feed live in the client dashboard.
 import { Suspense } from "react";
 import FoodDashboard from "@/components/food/FoodDashboard";
@@ -6,7 +7,9 @@ export const metadata = { title: "Food Data" };
 export default function Page() {
   return (
     <Suspense fallback={<Skeleton label="Loading food data" />}>
-      <FoodDashboard />
+      <DemoGate>
+        <FoodDashboard />
+      </DemoGate>
     </Suspense>
   );
 }

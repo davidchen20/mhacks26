@@ -18,23 +18,32 @@ import RecommendationCard from "./RecommendationCard";
 import SlideOver from "./SlideOver";
 import HistoryLog from "./HistoryLog";
 import NutritionInsights from "./NutritionInsights";
+import { useDemoServices } from "@/lib/useDemoServices";
+import { DEMO_HALL_ID, DEMO_MEALS, selectDemoServices } from "@/lib/demoData";
 export default function RecommendationsDashboard() {
   const scope = useScope();
   const { date, hall, meal } = scope;
-  const { pending, ready, storageAvailable, create, recommendations } =
+  const { pending, ready, storageAvailable, create, recommendations, syncDemo } =
     useRecommendations();
   const [selected, setSelected] = useState<Recommendation | null>(null);
-  const services = servicesForDay(date, hall, meal);
+  const isDemo = hall === DEMO_HALL_ID;
+  const live = useDemoServices(isDemo, date, date);
+  const services = isDemo ? selectDemoServices(live.services, [date], meal) : servicesForDay(date, hall, meal);
   const available = totals(services).hasData;
   const candidates = recommendationsForServices(services);
-  const candidateKey = candidates.map((r) => r.id).join("|");
+  const candidateKey = isDemo ? JSON.stringify(candidates) : candidates.map((r) => r.id).join("|");
+  const demoScope = JSON.stringify((meal === "all" ? DEMO_MEALS.filter((m) => m !== "all") : [meal]).map((m) => `${date}|${m}`));
   const knownKey = recommendations.map((r) => r.id).join("|");
   useEffect(() => {
+    if (isDemo) {
+      if (ready && live.loaded) syncDemo(candidates, JSON.parse(demoScope), services);
+      return;
+    }
     if (ready)
       candidates
         .filter((r) => !recommendations.some((x) => x.id === r.id))
         .forEach(create);
-  }, [ready, candidateKey, knownKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [ready, candidateKey, knownKey, isDemo, live.loaded, demoScope, syncDemo]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => setSelected(null), [date, hall, meal]);
   const scopedPending = pending.filter((r) =>
     services.some(
@@ -52,16 +61,16 @@ export default function RecommendationsDashboard() {
         description="Review evidence, record a decision, and explore nutrition-aware menu adjustments."
       />
       <ScopeControls scope={scope} />
+      {isDemo && <p role="status" className="muted">{live.error ? `${live.error}. ${live.loaded ? "Showing last successful data." : ""}` : live.loading ? "Loading SpacetimeDB captures…" : "SpacetimeDB · polling every 2 seconds · captured portions only"}</p>}
       {date > getToday() ? (
         <EmptyState title="No data for future dates" />
       ) : !available ? (
-        <EmptyState title="Unavailable: menu not published or scrape failed" />
+        <EmptyState title={isDemo ? "No captured demo observations for this selection" : "Unavailable: menu not published or scrape failed"} />
       ) : (
         <>
           <SourceNotice services={services} />
           <p className="muted">
-            Hardcoded culinary rules, manager review required, no medical
-            claims.
+            {isDemo ? "Recommendations use captured SpacetimeDB observations with mocked inference. Manager review required; no medical claims." : "AI-generated mock insights, manager review required, no medical claims."}
           </p>
           {!storageAvailable && (
             <p
@@ -89,13 +98,13 @@ export default function RecommendationsDashboard() {
                     </span>
                   </h2>
                   <p className="muted">
-                    Highest simulated waste first · Manager review required
+                    {isDemo ? "Highest captured tray waste first · Manager review required" : "Highest simulated waste first · Manager review required"}
                   </p>
                 </div>
                 {scopedPending.length ? (
                   <div className="grid gap-4 lg:grid-cols-2">
                     {[...scopedPending]
-                      .sort((a, b) => (b.wasteRatio ?? 0) - (a.wasteRatio ?? 0))
+                      .sort((a, b) => b.wasteCost - a.wasteCost)
                       .map((r) => (
                         <RecommendationCard
                           key={r.id}
@@ -121,7 +130,7 @@ export default function RecommendationsDashboard() {
         {selected && date <= getToday() && available && (
           <SlideOver
             key={selected.id}
-            recommendation={selected}
+            recommendation={isDemo ? recommendations.find((r) => r.id === selected.id) ?? selected : selected}
             onClose={() => setSelected(null)}
           />
         )}
