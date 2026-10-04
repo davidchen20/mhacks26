@@ -2,6 +2,7 @@
 """Image-only food waste estimation (visible AREA, not grams).
 
 Examples:
+  python waste_monitor.py --csv detections.csv --reference-csv full_portions.csv
   python waste_monitor.py --images plate.jpg --food chips
   python waste_monitor.py --images before.jpg --food chips --set-reference --config geometry_config.json
   python waste_monitor.py --images leftover.jpg --food pizza --pizza-crust .123,.433,.550,.296
@@ -25,9 +26,13 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-import cv2
-import numpy as np
-from PIL import Image, ImageOps
+# CSV mode requires only Python's standard library.
+try:
+    import cv2
+    import numpy as np
+    from PIL import Image, ImageOps
+except ImportError:
+    cv2 = np = Image = ImageOps = None
 
 ALIASES = {
     'chips': 'doritos_nacho_cheese', 'doritos': 'doritos_nacho_cheese',
@@ -312,14 +317,137 @@ def read_config(path):
     return cfg
 
 
+CSV_COLUMNS = ('image', 'food', 'confidence', 'mask_fraction_of_image')
+
+
+def csv_food_id(value):
+    """Normalize labels; permit arbitrary foods with their own CSV reference."""
+    key = '_'.join(value.strip().lower().replace('-', ' ').split())
+    aliases = {
+        'nacho_cheese_doritos': 'doritos_nacho_cheese',
+        'dominos_cheese_pizza': 'dominos_cheese_pizza_slice',
+        "domino's_cheese_pizza_slice": 'dominos_cheese_pizza_slice',
+        'costco_cookie_oatmeal_raisin': 'costco_oatmeal_raisin_cookie',
+    }
+    return ALIASES.get(key, aliases.get(key, key))
+
+
+def read_detection_csv(path):
+    """Keep invalid rows for review instead of interpreting them as zero waste."""
+    rows = []
+    with Path(path).open(newline='', encoding='utf-8-sig') as handle:
+        reader = csv.DictReader(handle)
+        if not reader.fieldnames or not set(CSV_COLUMNS).issubset(reader.fieldnames):
+            raise ValueError(f'{path}: required CSV columns: {", ".join(CSV_COLUMNS)}')
+        for line, row in enumerate(reader, 2):
+            record = {column: (row.get(column) or '').strip() for column in CSV_COLUMNS}
+            record['csv_line'] = line
+            record['food'] = csv_food_id(record['food'])
+            record['flags'] = []
+            if not record['food'] or not record['image']:
+                record['flags'].append('missing_image_or_food')
+            for column in ('confidence', 'mask_fraction_of_image'):
+                try:
+                    number = float(record[column])
+                    if not math.isfinite(number) or not 0 <= number <= 1:
+                        raise ValueError()
+                    record[column] = number
+                except (ValueError, TypeError):
+                    record[column] = None
+                    record['flags'].append('invalid_' + column + '_expected_0_to_1')
+            rows.append(record)
+    return rows
+
+
+def csv_waste_records(rows, references, min_confidence=0.5):
+    """Return percentage of reference visible area, with confidence as a quality gate.
+
+    Both numerator and denominator MUST be fractions of the whole image, with
+    matching camera scale/framing. Plate-normalized references cannot be used.
+    Each input row is one observation; no inferred counts or weight are used.
+    """
+    results = []
+    for row in rows:
+        record = {**row, 'flags': list(row['flags']), 'waste_percent': None,
+                  'remaining_percent': None,
+                  'reference_mask_fraction_of_image': references.get(row['food'])}
+        ref = record['reference_mask_fraction_of_image']
+        if record['flags']:
+            record['status'] = 'invalid_row'
+        elif row['confidence'] < min_confidence:
+            record['status'] = 'low_confidence'
+            record['flags'].append('below_min_confidence')
+        elif ref is None:
+            record['status'] = 'reference_required'
+            record['flags'].append('full_portion_image_fraction_required')
+        else:
+            value = area_percentage(row['mask_fraction_of_image'], ref)
+            record.update(waste_percent=round(value, 2), remaining_percent=round(value, 2), status='estimated')
+            record['flags'].append('visible_area_proxy_assumes_matching_camera_scale')
+            if value > 100:
+                record['flags'].append('exceeds_reference_check_framing_and_portion_size')
+            if value == 0:
+                record['flags'].append('empty_mask_not_proof_of_consumption')
+        results.append(record)
+    return results
+
+
+def process_csv(args, cfg):
+    references = {}
+    # This field is deliberately separate from legacy plate-normalized references.
+    for key, food in cfg['foods'].items():
+        ref = food.get('reference_mask_fraction_of_image')
+        if ref is not None:
+            if not isinstance(ref, (int, float)) or not math.isfinite(ref) or not 0 < ref <= 1:
+                raise ValueError(f'{key}: reference_mask_fraction_of_image must be in (0, 1].')
+            references[csv_food_id(key)] = ref
+    if args.reference_csv:
+        groups = {}
+        for row in read_detection_csv(args.reference_csv):
+            if row['flags'] or row['confidence'] < args.min_confidence or not row['mask_fraction_of_image']:
+                raise ValueError(f'{args.reference_csv}: invalid/low-confidence/empty full-portion reference at line {row["csv_line"]}.')
+            groups.setdefault(row['food'], []).append(row['mask_fraction_of_image'])
+        # Repeated full-portion examples of a food use their median visible area.
+        references.update({key: statistics.median(values) for key, values in groups.items()})
+    records = csv_waste_records(read_detection_csv(args.csv_input), references, args.min_confidence)
+    run = args.output / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S') + f'_{time.time_ns() % 1000000:06d}')
+    run.mkdir(parents=True)
+    fields = [*CSV_COLUMNS, 'waste_percent', 'remaining_percent',
+              'reference_mask_fraction_of_image', 'status', 'csv_line', 'flags']
+    with (run / 'results.csv').open('w', newline='', encoding='utf-8') as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        for record in records:
+            writer.writerow({**record, 'flags': ';'.join(record['flags'])})
+    (run / 'results.json').write_text(json.dumps(records, indent=2) + '\n')
+    summary = []
+    for key in sorted({row['food'] for row in records}):
+        group = [row for row in records if row['food'] == key]
+        measured = [row['waste_percent'] for row in group if row['waste_percent'] is not None]
+        summary.append({'food': key, 'input_rows': len(group), 'estimated_rows': len(measured),
+                        'excluded_rows': len(group) - len(measured),
+                        'mean_waste_percent': round(statistics.mean(measured), 2) if measured else None,
+                        'scope': 'Mean visible-area percentage per CSV observation; repeated detections are not deduplicated.'})
+    (run / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
+    (run / 'csv_references_used.json').write_text(json.dumps(references, indent=2) + '\n')
+    for row in records:
+        value = f'{row["waste_percent"]:.2f}%' if row['waste_percent'] is not None else row['status']
+        print(f'{row["image"]}: {row["food"]}: {value}')
+    print('Saved:', run.resolve())
+    return run
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--config', type=Path, help='Optional schema-v2 geometry configuration')
     ap.add_argument('--init-config', type=Path, help='Create a config without overwriting an existing one')
     ap.add_argument('--food', default='chips', help='chips, pizza, cookie (operator-selected food type)')
     source = ap.add_mutually_exclusive_group()
+    source.add_argument('--csv', '--input-csv', dest='csv_input', type=Path, help='CSV with image, food, confidence, mask_fraction_of_image')
     source.add_argument('--images', '--image', nargs='+', type=Path, help='Analyze still photos; JPG/PNG/HEIC supported')
     source.add_argument('--source', '--stream', help='DroidCam direct video URL, video filename, or camera index')
+    ap.add_argument('--reference-csv', type=Path, help='Same four columns; each row depicts a known full portion')
+    ap.add_argument('--min-confidence', type=float, default=0.5, help='CSV quality threshold in 0..1 (default 0.5)')
     ap.add_argument('--set-reference', action='store_true', help='Use the single input image as 100%; writes --config')
     ap.add_argument('--region', type=lambda s: normalized_points(s), help='Food search polygon: x1,y1,x2,y2,... in 0..1')
     ap.add_argument('--outline', type=lambda s: normalized_points(s), help='Manually supplied visible food silhouette polygon')
@@ -329,12 +457,23 @@ def main():
     ap.add_argument('--output', type=Path, default=Path('geometry_runs'))
     ap.add_argument('--headless', action='store_true', help='No video preview window')
     args = ap.parse_args()
+    if not math.isfinite(args.min_confidence) or not 0 <= args.min_confidence <= 1:
+        ap.error('--min-confidence must be between 0 and 1.')
     cfg = read_config(args.config)
     if args.init_config:
         with args.init_config.open('x') as f:
             json.dump(cfg, f, indent=2); f.write('\n')
         print('Created', args.init_config)
         return
+    if args.csv_input:
+        if args.set_reference or any(x is not None for x in (args.region, args.outline, args.pizza_crust, args.cookie_rim)):
+            ap.error('CSV mode uses --reference-csv; image geometry options do not apply.')
+        process_csv(args, cfg)
+        return
+    if args.reference_csv:
+        ap.error('--reference-csv requires --csv.')
+    if cv2 is None or np is None or Image is None:
+        ap.error('Image/video mode requires opencv-python, numpy and Pillow; CSV mode needs no packages.')
     if not args.images and args.source is None:
         ap.error('Provide --images PHOTO... or --source VIDEO_URL.')
     key = food_id(args.food)
