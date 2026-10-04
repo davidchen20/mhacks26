@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-LUMBERLOOOON FREEEEEEEEEEEEZEEEEEE
+
 =======
 # WolverLean
 
