@@ -84,7 +84,7 @@ export const recordMenuWaste = spacetimedb.reducer(
     allergens: t.array(t.string()),
   },
   (ctx, row) => {
-    row = { ...row, diningHall: row.simulated ? "bursley" : row.diningHall };
+    row = { ...row, diningHall: row.simulated ? "MHacks Demo" : row.diningHall };
     if (!/^\d{4}-\d{2}-\d{2}$/.test(row.serviceDate) ||
         !["breakfast", "lunch", "brunch", "dinner"].includes(row.meal) ||
         !Number.isFinite(row.wastePercent) || row.wastePercent < 0 ||

@@ -25,7 +25,7 @@ def upload_run(run, server, database, token, metadata=None, service_date=None, m
     if marker.exists():
         uploaded = json.loads(marker.read_text(encoding="utf-8"))
         if (uploaded.get("server") == server and uploaded.get("database") == database
-                and uploaded.get("schema_version") == 3):
+                and uploaded.get("schema_version") == 4):
             return
     # This file is written after summary.json, so its presence signals completion.
     if not (run / "csv_references_used.json").exists():
@@ -44,7 +44,7 @@ def upload_run(run, server, database, token, metadata=None, service_date=None, m
         if percentage is None or not observations:
             continue
         simulated = summary.get("simulated", summary.get("scope", "").startswith("Simulated"))
-        dining_hall = "bursley" if simulated else summary.get("dining_hall", "unknown").lower().replace(" ", "-")
+        dining_hall = "MHacks Demo" if simulated else summary.get("dining_hall", "unknown").lower().replace(" ", "-")
         date = summary.get("service_date") or service_date
         service_meal = summary.get("meal") or meal
         if not date or not service_meal:
@@ -82,7 +82,7 @@ def upload_run(run, server, database, token, metadata=None, service_date=None, m
         except HTTPError as error:
             raise RuntimeError(f"HTTP {error.code}: {error.read().decode('utf-8', errors='replace')}") from error
         count += 1
-    marker.write_text(json.dumps({"server": server, "database": database, "schema_version": 3,
+    marker.write_text(json.dumps({"server": server, "database": database, "schema_version": 4,
                                  "uploaded_food_summaries": count}, indent=2), encoding="utf-8")
     print(f"Uploaded {run.name}: {count} food summaries", flush=True)
 
