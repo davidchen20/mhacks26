@@ -1,0 +1,26 @@
+# Python environment and cache
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Captured photos and generated results
+captures/
+geometry_runs/
+waste_results.csv
+
+# Training datasets, runs, and model weights
+My First Project*/
+runs/
+*.pt
+
+# SpacetimeDB dependencies and build output
+node_modules/
+waste-db/spacetimedb/dist/
+waste-db/spacetime.local.json
+waste-db/spacetime.*.local.json
