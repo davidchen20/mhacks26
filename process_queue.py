@@ -74,11 +74,13 @@ def write_plate_csv(image_name, rows):
         "mask_fraction_of_image",
     ]
 
-    with output_file.open("w", newline="", encoding="utf-8") as file:
+    temporary_file = output_file.with_suffix(".csv.tmp")
+    with temporary_file.open("w", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
 
+    temporary_file.replace(output_file)
     return output_file
 
 

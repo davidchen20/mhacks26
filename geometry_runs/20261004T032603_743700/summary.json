@@ -1,0 +1,18 @@
+[
+  {
+    "food": "costco_oatmeal_raisin_cookie",
+    "input_rows": 1,
+    "estimated_rows": 1,
+    "excluded_rows": 0,
+    "mean_waste_percent": 27.14,
+    "scope": "Simulated random percentages for demonstration."
+  },
+  {
+    "food": "dominos_cheese_pizza_slice",
+    "input_rows": 1,
+    "estimated_rows": 1,
+    "excluded_rows": 0,
+    "mean_waste_percent": 29.26,
+    "scope": "Simulated random percentages for demonstration."
+  }
+]

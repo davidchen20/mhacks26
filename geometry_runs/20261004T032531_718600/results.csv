@@ -1,0 +1,3 @@
+image,food,confidence,mask_fraction_of_image,waste_percent,remaining_percent,reference_mask_fraction_of_image,status,csv_line,flags
+test_plate.jpg,dominos_cheese_pizza_slice,0.95,0.1,33.62,33.62,0.29740429314538974,simulated,2,simulated_random_reference_not_measured_waste
+test_plate.jpg,costco_oatmeal_raisin_cookie,0.9,0.05,33.09,33.09,0.1511166298415439,simulated,3,simulated_random_reference_not_measured_waste
