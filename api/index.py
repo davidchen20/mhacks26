@@ -53,6 +53,7 @@ from typing import Literal
 import logging
 import httpx
 from api.demo_store import query_observations, summarize
+from api.demo_config import connection_error
 
 @app.get('/api/py/demo/waste')
 def demo_waste(service_date: Date,
@@ -61,10 +62,10 @@ def demo_waste(service_date: Date,
         rows = query_observations(service_date.isoformat(), meal)
         return dict(dining_hall='MHacks Demo', service_date=service_date.isoformat(),
                     meal=meal, inference='mock', observations=rows, **summarize(rows))
-    except (httpx.HTTPError, KeyError, ValueError, TypeError, OverflowError):
+    except (httpx.HTTPError, KeyError, ValueError, TypeError, OverflowError) as exc:
         logging.exception('Demo database read failed')
         raise HTTPException(status_code=502,
-                            detail='Demo database unavailable or misconfigured')
+                            detail=connection_error(exc))
 
 # Live observations for the existing Home/Finances/Recommendations dashboards.
 from api.demo_store import query_observations_range, food_specs
@@ -78,8 +79,24 @@ def demo_waste_range(date_from: Date, date_to: Date):
         # Validate rows and configured costs before returning the UI payload.
         result = summarize(rows)
         return dict(dining_hall='MHacks Demo', inference='mock',
-                    observations=rows, food_specs=food_specs(), **result)
-    except (httpx.HTTPError, KeyError, ValueError, TypeError, OverflowError):
+                    observations=rows, food_specs=food_specs(rows), **result)
+    except (httpx.HTTPError, KeyError, ValueError, TypeError, OverflowError) as exc:
         logging.exception('Demo range read failed')
         raise HTTPException(status_code=502,
-                            detail='Demo database unavailable or misconfigured')
+                            detail=connection_error(exc))
+
+
+@app.get('/api/py/demo/health')
+def demo_health():
+    from datetime import datetime, timedelta
+    from zoneinfo import ZoneInfo
+    today = datetime.now(ZoneInfo('America/New_York')).date()
+    try:
+        rows = query_observations_range((today - timedelta(days=89)).isoformat(), today.isoformat())
+        return dict(connected=True, dining_hall='MHacks Demo', demo_rows=len(rows),
+                    dates=sorted({r['service_date'] for r in rows}),
+                    meals=sorted({r['meal'] for r in rows}),
+                    message='Connected; no MHacks Demo rows yet' if not rows else 'Connected; demo rows available')
+    except (httpx.HTTPError, KeyError, ValueError, TypeError, OverflowError) as exc:
+        logging.exception('Demo health check failed')
+        raise HTTPException(status_code=502, detail=connection_error(exc))

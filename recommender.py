@@ -181,3 +181,70 @@ def analyze_food_waste(waste_entries, served_data, food_database, threshold=0.20
         print(f"Tags: [{entry['category']}] | [{entry['dietary']}]")
         print(f"Waste Ratio: {entry['formatted_ratio']}")
         print(f"Recommendation: {entry['recommendation']}\n")'''
+
+# ... existing code ...
+
+def recommend_waste_vectors(item):
+    from api.waste import calculate_item
+
+    row = calculate_item(item)
+    dish = str(item.dish)
+    kitchen_lbs = row["unserved_overproduction_lbs"]
+    prepared_lbs = item.total_served_lbs + kitchen_lbs
+    kitchen_pct = 100 * kitchen_lbs / prepared_lbs if prepared_lbs else 0
+
+    high_kitchen = kitchen_pct >= 20
+    high_plate = (
+        item.total_served_lbs > 0 and item.post_consumer_pct >= 20
+    )
+    trial = (
+        min(kitchen_lbs * 0.5, prepared_lbs * 0.20)
+        / item.weight_per_pan_lbs
+    )
+
+    if high_kitchen and high_plate:
+        action, change, severity = "menu-review", -0.35, "critical"
+        reason = "High kitchen and plate waste"
+        advice = (
+            f"Both kitchen and tray waste are high for {dish}; "
+            "review demand and preparation before changing production."
+        )
+    elif high_kitchen:
+        action = "batch"
+        change, severity = -min(0.20, kitchen_pct / 200), "review"
+        reason = "High kitchen waste; low plate waste"
+        avoidance = trial * row["cost_per_pan"]
+        advice = (
+            f"Trial {trial:.2f} fewer pans of {dish} next service; "
+            f"potential food-cost avoidance is ${avoidance:.2f} "
+            "per service (illustrative), subject to demand."
+        )
+    elif high_plate:
+        action, change, severity = "portion", -0.15, "review"
+        reason = "Low kitchen waste; high plate waste"
+        advice = (
+            f"Trial 15% smaller serving scoops of {dish}, "
+            "keep seconds available, and measure tray returns."
+        )
+    else:
+        action, change, severity = "monitor", 0.0, "on-track"
+        reason = "No high waste signal"
+        advice = f"Monitor {dish} across comparable services."
+
+    return {
+        **row,
+        "dish": dish,
+        "waste_origin": action,
+        "severity": severity,
+        "suggested_change": change,
+        "change_target": "portion" if action == "portion" else "production",
+        "unserved_pct_of_prepared": kitchen_pct,
+        "suggested_pan_reduction": trial if action == "batch" else None,
+        "reason": reason,
+        "recommendation": advice,
+        "engine_source": "Waste-vector rules",
+    }
+
+
+def analyze_waste_vectors(items):
+    return [recommend_waste_vectors(item) for item in items]

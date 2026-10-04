@@ -10,7 +10,7 @@ export interface DemoObservation {
   name: string; serving_size: string; calories: number | null; fiber: number | null; protein: number | null;
   traits?: string[]; allergens?: string[];
 }
-export interface DemoFoodSpec { portion_lbs: number; cost_per_lb: number; category: Category }
+export interface DemoFoodSpec { portion_lbs: number; cost_per_lb: number; category: Category; portion_source?: "serving-size" | "category-default" }
 export interface DemoResponse { observations: DemoObservation[]; food_specs: Record<string, DemoFoodSpec> }
 export function toDemoServices(payload: DemoResponse): ServiceData[] {
   const groups = new Map<string, Map<string, DemoObservation[]>>();
@@ -54,13 +54,13 @@ export function toDemoServices(payload: DemoResponse): ServiceData[] {
         : Math.min(5, Math.max(1, Math.round((fiber + protein / 5) / Math.max(1, calories / 100))));
       const pan = WEIGHT_PER_PAN_LBS[spec.category];
       return {
-        id: `demo-${encodeURIComponent(food)}`, name: food, category: spec.category,
+        id: `demo-${encodeURIComponent(food)}`, name: rows[rows.length - 1].name || food, category: spec.category,
         remainingPct: pct, postConsumerPct: pct, servings: count,
         wasteLbs: waste, wasteCost: waste * spec.cost_per_lb,
-        station: rows[0].station, servingSize: `${spec.portion_lbs * 16} oz`,
+        station: rows[rows.length - 1].station, servingSize: rows[rows.length - 1].serving_size || `${spec.portion_lbs * 16} oz`,
         traits: [...new Set(rows.flatMap((r) => r.traits ?? []))],
         allergens: [...new Set(rows.flatMap((r) => r.allergens ?? []))], standardPortionOz: spec.portion_lbs * 16,
-        weightSource: "category-default", portionsPrepared: count, portionsServed: count,
+        weightSource: spec.portion_source ?? "category-default", portionsPrepared: count, portionsServed: count,
         totalServedLbs: served, plateWasteLbs: waste, plateWasteDollars: waste * spec.cost_per_lb,
         // Required numeric fields contribute no unmeasured kitchen waste.
         // UI labels the kitchen vector unavailable for SpacetimeDB services.

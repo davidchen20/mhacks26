@@ -1,6 +1,8 @@
 """Adapter for the supplied SpacetimeDB 2.0 TypeScript menu_waste module."""
 import math
 import os
+import re
+from api.demo_config import database_settings
 from collections import defaultdict
 from urllib.parse import quote
 import httpx
@@ -18,12 +20,14 @@ COLUMNS = ('id', 'food', 'dining_hall', 'service_date', 'meal',
 
 
 def database_url():
-    return (os.environ['SPACETIMEDB_HOST'].rstrip('/') + '/v1/database/'
-            + quote(os.environ['SPACETIMEDB_DATABASE'], safe=''))
+    host, database = database_settings()
+    return host + '/v1/database/' + quote(database, safe='')
 
 
 def headers():
-    return {'Authorization': 'Bearer ' + os.environ['SPACETIMEDB_TOKEN']}
+    # menu_waste is public in the supplied module: reads need no token.
+    token = os.environ.get('SPACETIMEDB_TOKEN', '').strip()
+    return {'Authorization': 'Bearer ' + token} if token else {}
 
 
 def encode_option(value):
@@ -103,14 +107,14 @@ def query_observations(service_date, meal):
 
 
 def summarize(rows):
+    specs = food_specs(rows)
     dishes = defaultdict(lambda: dict(observations=0, served_lbs=0.0,
                                      waste_lbs=0.0, waste_dollars=0.0))
     for row in rows:
         if row['dining_hall'] != DEMO_HALL:
             raise ValueError('Unexpected dining hall')
-        if row['food'] not in FOODS:
-            raise ValueError('Missing portion/cost assumptions: ' + row['food'])
-        portion_lbs, cost_per_lb, *_ = FOODS[row['food']]
+        spec = specs[row['food']]
+        portion_lbs, cost_per_lb = spec['portion_lbs'], spec['cost_per_lb']
         pct = float(row['waste_percent'])
         n_raw = row['observations']
         n = int(n_raw)
@@ -144,11 +148,34 @@ def summarize(rows):
         scope='Captured tray observations only'))
 
 
-def food_specs():
+def food_specs(rows=()):
     categories = {'Pizza': 'Grains', 'Steamed Broccoli': 'Produce',
                   'Lemon Herb Chicken': 'Protein'}
-    return {food: dict(portion_lbs=values[0], cost_per_lb=values[1],
-                       category=categories[food]) for food, values in FOODS.items()}
+    specs = {food: dict(portion_lbs=values[0], cost_per_lb=values[1],
+                        category=categories[food], portion_source='category-default')
+             for food, values in FOODS.items()}
+    for row in rows:
+        food = row['food']
+        if food in specs: continue
+        text = (food + ' ' + row.get('name', '') + ' ' + row.get('station', '')).lower()
+        if re.search(r'pizza', text): category, price, fallback = 'Grains', 3.0, 120.8
+        elif re.search(r'chips|doritos|lays|snacks', text): category, price, fallback = 'Grains', 4.0, 28.0
+        elif re.search(r'chicken|beef|pork|fish|turkey|meat|protein', text): category, price, fallback = 'Protein', 4.5, 113.398
+        elif re.search(r'broccoli|vegetable|salad|produce|fruit', text): category, price, fallback = 'Produce', 2.0, 85.049
+        elif re.search(r'milk|yogurt|dairy|cheese', text): category, price, fallback = 'Dairy', 2.5, 170.097
+        else: category, price, fallback = 'Grains', 1.2, 141.748
+        # Handles '1 slice (120.8g)', '1 portion (28g)', '4 oz', and '0.25 lb'.
+        serving = row.get('serving_size', '') or ''
+        match = re.search(r'(\d+(?:\.\d+)?)\s*(kg|grams?|g|ounces?|oz|pounds?|lbs?)\b', serving, re.I)
+        grams = fallback
+        if match:
+            amount, unit = float(match[1]), match[2].lower()
+            grams = amount * (1000 if unit == 'kg' else 28.349523125 if unit.startswith('o') else 453.59237 if unit.startswith(('lb', 'pound')) else 1)
+            if not 0 < grams < 10000: raise ValueError('Invalid demo serving weight')
+        specs[food] = dict(portion_lbs=grams / 453.59237, cost_per_lb=price,
+                           category=category,
+                           portion_source='serving-size' if match else 'category-default')
+    return specs
 
 
 def query_observations_range(date_from, date_to):

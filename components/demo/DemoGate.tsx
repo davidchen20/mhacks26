@@ -6,7 +6,7 @@ import KpiTile from "@/components/shared/KpiTile";
 import PageHeader from "@/components/shared/PageHeader";
 
 type DemoData = {
-  observations: { id: string; food: string; waste_percent: number;
+  observations: { id: string; food: string; name?: string; waste_percent: number;
     observations: number; service_date: string; meal: string }[];
   recommendations: { dish: string; waste_percent: number; reason: string }[];
   summary: { observations: number; total_waste_lbs: number;
@@ -112,7 +112,7 @@ function DemoDashboard() {
         </div>
         <ul className="divide-y divide-slate-100 px-5">
           {data?.observations.slice(-20).reverse().map((row) => <li key={row.id} className="py-4">
-            <span className="font-semibold">{row.food}</span> · {row.waste_percent.toFixed(1)}% waste
+            <span className="font-semibold">{row.name || row.food}</span> · {row.waste_percent.toFixed(1)}% waste
             <p className="muted">{row.service_date} · {row.meal} · observation {row.id}</p>
           </li>)}
         </ul>

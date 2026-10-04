@@ -84,3 +84,16 @@ test("optional nutrition remains unknown and database dietary metadata survives"
   assert.deepEqual(item.traits, ["Vegetarian"]);
   assert.deepEqual(item.allergens, ["Milk", "Wheat"]);
 });
+
+import exportFixture from "./fixtures/demoExport.json";
+test("uploaded export feeds the original dashboard aggregates and recommendations", () => {
+  const services = toDemoServices(exportFixture as DemoResponse);
+  assert.equal(services.length, 1);
+  assert.equal(services[0].meal, "breakfast");
+  assert.equal(services[0].mealsServed, 43);
+  assert.equal(services[0].items.length, 3);
+  assert.ok(Math.abs(totals(services).wasteLbs - 1.982074433924) < 1e-9);
+  assert.ok(Math.abs(totals(services).wasteCost - 7.002228719147) < 1e-9);
+  assert.ok(services[0].items.some((item) => item.name === exportFixture.observations.find((row) => row.food === "dominos_cheese_pizza_slice")?.name));
+  assert.ok(recommendationsForServices(services).length > 0);
+});

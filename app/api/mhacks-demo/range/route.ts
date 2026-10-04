@@ -5,9 +5,10 @@ export async function GET(request: NextRequest) {
   if (!base) return NextResponse.json(
     { detail: "Set DEMO_FASTAPI_URL on the Next.js server." }, { status: 503 });
   try {
-    const url = new URL("/api/py/demo/waste", base);
-    url.searchParams.set("service_date", request.nextUrl.searchParams.get("service_date") ?? "");
-    url.searchParams.set("meal", request.nextUrl.searchParams.get("meal") ?? "all");
+    const url = new URL("/api/py/demo/waste/range", base);
+    for (const field of ["date_from", "date_to"]) {
+      url.searchParams.set(field, request.nextUrl.searchParams.get(field) ?? "");
+    }
     const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(15000) });
     return NextResponse.json(await response.json(), {
       status: response.status, headers: { "Cache-Control": "no-store" },

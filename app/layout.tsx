@@ -9,8 +9,8 @@ import Chatbot from "@/components/chat/Chatbot";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: {
-    default: "WolverLean · University Dining Services",
-    template: "%s · WolverLean",
+    default: "PlateSight · University Dining Services",
+    template: "%s · PlateSight",
   },
   description:
     "University dining waste analytics. M Dining menus with simulated waste readings and illustrative history.",
@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Chatbot />
         </RecommendationsProvider>
         <footer className="mx-auto max-w-[1280px] border-t border-slate-200 px-5 py-6 text-[13px] text-slate-600 sm:px-8">
-          WolverLean · M Dining menus · Simulated waste and illustrative history
+          PlateSight · M Dining menus · Simulated waste and illustrative history
           · AI-generated mock insights, manager review required, no medical
           claims. Decisions do not change dining production.
         </footer>

@@ -1,12 +1,14 @@
+For the connection fix using your October 4 export, follow [QUICK_FIX.md](QUICK_FIX.md) first. Python now automatically reads `.env.demo` and `.env.local`; process environment variables take priority. The token is optional for public reads.
+
 # WolverLean MHacks Demo setup
 
 ## Install the file update
 
-Extract `mhacks_demo_same_layout_update.zip` and merge its contents into the repository folder containing `package.json`. Replace the included existing files; preserve all other files. The archive has no extra project-folder nesting. Back up or commit your work first if your local files differ from the uploaded archive.
+Extract `mhacks_demo_spacetime_update.zip` and merge its contents into the repository folder containing `package.json`. Replace the included existing files; preserve all other files. The archive has no extra project-folder nesting. Back up or commit your work first if your local files differ from the uploaded archive.
 
 This cumulative package includes the initial camera/worker integration plus the correction restoring the original Home, Finances, and Recommendations dashboards for MHacks Demo. The three page files are included to REMOVE the previous DemoGate wrappers; Food keeps its demo-only live-feed view. Complete changed component and data-adapter files are included.
 
-New integration files include `api/demo_store.py`, `demo_worker.py`, `lib/demoData.ts`, `lib/useDemoServices.ts`, `components/demo/DemoGate.tsx` (Food only), the two Next.js proxy routes, `requirements-demo.txt`, `.env.demo.example`, tests, this guide, and the Rust reducer template. The included `ai_detection.py` is an unchanged copy of your attachment; put it beside `demo_worker.py` at the project root.
+New integration files include `api/demo_store.py`, `demo_worker.py`, `lib/demoData.ts`, `lib/useDemoServices.ts`, `components/demo/DemoGate.tsx` (Food only), the two Next.js proxy routes, `requirements-demo.txt`, `.env.demo.example`, tests, this guide. The old Rust reducer template is superseded by your supplied TypeScript module. The included `ai_detection.py` is an unchanged copy of your attachment; put it beside `demo_worker.py` at the project root.
 
 Home, Finances, and Recommendations now use their ORIGINAL components and layout for MHacks Demo. Home retains metric cards, hall chart, needs-attention list, 28-day trend and hall summary. Finances retains annual trajectory, savings scenario, cost evidence, breakdown table/chart and 12-week trend. Recommendations retains pending cards, review drawer, accept/dismiss/undo/reopen history and nutrition insights. Only their demo data source and source-specific labels change. The supplied Food live feed remains available through supporting-item links.
 
@@ -14,23 +16,31 @@ Home, Finances, and Recommendations now use their ORIGINAL components and layout
 
 ## 1. SpacetimeDB — required external configuration
 
-You need the existing database host, database name or identity, and a bearer token authorized to read `menu_waste` and call an insertion reducer. Use credentials for your actual instance; do not use the camera URL as the database host. Credentials remain in the Python environment.
+You need the existing database host, database name or identity, and, if required by your instance, a bearer token authorized to read `menu_waste` and call an insertion reducer. Use credentials for your actual instance; do not use the camera URL as the database host. Credentials remain in the Python environment.
 
-The uploaded archive does NOT include a SpacetimeDB module, table type declaration, or reducer. The file `spacetimedb-demo/insert_demo_observation.rs` is a template to ADD to your existing Rust module, not a standalone module to publish. It assumes:
+Your supplied `index.ts` is the authoritative SpacetimeDB 2.0 module. Keep it in your existing DATABASE module's `src/index.ts`, not Next.js `app/` or `api/index.py`. The application now uses its existing `recordMenuWaste` reducer. No changes to that module or its `waste_summary` table are required. The earlier `insert_demo_observation.rs` template is obsolete; do not add or publish it.
 
-- Rust table struct `MenuWaste`, accessor `menu_waste()`, and primary key `id: u64`.
-- `observations: u32`, percentage/nutrition fields `f64`, and string date/meal/serving metadata.
-- The existing module allows the worker identity to insert demo observations. Incorporate its existing writer authorization checks before publishing to a shared instance.
+If your uploaded module is already published to the intended database, skip publishing. Otherwise publish it using your existing module project and SpacetimeDB 2.0 CLI. For example, from the parent of that database module project:
 
-Match parameter and field types to your real schema. Avoid duplicating `use spacetimedb::Table` if already imported. For a TypeScript/C# module, implement the same reducer contract in that language. Do not replace your table or delete its data. Use your existing module's publish process; verify the reducer is named `insert_demo_observation`.
-
-Python sends this POSITIONAL argument array:
-
-```
-[id, food, service_date, meal, waste_percent, serving_size, calories, fiber, protein]
+```bash
+spacetime publish --server YOUR_SERVER --module-path PATH_TO_DB_MODULE --delete-data never YOUR_DATABASE_NAME
 ```
 
-The reducer fills `dining_hall = "MHacks Demo"`, `simulated = false`, `observations = 1`, `station`, and `name` internally. A duplicate ID must return success without adding another row. Each new row is one food observation; this feature must not use an existing reducer that overwrites a single cumulative row per dish. If your ID type differs (for example string or auto-increment), adapt the reducer and Python ID contract together while retaining retry deduplication.
+Replace the placeholders with your existing server, module folder and database. If a schema conflict appears, resolve that migration before publishing; this command does not delete data. CLI reference: https://spacetimedb.com/docs/cli-reference/
+
+Under your module's default SpacetimeDB 2.0 case-conversion policy, TypeScript fields such as `diningHall`, `serviceDate`, and `wastePercent` are canonical SQL fields `dining_hall`, `service_date`, and `waste_percent`. Its exported `recordMenuWaste` is called through HTTP as `record_menu_waste`. The server adapter sends the 16 arguments in exactly the uploaded declaration order:
+
+```
+[id_string, food, diningHall, serviceDate, meal, wastePercent,
+ observations, simulated, station, name, servingSize,
+ calories_option, fiber_option, protein_option, traits, allergens]
+```
+
+The worker explicitly sends `diningHall = "MHacks Demo"` and `simulated = false`. Consequently your reducer preserves that hall; it only changes simulated rows to Bursley. Nutrition options are encoded for SATS JSON and decoded into numbers or null for the frontend. Missing nutrition stays unknown; dietary traits and allergens are preserved. Existing numeric IDs in queued worker JSON are converted to strings before upload. New worker results persist string IDs.
+
+The reducer upserts by ID. Retries reuse the persisted ID and percentages and therefore update the same row rather than adding another observation. Database reads query ONLY `menu_waste WHERE dining_hall = 'MHacks Demo'`; `waste_summary` and other halls' rows are not consumed. Arbitrary string IDs are supported on reads; they are never parsed as integers.
+
+The host, database name, and token are not present in your `index.ts`; you still need to supply them through the Python environment below. If the published reducer name is explicitly customized, set the optional `SPACETIMEDB_MENU_REDUCER` environment variable to its actual wire name. The default matches the uploaded module.
 
 HTTP references: https://spacetimedb.com/docs/http/database/
 
@@ -155,7 +165,7 @@ Do not put the infinite worker into a serverless request handler. It needs a con
 - HTTP 503: set DEMO_FASTAPI_URL and restart/redeploy Next.js.
 - HTTP 502: inspect FastAPI terminal logs. Check DB host/token, reducer/table schema, and network connectivity.
 - Worker errors: images stay in processing with their JSON for retry. Do not delete the JSON to retry; retaining it preserves IDs and inference results.
-- Unknown demo food: add its portion/cost assumptions to FOODS before using it. The API rejects unknown costs instead of inventing values.
+- Export food IDs: supported dynamically using serving-size weights where present and category estimates otherwise. Costs remain estimates. Only rows explicitly labeled MHacks Demo are read. Use the included importer to create demo copies of your Bursley export.
 - Camera failure: verify STREAM_URL and desktop OpenCV support. Press Q to close it.
 
 Automated checks:
@@ -164,9 +174,9 @@ Automated checks:
 npm run typecheck
 npm test
 npm run build
-python -m unittest discover -s tests -p test_demo_pipeline.py -v
+python -m unittest discover -s tests -p 'test_demo*.py' -v
 ```
 
-Verified for this update: production build/type checking, 20 frontend tests, 9 Python demo tests, and mocked FastAPI range/parameter validation.
+Verified for this update: production build/type checking, 21 frontend tests, 14 Python demo/schema tests, mocked FastAPI responses, and type checking of the unchanged uploaded index.ts against spacetimedb 2.0.0.
 
-The Rust template and live DB/camera connection cannot be validated without your module and credentials. End-to-end verification requires publishing the matching reducer, taking a capture, confirming its row in SpacetimeDB, and watching it appear under MHacks Demo. Also switch to an existing hall to confirm its original simulated view remains intact.
+Live DB/camera connectivity cannot be validated without your host, database name and credentials. End-to-end verification requires your supplied module to be published, taking a capture, confirming its row in menu_waste, and watching it appear under MHacks Demo. Also switch to an existing hall to confirm its original simulated view remains intact.

@@ -20,9 +20,9 @@ export default function Navigation() {
         <Link
           href="/"
           className="inline-flex min-h-10 items-center text-xl font-bold tracking-tight text-navy"
-          aria-label="WolverLean home"
+          aria-label="PlateSight home"
         >
-          Wolver<span className="text-emerald-700">Lean</span>
+          Plate<span className="text-emerald-700">Sight</span>
           <span className="ml-3 rounded bg-amber-50 px-2 py-1 text-[13px] font-semibold uppercase tracking-widest text-amber-900">
             Demo
           </span>
