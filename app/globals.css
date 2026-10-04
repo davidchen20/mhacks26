@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@theme {
+  --color-navy: #00274c;
+  --color-maize: #ffcb05;
+  --color-canvas: #f6f7f9;
+}
+/* Extracted from the supplied page.tsx: font-sans, slate borders, rounded-2xl white panels. */
+:root {
+  color-scheme: light;
+  --navy: #00274c;
+  --maize: #ffcb05;
+}
+body {
+  margin: 0;
+  background: #f6f7f9;
+  color: #0f172a;
+  font-family:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 15px;
+  line-height: 1.6;
+}
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+  }
+  .btn {
+    @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply border-navy bg-navy text-white hover:bg-slate-800;
+  }
+  .btn-maize {
+    @apply border-maize bg-maize text-navy hover:bg-amber-300;
+  }
+  .input {
+    @apply block min-h-11 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900;
+  }
+  .muted {
+    @apply text-[13px] leading-5 text-slate-600;
+  }
+  .section-title {
+    @apply text-lg font-semibold tracking-tight text-slate-900;
+  }
+}
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+button,
+select {
+  cursor: pointer;
+}
+caption {
+  text-align: left;
+}
+.recharts-text {
+  font-size: 13px;
+  fill: #475569;
+}
+.recharts-tooltip-wrapper {
+  font-size: 14px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

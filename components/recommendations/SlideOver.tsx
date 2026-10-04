@@ -1,0 +1,233 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  foodLink,
+  hallName,
+  type Recommendation,
+  type Decision,
+} from "@/lib/mockData";
+import { percent, currency } from "@/lib/format";
+import { useRecommendations } from "./RecommendationsProvider";
+/** Native modal dialog makes the background inert. Explicit Tab loop and focus restoration supplement it. */
+export default function SlideOver({
+  recommendation: r,
+  onClose,
+}: {
+  recommendation: Recommendation;
+  onClose: () => void;
+}) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const heading = useRef<HTMLHeadingElement>(null);
+  const previousFocus = useRef<HTMLElement | null>(null);
+  const reduceMotion = useReducedMotion();
+  const { decide, undo } = useRecommendations();
+  const [note, setNote] = useState("");
+  const [confirmation, setConfirmation] = useState<{
+    historyId: string;
+    decision: Decision;
+    expires: number;
+  } | null>(null);
+  const [remaining, setRemaining] = useState(10);
+  const lock = useRef(false);
+  useEffect(() => {
+    previousFocus.current = document.activeElement as HTMLElement;
+    const d = dialog.current;
+    d?.showModal();
+    heading.current?.focus();
+    const old = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      d?.close();
+      document.body.style.overflow = old;
+      if (previousFocus.current?.isConnected) previousFocus.current.focus();
+      else
+        document.querySelector<HTMLElement>("[data-review-heading]")?.focus();
+    };
+  }, []);
+  useEffect(() => {
+    if (!confirmation) return;
+    const tick = () =>
+      setRemaining(
+        Math.max(0, Math.ceil((confirmation.expires - Date.now()) / 1000)),
+      );
+    tick();
+    const timer = window.setInterval(tick, 200);
+    return () => window.clearInterval(timer);
+  }, [confirmation]);
+  useEffect(() => {
+    heading.current?.focus();
+  }, [confirmation]);
+  function decideNow(decision: Decision) {
+    if (lock.current) return;
+    lock.current = true;
+    const historyId = decide(r.id, decision, note);
+    setConfirmation({ historyId, decision, expires: Date.now() + 10000 });
+  }
+  return (
+    <motion.dialog
+      ref={dialog}
+      aria-labelledby="review-title"
+      aria-describedby="review-description"
+      aria-modal="true"
+      onCancel={(e) => {
+        e.preventDefault();
+        onClose();
+      }}
+      onKeyDown={(e) => {
+        if (e.key !== "Tab") return;
+        const nodes = Array.from(
+          dialog.current?.querySelectorAll<HTMLElement>(
+            'button:not(:disabled),a[href],textarea,input,[tabindex="0"]',
+          ) ?? [],
+        );
+        const first = nodes[0],
+          last = nodes[nodes.length - 1];
+        if (!first) {
+          e.preventDefault();
+          return;
+        }
+        if (
+          e.shiftKey &&
+          (document.activeElement === first ||
+            document.activeElement === heading.current)
+        ) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }}
+      initial={{ x: reduceMotion ? 0 : "100%", opacity: reduceMotion ? 1 : 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: reduceMotion ? 0 : "100%", opacity: reduceMotion ? 1 : 0 }}
+      transition={{ duration: reduceMotion ? 0 : 0.24, ease: "easeInOut" }}
+      className="fixed inset-y-0 right-0 left-auto m-0 h-dvh max-h-none w-full max-w-xl border-0 bg-white p-0 text-slate-900 shadow-2xl backdrop:bg-slate-950/45"
+    >
+      <div className="flex min-h-full flex-col">
+        <div className="flex items-center justify-between gap-3 border-b border-slate-200 p-6">
+          <p className="text-sm font-semibold text-navy">
+            AI recommendation review
+          </p>
+          <button className="btn" onClick={onClose}>
+            Close <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div className="flex-1 p-6">
+          <p className="muted">
+            {hallName(r.hallId)} · {r.meal} · {r.date}
+          </p>
+          <h2
+            ref={heading}
+            tabIndex={-1}
+            id="review-title"
+            className="mt-4 text-2xl font-semibold leading-snug text-navy"
+          >
+            {confirmation
+              ? `Recommendation ${confirmation.decision.toLowerCase()}`
+              : r.title}
+          </h2>
+          <p id="review-description" className="mt-4 text-sm text-slate-600">
+            Manager review of AI-generated mock guidance. Accepting records a
+            demo decision; it does not change production.
+          </p>
+          {confirmation ? (
+            <div className="mt-6 space-y-4">
+              <div
+                role="status"
+                className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-900"
+              >
+                <p className="font-semibold">
+                  ✓ {confirmation.decision} and added to history.
+                </p>
+                <p className="mt-2 text-sm">
+                  {r.itemName} · {hallName(r.hallId)}
+                </p>
+              </div>
+              <button
+                className="btn btn-primary"
+                disabled={remaining === 0}
+                onClick={() => {
+                  undo(confirmation.historyId);
+                  lock.current = false;
+                  setConfirmation(null);
+                }}
+              >
+                Undo{remaining > 0 ? ` (${remaining}s)` : " expired"}
+              </button>
+              <p className="muted">
+                Undo is available for 10 seconds. You can also reopen the
+                recommendation from History at any time.
+              </p>
+              <button className="btn" onClick={onClose}>
+                Back to pending recommendations
+              </button>
+            </div>
+          ) : (
+            <>
+              <dl className="mt-6 space-y-4 rounded-xl bg-slate-50 p-5 text-sm">
+                <div>
+                  <dt className="text-slate-600">Observed remaining portion</dt>
+                  <dd className="font-semibold">
+                    {percent(r.remainingPct)} · simulated service aggregate
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-slate-600">
+                    {r.origin === "nutrition"
+                      ? "Expected relative waste reduction"
+                      : "Suggested production reduction"}
+                  </dt>
+                  <dd className="font-semibold">
+                    {r.reductionRange[0]}–{r.reductionRange[1]}% · illustrative
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-slate-600">Waste cost</dt>
+                  <dd className="font-semibold">
+                    {currency(r.wasteCost, "per service", 2)}
+                  </dd>
+                </div>
+              </dl>
+              <Link
+                className="mt-4 inline-flex min-h-10 items-center text-sm font-semibold text-navy underline"
+                href={foodLink(r, r.itemId)}
+                onClick={onClose}
+              >
+                Inspect supporting Food Data →
+              </Link>
+              <label className="mt-6 block text-sm font-semibold">
+                Optional manager note
+                <textarea
+                  className="input mt-2 min-h-32 resize-y"
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  maxLength={1000}
+                  placeholder="Record a reserve-batch plan or reason for dismissal."
+                />
+              </label>
+              <p className="muted mt-2">{note.length}/1000 characters</p>
+              <div className="mt-6 flex gap-3">
+                <button
+                  className="btn btn-maize"
+                  onClick={() => decideNow("Accepted")}
+                >
+                  Accept
+                </button>
+                <button className="btn" onClick={() => decideNow("Dismissed")}>
+                  Dismiss
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+        <p className="muted border-t border-slate-200 p-6">
+          Keep reserve portions available. Validate demand and service quality
+          before applying a production change.
+        </p>
+      </div>
+    </motion.dialog>
+  );
+}
