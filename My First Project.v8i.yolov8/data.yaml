@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['chips', 'pizza', 'plate']
+
+roboflow:
+  workspace: david-chen-7kyks
+  project: my-first-project-syorg
+  version: 8
+  license: Private
+  url: https://app.roboflow.com/david-chen-7kyks/my-first-project-syorg/8

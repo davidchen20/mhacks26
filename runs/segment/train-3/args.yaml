@@ -1,7 +1,7 @@
 task: segment
 mode: train
 model: yolov8n-seg.pt
-data: D:\Development\mhacks26\My First Project.v1i.yolov8\data.yaml
+data: D:\Development\mhacks26\My First Project.v7i.yolov8\data.yaml
 epochs: 30
 time: null
 patience: 100
