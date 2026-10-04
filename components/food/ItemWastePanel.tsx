@@ -35,7 +35,7 @@ export default function ItemWastePanel({
         {item.servingSize ? ` · Published serving: ${item.servingSize}` : ""}
       </p>
       <p className="mt-5 text-sm font-semibold text-slate-600">
-        Pounds NOT served
+        Kitchen pounds discarded
       </p>
       <p className="mt-1 text-3xl font-semibold text-navy">
         {lbs(item.unservedLbs)}
@@ -49,6 +49,8 @@ export default function ItemWastePanel({
             number(item.portionsPrepared - item.portionsServed),
           ],
           ["Returned as plate waste", lbs(item.plateWasteLbs)],
+          ["Tray waste cost", currency(item.plateWasteDollars, "per service", 2)],
+          ["Kitchen waste cost", currency(item.unservedOverproductionDollars, "per service", 2)],
           ["Total pounds wasted", lbs(item.wasteLbs)],
           ["Waste cost", currency(item.wasteCost, "per service", 2)],
         ].map(([label, value]) => (
@@ -59,7 +61,7 @@ export default function ItemWastePanel({
         ))}
       </dl>
       <p className="muted mt-4">
-        Not served = (prepared − served) × portion oz ÷ 16. Plate waste = served
+        Simulated kitchen discards = (prepared − served) × portion oz ÷ 16. Plate waste = served
         × portion oz × remaining fraction ÷ 16. Cost uses illustrative{" "}
         {currency(costPerLb(item.category), "per lb", 2)} for {item.category}.
       </p>

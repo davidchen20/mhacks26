@@ -1,0 +1,66 @@
+{
+  "SLICED ITEMS": {
+    "low": "Slightly increase the number of slices per pizza to decrease the serving size. Add olive oil and hot honey by the pizza station as quick add-ons with big flavor boosts.",
+    "high": "Try different varieties of pizza - for example, a Greek-themed pizza with feta, olives and red onion; a classic Italian pizza with burrata and basil; or even a dessert pizza with banana and chocolate."
+  },
+  "COOKED VEGETABLES": {
+    "low": "Pivot to a roasting or saut\u00e9ing method tossed with either olive oil, sea salt, and black pepper or ginger, garlic, and red pepper.",
+    "high": "Replace with brussels sprouts slow-roasted with a balsamic glaze or sweet peas saut\u00e9d with miso paste, red pepper, and sesame oil."
+  },
+  "PLAIN GRAINS & STARCHES": {
+    "low": "Fluff post-cook with olive oil, sea salt, pepper, and herbs to prevent clumping.",
+    "high": "Pivot to a different {dietary_text}grain (e.g., farro or brown rice) of similar nutritional profile, utilizing herbs and spices rather than serving it plain."
+  },
+  "SANDWICHES, BURGERS & WRAPS": {
+    "low": "Reduce the bread or wrap mass by ~25% or offer a custom bowl format to eliminate discarded bread.",
+    "high": "Replace {food_name} with a different {dietary_text}sandwich or wrap concept, intentionally designing it with a lighter bread-to-filling ratio."
+  },
+  "CASSEROLES & PAN DISHES": {
+    "low": "Adjust pan grid scoring to yield slightly smaller default portions (e.g., 12 cuts to 16 cuts).",
+    "high": "Replace {food_name} with a completely different {dietary_text}casserole or pan dish, and ensure it is scored into smaller portions."
+  },
+  "WHOLE ROASTED MEATS & POULTRY": {
+    "low": "Implement improved carving and resting techniques to control portion sizes and retain moisture.",
+    "high": "Substitute {food_name} with a different {dietary_text}roasted protein, focusing on precise carving techniques to limit waste."
+  },
+  "PLANT-BASED PROTEINS": {
+    "low": "Utilize texture-enhancing techniques like pan-searing or marinating to make the food more appetizing on the hot line.",
+    "high": "Replace {food_name} with a different {dietary_text}plant-based protein dish that relies on a more durable, texture-heavy cooking method."
+  },
+  "BREAKFAST MAINS": {
+    "low": "Scale down default portion sizes or shift to fresher, smaller-batch cooking methods.",
+    "high": "Pivot from {food_name} to a different {dietary_text}breakfast main cooked in smaller, more frequent batches."
+  },
+  "SOUPS, STEWS & CHILIS": {
+    "low": "Finish before service with a fresh lemon spritz, olive oil glaze, and fresh herbs to brighten flavor.",
+    "high": "Replace {food_name} with a lighter, distinctly flavored {dietary_text}soup or stew to prevent the dish from tasting flat or heavy. Alternatively, use pur\u00e9ed cauliflower or white beans instead of cream for a rich and hearty base."
+  },
+  "FRUITS": {
+    "low": "Use finer cutting and portioning techniques, refreshing the display frequently to keep it vibrant.",
+    "high": "Substitute {food_name} with a different {dietary_text}fruit option that is less prone to oxidation and visual degradation."
+  },
+  "RAW SALAD BAR VEGETABLES": {
+    "low": "Toss raw with a light olive oil and lemon marinade to cut bitterness and enhance texture.",
+    "high": "Replace {food_name} with a different {dietary_text}raw vegetable or a pre-mixed salad format that is more palatable."
+  },
+  "PASTA & NOODLE BAR": {
+    "low": "Toss with a touch of oil post-cook to prevent starch sticking and steam-table clumping.",
+    "high": "Pivot from {food_name} to a completely different {dietary_text}pasta shape or noodle dish that holds up better to steam-table holding."
+  },
+  "SAUCES & DRESSINGS": {
+    "low": "Pivot from a heavy bulk option to a lighter, more vibrant flavor profile.",
+    "high": "Replace {food_name} with a distinctly different, lighter {dietary_text}sauce or vinaigrette."
+  },
+  "SELF-SERVE BEVERAGES": {
+    "low": "Enhance with natural fresh ingredients (like citrus slices or mint) over artificial flavorings.",
+    "high": "Replace {food_name} with a completely different {dietary_text}beverage offering focused on fresh, natural enhancements."
+  },
+  "BAKERY ITEMS": {
+    "low": "Scale down the unit mass of the dough/batter by ~25% to encourage finishing the item.",
+    "high": "Substitute {food_name} with a completely different {dietary_text}bakery item baked in miniature or bite-sized formats."
+  },
+  "POTATO CHIPS": {
+    "low": "Kettle-cook the potato chips before finishing with a zesty rub to offer a novel take on a classic side. Allow self-serving so students take only as many chips as they need.",
+    "high": "Consider different sides that would pair well with sandwiches or anything else; tortilla chips and freshly made guacamole or salsa could work wonders."
+  }
+}

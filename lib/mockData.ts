@@ -1,6 +1,7 @@
 /** Shared data policy. Historical data and ALL waste readings are simulated.
  * Kept at this import path to preserve existing component interfaces.
  */
+import { wasteAdvice } from "./wasteAdvice";
 import scrapedJSON from "./scrapedMenus.json";
 import type {
   Hall,
@@ -182,7 +183,9 @@ export function totals(services: ServiceData[]) {
   return {
     hasData: available.length > 0,
     wasteLbs: sum("wasteLbs"),
-    wasteCost: sum("wasteCost"),
+    wasteCost: items.reduce((n, i) => n + i.plateWasteDollars + i.unservedOverproductionDollars, 0),
+    plateWasteDollars: items.reduce((n, i) => n + i.plateWasteDollars, 0),
+    unservedOverproductionDollars: items.reduce((n, i) => n + i.unservedOverproductionDollars, 0),
     unservedLbs: sum("unservedLbs"),
     plateWasteLbs: sum("plateWasteLbs"),
     mealsServed: available.reduce((n, s) => n + s.mealsServed, 0),
@@ -291,25 +294,25 @@ export function makeRecommendation(
     itemId: item.id,
     itemName: item.name,
     remainingPct: item.remainingPct,
-    reductionRange: item.reductionRange,
+    reductionRange: [0, 0], // supplied engine returns prose, not a numeric estimate
+    recommendationEngine: "hardcoded",
+    wasteRatio: wasteAdvice(item).result?.waste_ratio,
+    ruleCategory: wasteAdvice(item).result?.category,
+    dietary: wasteAdvice(item).result?.dietary,
+    wasteOrigin: wasteAdvice(item).origin,
+    severity: wasteAdvice(item).severity,
+    kitchenWasteCost: item.unservedOverproductionDollars,
+    plateWasteCost: item.plateWasteDollars,
     wasteCost: item.wasteCost,
     origin,
-    title:
-      origin === "nutrition"
-        ? item.culinarySuggestion
-        : `Review a ${item.reductionRange[0]}–${item.reductionRange[1]}% smaller production batch for ${item.name}`,
+    title: wasteAdvice(item).title,
   };
 }
 export function recommendationsForServices(services: ServiceData[]) {
-  return HALLS.flatMap((h) => {
-    const candidates = services
-      .filter((s) => s.hallId === h.id)
-      .flatMap((service) => service.items.map((item) => ({ service, item })))
-      .sort((a, b) => b.item.wasteLbs - a.item.wasteLbs);
-    return candidates.length
-      ? [makeRecommendation(candidates[0].service, candidates[0].item)]
-      : [];
-  });
+  return services.flatMap(service => service.items
+    .filter(item => wasteAdvice(item).result !== null)
+    .map(item => makeRecommendation(service, item)))
+    .sort((a,b) => (b.wasteRatio ?? 0) - (a.wasteRatio ?? 0));
 }
 export const getInitialRecommendations = () =>
   recommendationsForServices(servicesForDay(getToday()));

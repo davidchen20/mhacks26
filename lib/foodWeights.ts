@@ -25,6 +25,10 @@ export const COST_PER_LB: Record<Category, number> = {
   Grains: 1.2,
   Dairy: 2.5,
 };
+/** Illustrative food weights in one full pan; not a pan's physical capacity. */
+export const WEIGHT_PER_PAN_LBS: Record<Category, number> = {
+  Protein: 10, Produce: 10, Grains: 12, Dairy: 8,
+};
 export const costPerLb = (category: Category) => COST_PER_LB[category];
 export type WeightInput = {
   name: string;
@@ -159,6 +163,11 @@ export function wasteMetrics(
   const unservedLbs = ((portionsPrepared - portionsServed) * oz) / 16;
   const plateWasteLbs = (portionsServed * oz * (remainingPct / 100)) / 16;
   const wasteLbs = unservedLbs + plateWasteLbs;
+  const cost = costPerLb(item.category);
+  const weightPerPanLbs = WEIGHT_PER_PAN_LBS[item.category];
+  const cents = (value: number) => Math.round((value + Number.EPSILON) * 100) / 100;
+  const plateWasteDollars = cents(plateWasteLbs * cost);
+  const unservedOverproductionDollars = cents(unservedLbs * cost);
   return {
     standardPortionOz: oz,
     weightSource: source,
@@ -167,7 +176,16 @@ export function wasteMetrics(
     unservedLbs,
     plateWasteLbs,
     wasteLbs,
-    wasteCost: wasteLbs * costPerLb(item.category),
+    totalServedLbs: portionsServed * oz / 16,
+    postConsumerPct: remainingPct,
+    unservedUnitsWasted: unservedLbs / weightPerPanLbs,
+    unservedUnit: "pans" as const,
+    weightPerPanLbs,
+    costPerLb: cost,
+    costPerPan: cost * weightPerPanLbs,
+    plateWasteDollars,
+    unservedOverproductionDollars,
+    wasteCost: cents(plateWasteDollars + unservedOverproductionDollars),
   };
 }
 export function trayWeight(standardOz: number, remainingPct: number) {

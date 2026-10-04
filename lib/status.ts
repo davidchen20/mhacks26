@@ -11,19 +11,19 @@ export const STATUS: Record<
   "on-track": {
     label: "On track",
     icon: "✓",
-    color: "#047857",
+    color: "var(--status-good)",
     classes: "bg-emerald-50 text-emerald-800 border-emerald-200",
   },
   monitor: {
     label: "Monitor",
     icon: "◷",
-    color: "#b45309",
+    color: "var(--status-monitor)",
     classes: "bg-amber-50 text-amber-900 border-amber-200",
   },
   review: {
     label: "Review",
     icon: "!",
-    color: "#be123c",
+    color: "var(--status-review)",
     classes: "bg-rose-50 text-rose-800 border-rose-200",
   },
 };

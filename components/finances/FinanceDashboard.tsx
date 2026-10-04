@@ -1,4 +1,5 @@
 "use client";
+import WasteCostSplit from "@/components/shared/WasteCostSplit";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -76,6 +77,7 @@ export default function FinanceDashboard() {
               tone="good"
             />
           </div>
+          <WasteCostSplit plate={total.plateWasteDollars} kitchen={total.unservedOverproductionDollars} plateLbs={total.plateWasteLbs} kitchenLbs={total.unservedLbs} />
           <div className="panel p-5">
             <SegmentedControl
               label="Savings scenario · reduction in waste cost"
@@ -166,7 +168,7 @@ export default function FinanceDashboard() {
                   key: "cost",
                   label: "Selected service cost",
                   value: (r) => r.value,
-                  render: (r) => currency(r.value, "", 2),
+                  render: (r) => currency(r.value, "for selected services", 2),
                 },
                 {
                   key: "share",

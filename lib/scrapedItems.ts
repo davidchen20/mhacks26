@@ -75,11 +75,11 @@ export function scrapedItemsToMenuItems(
     const rand = seededRandom(`${seed}|${id}`);
     const portionsPrepared = 120 + Math.floor(rand() * 481);
     const portionsServed =
-      Math.ceil(portionsPrepared * 0.85) +
+      Math.ceil(portionsPrepared * 0.65) +
       Math.floor(
         rand() *
           (Math.floor(portionsPrepared * 0.98) -
-            Math.ceil(portionsPrepared * 0.85) +
+            Math.ceil(portionsPrepared * 0.65) +
             1),
       );
     const remainingPct = Math.round(5 + rand() * 55);

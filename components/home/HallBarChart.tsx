@@ -46,7 +46,7 @@ export default function HallBarChart({
     value: mode === "rate" ? h.wastePerMeal : h.wasteLbs,
     color:
       h.wastePerMeal === null
-        ? "#cbd5e1"
+        ? "var(--boundary)"
         : STATUS[statusFor(h.wastePerMeal, "perMeal")].color,
     href: link(h),
   }));
@@ -119,7 +119,7 @@ export default function HallBarChart({
                 />
                 <ReferenceLine
                   x={reference}
-                  stroke="#475569"
+                  stroke="var(--secondary)"
                   strokeDasharray="5 4"
                 />
                 <Bar

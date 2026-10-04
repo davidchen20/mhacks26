@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useRecommendations } from "@/components/recommendations/RecommendationsProvider";
+import ThemeControls from "@/components/accessibility/ThemeProvider";
 const links = [
   ["/", "Home"],
   ["/food", "Food Data"],
@@ -37,6 +38,7 @@ export default function Navigation() {
         >
           {open ? "Close menu" : "Menu"} <span aria-hidden="true">☰</span>
         </button>
+        <ThemeControls />
         <nav
           id="primary-nav"
           aria-label="Primary navigation"

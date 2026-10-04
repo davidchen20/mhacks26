@@ -55,7 +55,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: process.env.GROK_MODEL || "grok-4.7",
+        model: process.env.GROK_MODEL || "grok-4.5",
         instructions:
           "You are Grok, a helpful assistant inside the WolverLean university dining analytics app. Be clear and conversational. Do not claim that the app's simulated waste measurements are real.",
         input: messages,

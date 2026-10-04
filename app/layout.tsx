@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import { RecommendationsProvider } from "@/components/recommendations/RecommendationsProvider";
+import { ThemeProvider } from "@/components/accessibility/ThemeProvider";
+import Chatbot from "@/components/chat/Chatbot";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: {
@@ -23,6 +25,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Skip to main content
         </a>
+        <ThemeProvider>
         <RecommendationsProvider>
           <Navigation />
           <main
@@ -32,12 +35,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           >
             {children}
           </main>
+        <Chatbot />
         </RecommendationsProvider>
         <footer className="mx-auto max-w-[1280px] border-t border-slate-200 px-5 py-6 text-[13px] text-slate-600 sm:px-8">
           WolverLean · M Dining menus · Simulated waste and illustrative history
           · AI-generated mock insights, manager review required, no medical
           claims. Decisions do not change dining production.
         </footer>
+        </ThemeProvider>
       </body>
     </html>
   );

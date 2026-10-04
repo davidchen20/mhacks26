@@ -39,7 +39,7 @@ export default function BreakdownChart({ rows }: { rows: BreakdownRow[] }) {
                 value: "USD for selection",
                 position: "insideBottom",
                 offset: -3,
-                fill: "#475569",
+                fill: "var(--secondary)",
                 fontSize: 13,
               }}
             />
@@ -50,7 +50,7 @@ export default function BreakdownChart({ rows }: { rows: BreakdownRow[] }) {
             <Bar
               dataKey="value"
               name="Waste cost for selection"
-              fill="#00274c"
+              fill="var(--chart-main)"
               radius={[0, 5, 5, 0]}
               maxBarSize={26}
               isAnimationActive={false}
