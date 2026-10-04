@@ -46,10 +46,10 @@ function formatWeight(grams: number): string {
 }
 function foodColor(category: Category): string {
   return {
-    Produce: "#047857",
-    Grains: "#a16207",
-    Dairy: "#64748b",
-    Protein: "#b7793d",
+    Produce: "var(--status-good)",
+    Grains: "var(--status-monitor)",
+    Dairy: "var(--secondary)",
+    Protein: "var(--status-review)",
   }[category];
 }
 
@@ -88,7 +88,7 @@ function VesselThumbnail({ tray, vessel }: { tray: Tray; vessel: Vessel }) {
             cy="60"
             r="52"
             fill="#cbd5e1"
-            stroke="#64748b"
+            stroke="var(--secondary)"
             strokeWidth="2"
           />
           {/* sloped wall */}

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-LUMBERLOOOON FREEEEEEEEEEEEZEEEEEE
-=======
 # WolverLean
 
 M Dining menus with simulated waste analytics, using the existing WolverLean visual system.
@@ -217,4 +214,3 @@ missing/future date policy, Saturday/week controls, Detroit timezone and URL cor
 A production build and browser checks should be rerun after changing dependencies or
 integration settings. No real waste sensor, procurement database, or measured food-density
 calibration has been connected in this version.
->>>>>>> 8e2e443 (son)

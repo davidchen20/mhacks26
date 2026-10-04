@@ -35,6 +35,15 @@ export interface MenuItem {
   portionsServed: number;
   unservedLbs: number;
   plateWasteLbs: number;
+  totalServedLbs: number;
+  postConsumerPct: number;
+  unservedUnitsWasted: number;
+  unservedUnit: "pans";
+  weightPerPanLbs: number;
+  costPerLb: number;
+  costPerPan: number;
+  plateWasteDollars: number;
+  unservedOverproductionDollars: number;
   culinarySuggestion: string;
   reductionRange: [number, number];
 }
@@ -77,6 +86,14 @@ export interface Recommendation {
   wasteCost: number;
   title: string;
   origin: "production" | "nutrition";
+  wasteOrigin?: "batch" | "portion" | "menu-review" | "monitor";
+  severity?: string;
+  recommendationEngine?: "hardcoded";
+  wasteRatio?: number;
+  ruleCategory?: string;
+  dietary?: string;
+  kitchenWasteCost?: number;
+  plateWasteCost?: number;
 }
 export interface HistoryEntry {
   id: string;

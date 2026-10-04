@@ -18,6 +18,7 @@ import PageHeader from "@/components/shared/PageHeader";
 import { EmptyState } from "@/components/shared/DataState";
 import KpiTile from "@/components/shared/KpiTile";
 import MenuTable from "./MenuTable";
+import KitchenBatchTracker from "./KitchenBatchTracker";
 import TrayFeed from "./TrayFeed";
 import SourceNotice from "@/components/shared/SourceNotice";
 import ItemWastePanel from "./ItemWastePanel";
@@ -153,7 +154,7 @@ export default function FoodDashboard() {
               detail="Simulated service count"
             />
           </div>
-          <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_370px]">
+          <div className="space-y-6">
             <div className="min-w-0 space-y-6">
               <ItemWastePanel
                 items={service.items}
@@ -166,11 +167,10 @@ export default function FoodDashboard() {
                 onSelect={(id) => setQuery({ item: id })}
               />
             </div>
-            <TrayFeed
-              key={`${hall}|${date}|${meal}`}
-              service={service}
-              selectedId={selectedId}
-            />
+            <div className="grid items-start gap-6 lg:grid-cols-2">
+              <TrayFeed key={`${hall}|${date}|${meal}`} service={service} selectedId={selectedId} />
+              <KitchenBatchTracker service={service} />
+            </div>
           </div>
         </>
       )}

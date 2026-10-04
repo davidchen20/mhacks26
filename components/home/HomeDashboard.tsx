@@ -1,4 +1,5 @@
 "use client";
+import WasteCostSplit from "@/components/shared/WasteCostSplit";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import SourceNotice from "@/components/shared/SourceNotice";
@@ -194,6 +195,7 @@ export default function HomeDashboard() {
               }
             />
           </div>
+          {total.hasData && <WasteCostSplit plate={total.plateWasteDollars} kitchen={total.unservedOverproductionDollars} plateLbs={total.plateWasteLbs} kitchenLbs={total.unservedLbs} days={days.length} />}
           <HallBarChart halls={halls} services={services} />
           <section className="panel p-5" aria-label="Items needing attention">
             <h2 className="section-title">Needs attention</h2>

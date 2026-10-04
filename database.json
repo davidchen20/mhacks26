@@ -1,0 +1,1042 @@
+{
+  "Oatmeal": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Brown Sugar": {
+    "category": "SELF-SERVE BEVERAGES",
+    "dietary": "vegan"
+  },
+  "Potato Tots": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Pork Sausage Patty": {
+    "category": "BREAKFAST MAINS",
+    "dietary": "none"
+  },
+  "Scrambled Eggs": {
+    "category": "BREAKFAST MAINS",
+    "dietary": "vegetarian"
+  },
+  "Grilled Waffles": {
+    "category": "BREAKFAST MAINS",
+    "dietary": "vegetarian"
+  },
+  "Garden Scrambled Tofu": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Blueberry Muffins": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Chocolate Chocolate Chip Muffins": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Go Blue! Donuts": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Glazed Sour Cream Donut Holes": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Minnesota Wild Rice Soup": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "vegetarian"
+  },
+  "Oyster Crackers": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "vegan"
+  },
+  "Tofu": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Fried Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Spring Rolls": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Halal Chicken Breast Mediterranean": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Seasoned Quinoa": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Mediterranean Salad": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Garlic Cheese Bread": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Cheese Pizza": {
+    "category": "SLICED ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Pepperoni Pizza": {
+    "category": "SLICED ITEMS",
+    "dietary": "halal"
+  },
+  "Breakfast Pizza with Meat": {
+    "category": "SLICED ITEMS",
+    "dietary": "none"
+  },
+  "Sandwiches Made to Order": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "none"
+  },
+  "Maize and Blue Cookies": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Chocolate Chunk Cookies": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Decadence Brownie": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Cajun Pork": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Dirty Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Charred Corn": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Parsley": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Vegan Mushroom Risotto": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Kale Saute with White Beans": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Roasted Butternut Squash": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Chicken Broccoli Bake": {
+    "category": "CASSEROLES & PAN DISHES",
+    "dietary": "halal"
+  },
+  "Long Grain Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Bread Sticks": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Parmesan Cheese": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegetarian"
+  },
+  "Vinnie's Pizza": {
+    "category": "SLICED ITEMS",
+    "dietary": "none"
+  },
+  "Beef and Mushroom Blended Burger": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "halal"
+  },
+  "Beef & Mushroom Blend Burger w/ American": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "halal"
+  },
+  "Steak Fries": {
+    "category": "SELF-SERVE BEVERAGES",
+    "dietary": "vegan"
+  },
+  "Assorted Rolls": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Blueberry Pie": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegan"
+  },
+  "Vegan Ginger Molasses Cookie Bars": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegan"
+  },
+  "O'Brien Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Grilled Ham": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Belgian Waffles": {
+    "category": "BREAKFAST MAINS",
+    "dietary": "vegetarian"
+  },
+  "Cappuccino Chocolate Chip Muffins": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Cinnamon Sugar Donuts": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Apple Cider": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegan"
+  },
+  "Turkey Meatloaf": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Bowtie Pasta": {
+    "category": "PASTA & NOODLE BAR",
+    "dietary": "vegan"
+  },
+  "Cajun Andouille Sausage": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Deep Fried French Toast Sticks": {
+    "category": "BREAKFAST MAINS",
+    "dietary": "vegetarian"
+  },
+  "Southwest Chicken Chili": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "none"
+  },
+  "Maize Chowder": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "vegetarian"
+  },
+  "Korean Style Tofu Power Bowl": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Shredded Beef Taco": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "halal"
+  },
+  "Mild Salsa": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegan"
+  },
+  "Tortilla Chips": {
+    "category": "POTATO CHIPS",
+    "dietary": "vegan"
+  },
+  "Cinnamon Sugar Breadsticks": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Sugar Cookies": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Peppermint White Chocolate Blondie": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Italian Rope Sausage": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Sauteed Mixed Peppers & Onions": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Corn on the Cob": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegan"
+  },
+  "Oven Browned Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Chana Saag": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Peas and Carrots": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Cilantro": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Pita Wedges": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Basmati Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Parmesan Herb Grilled Chicken Thighs": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Green Beans": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Mashed Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegetarian"
+  },
+  "Italian Sausage Pizza": {
+    "category": "SLICED ITEMS",
+    "dietary": "none"
+  },
+  "Charred Street Corn Tots": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegetarian"
+  },
+  "Strawberry Shortcake Bar": {
+    "category": "BAKERY ITEMS",
+    "dietary": "none"
+  },
+  "Iced Fudge Brownie": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Chocolate Coconut Cream Pie": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegan"
+  },
+  "Kale Saute": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Chicken Sausage Patties": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Strawberry Pancakes": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Cinnamon Rolls": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "General Tso's Tofu": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Brown Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Hunan Vegetables Blend": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Crispy Veggie Patty on White Bun": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "vegan"
+  },
+  "Carrot Coins": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Tabbouleh Salad": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Italian Chicken": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Garlic Peppercorn Roasted Gold Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Garlic Roasted Broccoli": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Alfredo Sauce": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegetarian"
+  },
+  "Cacciatore Sauce": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegan"
+  },
+  "Turkey Burger on White Bun": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "none"
+  },
+  "Criss Cross Fries": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Cracked Wheat Bread": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegetarian"
+  },
+  "Whipped Butter": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegetarian"
+  },
+  "Whipped Margarine": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Pulled Sriracha Chicken": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Hamburger Buns": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "vegan"
+  },
+  "Creamy Coleslaw Salad": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegetarian"
+  },
+  "Kettle Potato Chips": {
+    "category": "POTATO CHIPS",
+    "dietary": "vegan"
+  },
+  "Taiwanese Three Cup Stir Fry with Tofu": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Lamb Vindaloo": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Roasted Green Beans": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Oatmeal Raisin Cookies": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Peach Pie": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegan"
+  },
+  "Roasted Broccoli": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Bruschetta Tofu Scramble": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Herbed Roasted Breakfast Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Smoked Kielbasa Polish Sausage": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Lemon Poppyseed Muffins": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Bacon": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "none"
+  },
+  "Tempeh Bulgogi Steamed Bun": {
+    "category": "SELF-SERVE BEVERAGES",
+    "dietary": "vegan"
+  },
+  "Napa Slaw": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Sweet Potato Quinoa Burger on White Bun": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "vegan"
+  },
+  "Orange and Herb Quinoa": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegetarian"
+  },
+  "Lebanese Chicken": {
+    "category": "BAKERY ITEMS",
+    "dietary": "halal"
+  },
+  "Roasted Root Vegetables": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Gemelli Pasta": {
+    "category": "PASTA & NOODLE BAR",
+    "dietary": "vegan"
+  },
+  "Creamy Pesto Sauce": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegetarian"
+  },
+  "Marinara Sauce": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegan"
+  },
+  "Texas BBQ Ribs": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "none"
+  },
+  "BBQ Baked Beans": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Collard Greens": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Blackened Tofu": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Vegetable Creole": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Garlic Peppercorn Chicken Thigh": {
+    "category": "BAKERY ITEMS",
+    "dietary": "halal"
+  },
+  "Wild Rice Blend": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Winter Vegetable Blend": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Wide Egg Noodles": {
+    "category": "PASTA & NOODLE BAR",
+    "dietary": "vegetarian"
+  },
+  "Macaroni & Cheese": {
+    "category": "PASTA & NOODLE BAR",
+    "dietary": "vegetarian"
+  },
+  "Golden Cake with Chocolate Frosting": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegan"
+  },
+  "Faygo RedPop Cream Cake": {
+    "category": "BAKERY ITEMS",
+    "dietary": "none"
+  },
+  "Hash Browns": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Baked Boneless Ham": {
+    "category": "CASSEROLES & PAN DISHES",
+    "dietary": "none"
+  },
+  "Zucchini and Summer Squash": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Vegetable Noodle Soup": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "vegetarian"
+  },
+  "Vegan Burrito": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "vegan"
+  },
+  "Corn Salsa": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegan"
+  },
+  "Cilantro Lime Brown Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Butternut Squash Kale Pasta": {
+    "category": "PASTA & NOODLE BAR",
+    "dietary": "vegan"
+  },
+  "Lamb Gyro Meat": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "halal"
+  },
+  "Lemon Parsley Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Grilled Vegetables": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Cheese Bread": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Potato Frips": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "White Chocolate Raspberry Blondies": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "UNIT CHOICE MEAL": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "none"
+  },
+  "Taiwanese Style Three Cup Chicken": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Chopped Green Onions": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "White Bean & Potato Hash": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Avocado Wedge": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Provolone Crispy Veggie Patty Sandwich": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "vegetarian"
+  },
+  "Potato Chips": {
+    "category": "POTATO CHIPS",
+    "dietary": "vegan"
+  },
+  "Blanco Flatbread Pizza": {
+    "category": "SLICED ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Halal Sweet Moroccan Beef": {
+    "category": "BAKERY ITEMS",
+    "dietary": "halal"
+  },
+  "Yukon Gold Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "BBQ Chicken on White Bun": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "none"
+  },
+  "Seasoned Curly Fries": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Cherry Pie": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegan"
+  },
+  "Roasted Potato Duo": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Braised Fennel": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "none"
+  },
+  "Ham Slider w/ Egg and Cheese": {
+    "category": "BREAKFAST MAINS",
+    "dietary": "none"
+  },
+  "Cranberry Orange Muffins": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Harold's Northern Michigan Chili": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "none"
+  },
+  "Broccoli Cheddar Soup": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "vegetarian"
+  },
+  "Michigan Farmers 4 Bean Stew": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "vegan"
+  },
+  "Farro": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Roasted Shaved Brussels Sprouts": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Buffalo Roasted Cauliflower": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegetarian"
+  },
+  "Macaroni Salad": {
+    "category": "PASTA & NOODLE BAR",
+    "dietary": "vegetarian"
+  },
+  "Celery Sticks": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Carrot Sticks": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Ranch Dressing": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegetarian"
+  },
+  "Triple Onion Cheese Flatbread Pizza": {
+    "category": "SLICED ITEMS",
+    "dietary": "vegetarian"
+  },
+  "BBQ Chicken Drumsticks": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Hoppin' John Black Eyed Peas and Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Chicken Broccoli Alfredo Pizza": {
+    "category": "SLICED ITEMS",
+    "dietary": "none"
+  },
+  "Best Rub": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Lemon Pie Donut": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Vegan Maple Oatmeal Cookie Sandwich": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "vegan"
+  },
+  "Maple Pumpkin Cheesecake": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Snickers Brownies with Peanuts": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Baked Sweet Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Roasted Cauliflower": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Shaved Brussel Sprouts": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Vegetable Cannelloni": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegetarian"
+  },
+  "Panzanella Salad": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegetarian"
+  },
+  "Ancho Flank Steak": {
+    "category": "SELF-SERVE BEVERAGES",
+    "dietary": "halal"
+  },
+  "Sticky Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Vegetable Stir Fry Blend": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Pumpkin Pie": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Turkey Sausage Links": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Dutch Waffle": {
+    "category": "BREAKFAST MAINS",
+    "dietary": "vegetarian"
+  },
+  "Powdered Sugar": {
+    "category": "SELF-SERVE BEVERAGES",
+    "dietary": "vegan"
+  },
+  "Apple Cinnamon Muffins": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Assorted Mini Danishes with Nuts": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Mushroom Ramen": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Mexican Chimichurri Chicken Thigh": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Cilantro Lime White Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Beef & Mushroom Blended Burger w/ Cheese": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "halal"
+  },
+  "Mojo Grilled Chicken Sandwich": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "none"
+  },
+  "Black Bean Burger w/ King's Hawaiian Bun": {
+    "category": "SANDWICHES, BURGERS & WRAPS",
+    "dietary": "vegetarian"
+  },
+  "French Fries": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Tortellini w/ Red Pepper Cream Sauce": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegetarian"
+  },
+  "Vegetable Curry": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Herb Baked Chicken": {
+    "category": "CASSEROLES & PAN DISHES",
+    "dietary": "halal"
+  },
+  "Seasoned Roasted Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Roasted Baby Carrots": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Southwest Tofu Scramble": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Pork Sausage Links": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Assorted Mini Scones": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Cachapa Power Bowl": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Chicken Pot Pie": {
+    "category": "BAKERY ITEMS",
+    "dietary": "halal"
+  },
+  "Cheese Flatbread Pizza": {
+    "category": "SLICED ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Pepperoni Flatbread Pizza": {
+    "category": "SLICED ITEMS",
+    "dietary": "halal"
+  },
+  "Beef Hot Dog": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Coney Island Chili": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "none"
+  },
+  "Lasagna Rollups with Meat Sauce": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "none"
+  },
+  "Steamed Broccoli": {
+    "category": "SELF-SERVE BEVERAGES",
+    "dietary": "vegan"
+  },
+  "BBQ Tempeh": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Oven Roasted Garlic Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Lemon Wedges": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Blackened Chicken Thigh": {
+    "category": "BAKERY ITEMS",
+    "dietary": "halal"
+  },
+  "Pumpkin Pancakes": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Southern Style Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Glazed Baby Carrots": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Halal Blackened Chicken": {
+    "category": "BAKERY ITEMS",
+    "dietary": "halal"
+  },
+  "Turkey Sausage Patty": {
+    "category": "BREAKFAST MAINS",
+    "dietary": "none"
+  },
+  "Scrambled Tempeh": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Grilled Chicken": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Iced Chocolate Donuts": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Charred Grape Tomatoes": {
+    "category": "FRUITS",
+    "dietary": "vegan"
+  },
+  "Spinach Saute": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Halal Sloppy Joe": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "halal"
+  },
+  "Chicken Kabob": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "none"
+  },
+  "Garlic Sauce": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegan"
+  },
+  "Yellow Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Chickpea & Vegetable Tagine": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Brazilian Kale": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Pulled Sriracha Chicken Slider": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Oven Roasted Garlic Yukon Potatoes": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Cauliflower": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Marinated Tomatoes": {
+    "category": "RAW SALAD BAR VEGETABLES",
+    "dietary": "vegan"
+  },
+  "Strawberry Sauce": {
+    "category": "SAUCES & DRESSINGS",
+    "dietary": "vegan"
+  },
+  "Vegetable Rice Soup": {
+    "category": "SOUPS, STEWS & CHILIS",
+    "dietary": "vegan"
+  },
+  "Beef Pho with Rice Noodles": {
+    "category": "PASTA & NOODLE BAR",
+    "dietary": "halal"
+  },
+  "Frankenmuth Style Fried Chicken": {
+    "category": "BAKERY ITEMS",
+    "dietary": "none"
+  },
+  "Tempeh Teriyaki": {
+    "category": "PLANT-BASED PROTEINS",
+    "dietary": "vegan"
+  },
+  "Halal Chicken Tikka Masala": {
+    "category": "WHOLE ROASTED MEATS & POULTRY",
+    "dietary": "halal"
+  },
+  "Medium Grain Rice": {
+    "category": "PLAIN GRAINS & STARCHES",
+    "dietary": "vegan"
+  },
+  "Assorted Scones": {
+    "category": "BAKERY ITEMS",
+    "dietary": "vegetarian"
+  },
+  "Succotash": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "vegan"
+  },
+  "BBQ Jackfruit": {
+    "category": "FRUITS",
+    "dietary": "vegan"
+  },
+  "BBQ Chicken": {
+    "category": "BAKERY ITEMS",
+    "dietary": "halal"
+  },
+  "No Service at this Time": {
+    "category": "COOKED VEGETABLES",
+    "dietary": "none"
+  }
+}

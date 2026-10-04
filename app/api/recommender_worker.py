@@ -16,7 +16,7 @@ def main() -> int:
             raise ValueError("items must be a list of at most 30 entries")
 
         results = []
-        model = os.environ.get("OLLAMA_MODEL", "qwen2.5")
+        model = os.environ.get("OLLAMA_MODEL", "llama3.2")
         for item in items:
             if not isinstance(item, dict):
                 continue

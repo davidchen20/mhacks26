@@ -32,9 +32,9 @@ export default function TrendChart({
       <p className="muted mt-1">
         {unit === "cost"
           ? "Weekly waste cost divided by meals served · illustrative"
-          : "Daily university waste · solid navy line · Includes illustrative data for past dates"}
+          : "Daily university waste · solid line · Includes illustrative data for past dates"}
         {average
-          ? " · dashed green: 7-day moving average over reporting days"
+          ? " · dashed line: 7-day moving average over reporting days"
           : ""}
       </p>
       <div
@@ -66,7 +66,7 @@ export default function TrendChart({
                 unit === "cost" ? "Waste cost per meal served" : "Daily waste"
               }
               dataKey="value"
-              stroke="#00274c"
+              stroke="var(--chart-main)"
               strokeWidth={2.5}
               dot={false}
               connectNulls={false}
@@ -77,7 +77,7 @@ export default function TrendChart({
                 type="monotone"
                 name="7-day moving average"
                 dataKey="movingAverage"
-                stroke="#047857"
+                stroke="var(--chart-secondary)"
                 strokeWidth={2}
                 strokeDasharray="6 4"
                 dot={false}

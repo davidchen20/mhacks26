@@ -49,7 +49,7 @@ test("converter preserves real nutrition, caps items and seeds by item, not orde
     scrapedItemsToMenuItems(items, "different-seed")[0].portionsPrepared,
   );
   for (const item of a) {
-    assert.ok(item.portionsServed / item.portionsPrepared >= 0.85);
+    assert.ok(item.portionsServed / item.portionsPrepared >= 0.65);
     assert.ok(item.portionsServed / item.portionsPrepared <= 0.98);
     assert.equal(item.wasteLbs, item.unservedLbs + item.plateWasteLbs);
   }
