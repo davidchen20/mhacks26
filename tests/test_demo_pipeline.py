@@ -74,7 +74,8 @@ class DemoTests(unittest.TestCase):
             self.assertEqual(row['dining_hall'], 'MHacks Demo')
             self.assertIs(row['simulated'], False)
             self.assertEqual(row['service_date'], '2026-10-04')
-            self.assertLess(row['id'], 2**53)
+            self.assertIsInstance(row['id'], str)
+            self.assertLess(int(row['id']), 2**53)
             self.assertTrue(0 <= row['waste_percent'] <= 100)
 
 if __name__ == '__main__': unittest.main()

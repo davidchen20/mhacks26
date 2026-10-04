@@ -73,3 +73,14 @@ test("polling refreshes demo advice without duplicates or changing other halls",
   const empty = mergeDemoRecommendations(updated, [], ["2026-10-04|dinner"], [], makeRecommendation);
   assert.deepEqual(empty, [other]);
 });
+test("optional nutrition remains unknown and database dietary metadata survives", () => {
+  const p = payload();
+  p.observations[0].fiber = null;
+  p.observations[0].traits = ["Vegetarian"];
+  p.observations[0].allergens = ["Milk", "Wheat"];
+  const item = toDemoServices(p)[0].items[0];
+  assert.equal(item.nutrition.fiberGrams, null);
+  assert.equal(item.nutrition.nutrientDensity, "unknown");
+  assert.deepEqual(item.traits, ["Vegetarian"]);
+  assert.deepEqual(item.allergens, ["Milk", "Wheat"]);
+});

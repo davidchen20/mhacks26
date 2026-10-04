@@ -7,7 +7,8 @@ export const DEMO_MEALS: OverviewMeal[] = ["all", "breakfast", "brunch", "lunch"
 export interface DemoObservation {
   id: string; food: string; dining_hall: string; service_date: string; meal: string;
   waste_percent: number; observations: number; simulated: boolean; station: string;
-  name: string; serving_size: string; calories: number; fiber: number; protein: number;
+  name: string; serving_size: string; calories: number | null; fiber: number | null; protein: number | null;
+  traits?: string[]; allergens?: string[];
 }
 export interface DemoFoodSpec { portion_lbs: number; cost_per_lb: number; category: Category }
 export interface DemoResponse { observations: DemoObservation[]; food_specs: Record<string, DemoFoodSpec> }
@@ -40,8 +41,13 @@ export function toDemoServices(payload: DemoResponse): ServiceData[] {
       const served = count * spec.portion_lbs;
       const waste = served * pct / 100;
       const avg = (field: "fiber" | "protein" | "calories") => {
-        if (rows.some((r) => !Number.isFinite(r[field]) || r[field] < 0)) return null;
-        return rows.reduce((n, r) => n + r[field] * r.observations, 0) / count;
+        let total = 0;
+        for (const row of rows) {
+          const value = row[field];
+          if (value === null || !Number.isFinite(value) || value < 0) return null;
+          total += value * row.observations;
+        }
+        return total / count;
       };
       const fiber = avg("fiber"), protein = avg("protein"), calories = avg("calories");
       const density = fiber === null || protein === null || calories === null ? 0
@@ -52,7 +58,8 @@ export function toDemoServices(payload: DemoResponse): ServiceData[] {
         remainingPct: pct, postConsumerPct: pct, servings: count,
         wasteLbs: waste, wasteCost: waste * spec.cost_per_lb,
         station: rows[0].station, servingSize: `${spec.portion_lbs * 16} oz`,
-        traits: [], allergens: [], standardPortionOz: spec.portion_lbs * 16,
+        traits: [...new Set(rows.flatMap((r) => r.traits ?? []))],
+        allergens: [...new Set(rows.flatMap((r) => r.allergens ?? []))], standardPortionOz: spec.portion_lbs * 16,
         weightSource: "category-default", portionsPrepared: count, portionsServed: count,
         totalServedLbs: served, plateWasteLbs: waste, plateWasteDollars: waste * spec.cost_per_lb,
         // Required numeric fields contribute no unmeasured kitchen waste.

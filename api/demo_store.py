@@ -1,4 +1,4 @@
-"""MHacks Demo only. Each database row is one immutable food observation."""
+"""Adapter for the supplied SpacetimeDB 2.0 TypeScript menu_waste module."""
 import math
 import os
 from collections import defaultdict
@@ -14,7 +14,7 @@ FOODS = {
 }
 COLUMNS = ('id', 'food', 'dining_hall', 'service_date', 'meal',
            'waste_percent', 'observations', 'simulated', 'station',
-           'name', 'serving_size', 'calories', 'fiber', 'protein')
+           'name', 'serving_size', 'calories', 'fiber', 'protein', 'traits', 'allergens')
 
 
 def database_url():
@@ -26,15 +26,62 @@ def headers():
     return {'Authorization': 'Bearer ' + os.environ['SPACETIMEDB_TOKEN']}
 
 
+def encode_option(value):
+    # SATS JSON option<f64>; absent values are not zero nutrients.
+    return {'none': []} if value is None else {'some': float(value)}
+
+
+def decode_option(value):
+    if value is None or isinstance(value, (int, float)):
+        return value
+    if isinstance(value, dict):
+        if 'some' in value: return value['some']
+        if 'Some' in value: return value['Some']
+        if 'none' in value or 'None' in value: return None
+        if value.get('tag') in {'some', 'Some'}: return value.get('value')
+        if value.get('tag') in {'none', 'None'}: return None
+    if isinstance(value, list) and len(value) == 2:
+        if value[0] == 0: return value[1]
+        if value[0] == 1: return None
+    raise ValueError('Invalid optional nutrition value')
+
+
 def insert_observation(record):
     if record['dining_hall'] != DEMO_HALL or record['simulated'] is not False:
         raise ValueError('Worker writes must be MHacks Demo camera observations')
-    args = [record[k] for k in ('id', 'food', 'service_date', 'meal',
-            'waste_percent', 'serving_size', 'calories', 'fiber', 'protein')]
+    # Exact declaration order in uploaded recordMenuWaste; canonical wire name
+    # is record_menu_waste under the default SpacetimeDB 2.0 case policy.
+    args = [str(record['id']), record['food'], DEMO_HALL,
+            record['service_date'], record['meal'], record['waste_percent'],
+            record['observations'], False, record['station'], record['name'],
+            record['serving_size'], encode_option(record.get('calories')),
+            encode_option(record.get('fiber')), encode_option(record.get('protein')),
+            record.get('traits', []), record.get('allergens', [])]
+    reducer = os.environ.get('SPACETIMEDB_MENU_REDUCER', 'record_menu_waste')
     with httpx.Client(timeout=20) as client:
-        response = client.post(database_url() + '/call/insert_demo_observation',
+        response = client.post(database_url() + '/call/' + quote(reducer, safe=''),
                                headers=headers(), json=args)
         response.raise_for_status()
+
+
+def decode_rows(results):
+    rows = []
+    aliases = {'diningHall': 'dining_hall', 'serviceDate': 'service_date',
+               'wastePercent': 'waste_percent', 'servingSize': 'serving_size'}
+    for statement in results:
+        for values in statement['rows']:
+            row = ({aliases.get(key, key): value for key, value in values.items()}
+                   if isinstance(values, dict) else dict(zip(COLUMNS, values, strict=True)))
+            row['id'] = str(row['id'])
+            if row['dining_hall'] != DEMO_HALL:
+                raise ValueError('Database returned an unexpected dining hall')
+            for key in ('calories', 'fiber', 'protein'):
+                row[key] = decode_option(row[key])
+            row.setdefault('traits', [])
+            row.setdefault('allergens', [])
+            rows.append(row)
+    # String IDs are arbitrary; numeric-only IDs are NOT required by the module.
+    return sorted(rows, key=lambda row: (row['service_date'], row['meal'], row['id']))
 
 
 def query_observations(service_date, meal):
@@ -52,14 +99,7 @@ def query_observations(service_date, meal):
         response = client.post(database_url() + '/sql',
             headers={**headers(), 'Content-Type': 'text/plain'}, content=sql)
         response.raise_for_status()
-    rows = []
-    for statement in response.json():
-        for values in statement['rows']:
-            row = dict(zip(COLUMNS, values, strict=True))
-            row['id'] = str(row['id'])
-            rows.append(row)
-    # The supplied worker assigns chronological, stable capture IDs.
-    return sorted(rows, key=lambda row: int(row['id']))
+    return decode_rows(response.json())
 
 
 def summarize(rows):
@@ -124,10 +164,4 @@ def query_observations_range(date_from, date_to):
         response = client.post(database_url() + '/sql',
             headers={**headers(), 'Content-Type': 'text/plain'}, content=sql)
         response.raise_for_status()
-    rows = []
-    for statement in response.json():
-        for values in statement['rows']:
-            row = dict(zip(COLUMNS, values, strict=True))
-            row['id'] = str(row['id'])
-            rows.append(row)
-    return sorted(rows, key=lambda row: int(row['id']))
+    return decode_rows(response.json())

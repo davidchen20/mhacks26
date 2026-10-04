@@ -32,11 +32,12 @@ def mock_inference(image):
         identifier = microseconds * 4 + index
         if not 0 <= identifier < 2**53:
             raise ValueError('Capture timestamp outside supported ID range')
-        records.append(dict(id=identifier, food=food, dining_hall='MHacks Demo',
+        records.append(dict(id=str(identifier), food=food, dining_hall='MHacks Demo',
             service_date=captured.date().isoformat(), meal=meal,
             waste_percent=round(random.uniform(5, 65), 1), observations=1,
             simulated=False, station='Phone camera / mock inference', name=food,
-            serving_size=f'{lbs * 16:g} oz', calories=calories, fiber=fiber, protein=protein))
+            serving_size=f'{lbs * 16:g} oz', calories=calories, fiber=fiber, protein=protein,
+            traits=[], allergens=[]))
     return records
 
 
