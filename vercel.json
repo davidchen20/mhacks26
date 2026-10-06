@@ -1,0 +1,35 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "app": {
+      "root": ".",
+      "framework": "nextjs",
+      "devCommand": "npm run next-dev",
+      "bindings": [
+        { "type": "service", "service": "api", "format": "url", "env": "WASTE_API_URL" },
+        { "type": "service", "service": "scripts", "format": "url", "env": "RECOMMENDER_URL" }
+      ]
+    },
+    "api": {
+      "root": ".",
+      "framework": "fastapi",
+      "runtime": "python",
+      "entrypoint": "api.index:app",
+      "installCommand": "pip install -r api/requirements.txt"
+    },
+    "scripts": {
+      "root": "app/api",
+      "framework": "fastapi",
+      "runtime": "python",
+      "entrypoint": "service:app"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/py/(.*)", "destination": { "service": "api" } },
+    { "source": "/(.*)", "destination": { "service": "app" } }
+  ],
+  "redirects": [
+    { "source": "/docs", "destination": "/api/py/docs", "permanent": false },
+    { "source": "/openapi.json", "destination": "/api/py/openapi.json", "permanent": false }
+  ]
+}

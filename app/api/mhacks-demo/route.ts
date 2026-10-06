@@ -1,11 +1,9 @@
+import { wasteApiUrl } from "@/lib/serviceUrls.server";
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
-  const base = process.env.DEMO_FASTAPI_URL || (process.env.NODE_ENV === "development" ? "http://127.0.0.1:8000" : "");
-  if (!base) return NextResponse.json(
-    { detail: "Set DEMO_FASTAPI_URL on the Next.js server." }, { status: 503 });
   try {
-    const url = new URL("/api/py/demo/waste", base);
+    const url = wasteApiUrl("/api/py/demo/waste");
     url.searchParams.set("service_date", request.nextUrl.searchParams.get("service_date") ?? "");
     url.searchParams.set("meal", request.nextUrl.searchParams.get("meal") ?? "all");
     const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(15000) });
@@ -13,6 +11,6 @@ export async function GET(request: NextRequest) {
       status: response.status, headers: { "Cache-Control": "no-store" },
     });
   } catch {
-    return NextResponse.json({ detail: "Cannot reach FastAPI. Start python -m uvicorn api.index:app on port 8000 and check DEMO_FASTAPI_URL." }, { status: 502 });
+    return NextResponse.json({ detail: "Cannot reach the waste API. Check the WASTE_API_URL service binding and backend logs." }, { status: 502 });
   }
 }

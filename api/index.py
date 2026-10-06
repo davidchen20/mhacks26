@@ -8,7 +8,8 @@ def hello_fast_api():
     return {"message": "Hello from FastAPI"}
 from pydantic import BaseModel, Field
 from fastapi import HTTPException
-from recommender import analyze_food_waste
+from recommender import analyze_food_waste, load_food_database
+from pathlib import Path
 
 class WasteRequest(BaseModel):
     waste_entries: list[tuple[str, float, str]] = Field(max_length=2000)
@@ -20,9 +21,17 @@ class WasteRequest(BaseModel):
 @app.post('/api/py/recommendations')
 def recommendations(payload: WasteRequest):
     try:
-        return analyze_food_waste(payload.waste_entries, payload.served_data,
-                                 payload.threshold, menu_items=payload.menu_items,
-                                 aliases=payload.aliases)
+        database = load_food_database(str(Path(__file__).resolve().parents[1] / 'database.json'))
+        entries = []
+        for name, amount, dietary in payload.waste_entries:
+            name = payload.aliases.get(name, name)
+            database[name] = {**database.get(name, {}), 'dietary': dietary}
+            entries.append((name, amount))
+        served = {}
+        for name, amount in payload.served_data.items():
+            name = payload.aliases.get(name, name)
+            served[name] = served.get(name, 0) + amount
+        return analyze_food_waste(entries, served, database, threshold=payload.threshold)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 
