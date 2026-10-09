@@ -1,5 +1,1190 @@
 {
   "bursley": {
+    "2026-10-09": {
+      "breakfast": [
+        {
+          "station": "Hot Cereal",
+          "name": "Oatmeal",
+          "servingSize": "Cups (253g)",
+          "calories": 183.0,
+          "fiber": 5.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats"
+          ]
+        },
+        {
+          "station": "Hot Cereal",
+          "name": "Brown Sugar",
+          "servingSize": "Teaspoon (4g)",
+          "calories": 15.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Hash Brown Patty",
+          "servingSize": "Patty (71g)",
+          "calories": 124.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Bacon",
+          "servingSize": "2 Slices (20g)",
+          "calories": 102.0,
+          "fiber": 0.0,
+          "protein": 6.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Scrambled Eggs",
+          "servingSize": "1/2 cup Serving (84g)",
+          "calories": 163.0,
+          "fiber": 0.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Texas French Toast",
+          "servingSize": "2 Slices (156g)",
+          "calories": 299.0,
+          "fiber": 1.0,
+          "protein": 13.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Banana's Foster",
+          "servingSize": "1/4 Cup (53g)",
+          "calories": 196.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Alcohol",
+            "Milk"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Southwest Tofu Scramble",
+          "servingSize": "1/2 cup (95g)",
+          "calories": 122.0,
+          "fiber": 2.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Brazilian Kale",
+          "servingSize": "1/2 Cup (85g)",
+          "calories": 98.0,
+          "fiber": 2.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "MBakery",
+          "name": "Apple Cinnamon Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 181.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Cappuccino Chocolate Chip Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 202.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Vanilla Glazed Donuts",
+          "servingSize": "Donut (82g)",
+          "calories": 309.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Rainbow Sprinkles",
+          "servingSize": "1 Tablespoon (7g)",
+          "calories": 34.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        }
+      ],
+      "lunch": [
+        {
+          "station": "Soup",
+          "name": "Tuscan Bean Soup",
+          "servingSize": "Cups (275g)",
+          "calories": 98.0,
+          "fiber": 7.0,
+          "protein": 5.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Soup",
+          "name": "Chicken Noodle Soup",
+          "servingSize": "Cup (247g)",
+          "calories": 103.0,
+          "fiber": 1.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Soup",
+          "name": "Oyster Crackers",
+          "servingSize": ".5 oz Serving (14g)",
+          "calories": 61.0,
+          "fiber": 0.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Halal Lasagna Rollups with Meat Sauce",
+          "servingSize": "7 oz Rollup (198g)",
+          "calories": 301.0,
+          "fiber": 3.0,
+          "protein": 14.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Garlic Bread",
+          "servingSize": "Piece (40g)",
+          "calories": 139.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Steamed Broccoli",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 37.0,
+          "fiber": 3.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Blue",
+          "name": "Cheese Lasagna Rollups",
+          "servingSize": "Roll-up (220g)",
+          "calories": 314.0,
+          "fiber": 3.0,
+          "protein": 14.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Blue",
+          "name": "Garlic Bread",
+          "servingSize": "Piece (40g)",
+          "calories": 139.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Blue",
+          "name": "Steamed Broccoli",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 37.0,
+          "fiber": 3.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Thai Coconut Peanut Sauce",
+          "servingSize": "Ounce (28g)",
+          "calories": 94.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Coconut",
+            "Peanuts",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Ramen Noodle",
+          "servingSize": "1 oz Serving (23g)",
+          "calories": 64.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Tofu",
+          "servingSize": "2 oz Serving (85g)",
+          "calories": 143.0,
+          "fiber": 2.0,
+          "protein": 13.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Red Bell Pepper",
+          "servingSize": "1 oz Serving (28g)",
+          "calories": 9.0,
+          "fiber": 1.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Chopped Green Onions",
+          "servingSize": "Ounce (28g)",
+          "calories": 9.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Chopped Peanut Topping",
+          "servingSize": "Ounce (28g)",
+          "calories": 180.0,
+          "fiber": 3.0,
+          "protein": 7.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Peanuts",
+            "Tree Nuts"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Chicken Karahi",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 147.0,
+          "fiber": 1.0,
+          "protein": 12.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense High",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Jasmine Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 156.0,
+          "fiber": 0.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Bok Choy",
+          "servingSize": "1/2 Cup (136g)",
+          "calories": 16.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Cilantro",
+          "servingSize": "Ounce (28g)",
+          "calories": 7.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Pizziti",
+          "name": "Garlic Cheese Bread",
+          "servingSize": "Piece (70g)",
+          "calories": 227.0,
+          "fiber": 1.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Pizza",
+          "servingSize": "Slice (105g)",
+          "calories": 283.0,
+          "fiber": 2.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Pepperoni Pizza",
+          "servingSize": "Slice (113g)",
+          "calories": 311.0,
+          "fiber": 2.0,
+          "protein": 13.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Meat Eaters Delight Pizza",
+          "servingSize": "Slice (130g)",
+          "calories": 348.0,
+          "fiber": 2.0,
+          "protein": 15.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Homestyle Chicken Tenders",
+          "servingSize": "2 Pieces (85g)",
+          "calories": 215.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Honey Hot Sauce",
+          "servingSize": "1/2 oz Serving (26g)",
+          "calories": 65.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Spicy",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "French Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 186.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "Deli",
+          "name": "Sandwiches Made to Order",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chunk Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 152.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Vegan Raspberry Hazelnut Linzer Cookies",
+          "servingSize": "Cookie (41g)",
+          "calories": 163.0,
+          "fiber": 2.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy",
+            "Tree Nuts",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Go Blue! Donuts",
+          "servingSize": "Donut (87g)",
+          "calories": 335.0,
+          "fiber": 1.0,
+          "protein": 5.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Strawberry Crumb Cake",
+          "servingSize": "Piece (90g)",
+          "calories": 304.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ],
+      "dinner": [
+        {
+          "station": "Soup",
+          "name": "Tuscan Bean Soup",
+          "servingSize": "Cups (275g)",
+          "calories": 98.0,
+          "fiber": 7.0,
+          "protein": 5.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Soup",
+          "name": "Chicken Noodle Soup",
+          "servingSize": "Cup (247g)",
+          "calories": 103.0,
+          "fiber": 1.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Soup",
+          "name": "Oyster Crackers",
+          "servingSize": ".5 oz Serving (14g)",
+          "calories": 61.0,
+          "fiber": 0.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Creole Rubbed Chicken Thigh",
+          "servingSize": "2.5 oz (72g)",
+          "calories": 117.0,
+          "fiber": 0.0,
+          "protein": 12.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense High",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Sauteed Zucchini Squash and Onion",
+          "servingSize": "1/2 Cup (85g)",
+          "calories": 41.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Long Grain Rice",
+          "servingSize": "1/2 Cup (74g)",
+          "calories": 111.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Vegetable Creole",
+          "servingSize": "3 oz Serving (125g)",
+          "calories": 110.0,
+          "fiber": 5.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Blue",
+          "name": "Vegetable Creole",
+          "servingSize": "3 oz Serving (125g)",
+          "calories": 110.0,
+          "fiber": 5.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Blue",
+          "name": "Medium Grain Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 167.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Blue",
+          "name": "Sauteed Zucchini Squash and Onion",
+          "servingSize": "1/2 Cup (85g)",
+          "calories": 41.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Tofu Mediterranean Quinoa Bowl",
+          "servingSize": "11 oz. (312g)",
+          "calories": 401.0,
+          "fiber": 7.0,
+          "protein": 21.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Lemon Baked Catfish",
+          "servingSize": "3 oz Fillet (85g)",
+          "calories": 124.0,
+          "fiber": 0.0,
+          "protein": 15.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense High",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Fish",
+            "Soy"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Mashed Potatoes",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 120.0,
+          "fiber": 2.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Milk"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Lemon Wedges",
+          "servingSize": "Ounce (28g)",
+          "calories": 6.0,
+          "fiber": 1.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Roasted Broccoli",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 42.0,
+          "fiber": 2.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Parsley",
+          "servingSize": "Ounce (28g)",
+          "calories": 10.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Pizziti",
+          "name": "Meat Eaters Delight Pizza",
+          "servingSize": "Slice (130g)",
+          "calories": 348.0,
+          "fiber": 2.0,
+          "protein": 15.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Garlic Cheese Bread",
+          "servingSize": "Piece (70g)",
+          "calories": 227.0,
+          "fiber": 1.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Pepperoni Pizza",
+          "servingSize": "Slice (113g)",
+          "calories": 311.0,
+          "fiber": 2.0,
+          "protein": 13.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Pizza",
+          "servingSize": "Slice (105g)",
+          "calories": 283.0,
+          "fiber": 2.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Homestyle Chicken Tenders",
+          "servingSize": "2 Pieces (85g)",
+          "calories": 215.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Peri Peri Fry Sauce",
+          "servingSize": "1 Oz (28g)",
+          "calories": 97.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "French Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 186.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "Breads and Rolls",
+          "name": "Assorted Rolls",
+          "servingSize": "Roll (69g)",
+          "calories": 228.0,
+          "fiber": 4.0,
+          "protein": 8.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Deli",
+          "name": "Sandwiches Made to Order",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "MBakery",
+          "name": "Double Vanilla Cake",
+          "servingSize": "Slice (125g)",
+          "calories": 439.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Tiramisu Cake",
+          "servingSize": "Piece (91g)",
+          "calories": 330.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ]
+    },
     "2026-10-08": {
       "breakfast": [
         {
@@ -6888,6 +8073,1387 @@
     }
   },
   "south-quad": {
+    "2026-10-09": {
+      "breakfast": [
+        {
+          "station": "Hot Cereal",
+          "name": "Oatmeal",
+          "servingSize": "Cups (253g)",
+          "calories": 183.0,
+          "fiber": 5.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Sauteed Mixed Peppers & Onions",
+          "servingSize": "1 oz Serving (28g)",
+          "calories": 14.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Bruschetta Tofu Scramble",
+          "servingSize": "1/2 cup (95g)",
+          "calories": 134.0,
+          "fiber": 2.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Lyonnaise Potatoes",
+          "servingSize": "1/2 Cup (85g)",
+          "calories": 72.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Scrambled Eggs",
+          "servingSize": "1/2 cup Serving (84g)",
+          "calories": 163.0,
+          "fiber": 0.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Cajun Andouille Sausage",
+          "servingSize": "2 Ounces (57g)",
+          "calories": 182.0,
+          "fiber": 0.0,
+          "protein": 10.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Blueberry Buttermilk Pancakes",
+          "servingSize": "Pancake (71g)",
+          "calories": 106.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk",
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Blueberry Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 164.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chocolate Chip Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 176.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Vanilla Glazed Donuts",
+          "servingSize": "Donut (82g)",
+          "calories": 309.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ],
+      "lunch": [
+        {
+          "station": "Soup",
+          "name": "Beef Barley Soup",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 97.0,
+          "fiber": 2.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Soup",
+          "name": "Cream of Mushroom Soup",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 201.0,
+          "fiber": 1.0,
+          "protein": 7.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Spicy Chicken",
+          "servingSize": "3.5 oz Piece (99g)",
+          "calories": 319.0,
+          "fiber": 0.0,
+          "protein": 18.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense Medium",
+            "Spicy",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "American BBQ Roasted Potatoes",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 101.0,
+          "fiber": 2.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Roasted Root Vegetables",
+          "servingSize": "3 oz (85g)",
+          "calories": 69.0,
+          "fiber": 2.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Tofu Vietnamese Chili Stir Fry",
+          "servingSize": "1/2 Cup (119g)",
+          "calories": 119.0,
+          "fiber": 2.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Vegetable Stir Fry Blend",
+          "servingSize": "Cups (227g)",
+          "calories": 60.0,
+          "fiber": 4.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Brown Rice",
+          "servingSize": "1/2 Cup (93g)",
+          "calories": 163.0,
+          "fiber": 2.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Sweet Potato Quinoa Burger on White Bun",
+          "servingSize": "Burger (148g)",
+          "calories": 224.0,
+          "fiber": 6.0,
+          "protein": 7.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Garlic Roasted Broccoli",
+          "servingSize": "2 oz Serving (57g)",
+          "calories": 34.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Tabbouleh Salad",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 148.0,
+          "fiber": 2.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Shrimp Red Curry",
+          "servingSize": "4 oz Serving (113g)",
+          "calories": 67.0,
+          "fiber": 1.0,
+          "protein": 9.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Shellfish"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Pilau",
+          "servingSize": "Each (85g)",
+          "calories": 142.0,
+          "fiber": 2.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Spicy",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Roasted Cauliflower",
+          "servingSize": "2 oz (57g)",
+          "calories": 16.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Vita",
+          "name": "Cavatappi",
+          "servingSize": "3 oz Serving (50g)",
+          "calories": 78.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Vita",
+          "name": "Alfredo Sauce",
+          "servingSize": "1/4 Cup (85g)",
+          "calories": 165.0,
+          "fiber": 0.0,
+          "protein": 6.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk"
+          ]
+        },
+        {
+          "station": "Vita",
+          "name": "Cacciatore Sauce",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 59.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Sabroso",
+          "name": "Chicken Chorizo",
+          "servingSize": "1/4 Cup (57g)",
+          "calories": 86.0,
+          "fiber": 0.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Sabroso",
+          "name": "Tofu Tacos Filling",
+          "servingSize": "1/4 Cup (57g)",
+          "calories": 85.0,
+          "fiber": 1.0,
+          "protein": 7.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Sabroso",
+          "name": "Arroz a la Poblana",
+          "servingSize": "1 Serving (213g)",
+          "calories": 190.0,
+          "fiber": 0.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Sabroso",
+          "name": "Refried Beans",
+          "servingSize": "3 OZ PORTION (85g)",
+          "calories": 73.0,
+          "fiber": 3.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Sabroso",
+          "name": "Sauteed Mixed Peppers & Onions",
+          "servingSize": "1 oz Serving (28g)",
+          "calories": 14.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Sabroso",
+          "name": "Fresh Pico De Gallo",
+          "servingSize": "1 oz Serving (28g)",
+          "calories": 8.0,
+          "fiber": 1.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Pizziti",
+          "name": "Southwest Chicken Pizza",
+          "servingSize": "Slice (141g)",
+          "calories": 304.0,
+          "fiber": 2.0,
+          "protein": 16.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Pepperoni Pizza",
+          "servingSize": "Slice (113g)",
+          "calories": 311.0,
+          "fiber": 2.0,
+          "protein": 13.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Pizza",
+          "servingSize": "Slice (105g)",
+          "calories": 283.0,
+          "fiber": 2.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Beef and Mushroom Blended Burger",
+          "servingSize": "Hamburger (120g)",
+          "calories": 281.0,
+          "fiber": 1.0,
+          "protein": 21.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Homestyle Chicken Tenders",
+          "servingSize": "2 Pieces (85g)",
+          "calories": 215.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Seasoned Curly Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 297.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Two Oceans",
+          "name": "No Service at this Time",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "Kosher",
+          "name": "Kosher Deli",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "Kosher",
+          "name": "Vegetable Beef Soup",
+          "servingSize": "Cups (247g)",
+          "calories": 363.0,
+          "fiber": 2.0,
+          "protein": 6.0,
+          "traits": [
+            "Kosher",
+            "Nutrient Dense Low",
+            "Carbon Footprint High"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Kosher",
+          "name": "Italian Chicken Drumsticks",
+          "servingSize": "2 Drumsticks (113g)",
+          "calories": 211.0,
+          "fiber": 0.0,
+          "protein": 19.0,
+          "traits": [
+            "Gluten Free",
+            "Kosher",
+            "Nutrient Dense High",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Kosher",
+          "name": "Blackened Tofu",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 193.0,
+          "fiber": 3.0,
+          "protein": 16.0,
+          "traits": [
+            "Gluten Free",
+            "Kosher",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Kosher",
+          "name": "Green Beans Roasted",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 37.0,
+          "fiber": 2.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Kosher",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Kosher",
+          "name": "Romaine Salad",
+          "servingSize": "Serving (57g)",
+          "calories": 11.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Kosher",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Kosher",
+          "name": "Fresh Fruit Cup",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 177.0,
+          "fiber": 4.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Kosher",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Breads and Rolls",
+          "name": "Cracked Wheat Bread",
+          "servingSize": "Slice (16g)",
+          "calories": 38.0,
+          "fiber": 0.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Breads and Rolls",
+          "name": "Whipped Butter",
+          "servingSize": "Tablespoon (14g)",
+          "calories": 102.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk"
+          ]
+        },
+        {
+          "station": "Breads and Rolls",
+          "name": "Whipped Margarine",
+          "servingSize": "Tablespoon (9g)",
+          "calories": 67.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Deli",
+          "name": "Sandwiches Made to Order",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chunk Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 152.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Oatmeal Raisin Cookies",
+          "servingSize": "Cookie (33g)",
+          "calories": 133.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Oats",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Strawberry Crumb Cake",
+          "servingSize": "Piece (90g)",
+          "calories": 304.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Double Vanilla Cake",
+          "servingSize": "Slice (125g)",
+          "calories": 439.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ],
+      "dinner": [
+        {
+          "station": "Soup",
+          "name": "Beef Barley Soup",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 97.0,
+          "fiber": 2.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Soup",
+          "name": "Cream of Mushroom Soup",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 201.0,
+          "fiber": 1.0,
+          "protein": 7.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Habanero Rubbed Pork Shoulder",
+          "servingSize": "4 oz Serving  (113g)",
+          "calories": 366.0,
+          "fiber": 2.0,
+          "protein": 18.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Cilantro Lime White Rice",
+          "servingSize": "1/2 Cup (85g)",
+          "calories": 117.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Guacamole",
+          "servingSize": "1 oz Serving (28g)",
+          "calories": 70.0,
+          "fiber": 1.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Cebollas Encurtidas",
+          "servingSize": "1 oz (28g)",
+          "calories": 18.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Tofu Poke",
+          "servingSize": "6 Ounces (170g)",
+          "calories": 318.0,
+          "fiber": 8.0,
+          "protein": 18.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Sweet Potato Quinoa Burger on White Bun",
+          "servingSize": "Burger (148g)",
+          "calories": 224.0,
+          "fiber": 6.0,
+          "protein": 7.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Garlic Roasted Broccoli",
+          "servingSize": "2 oz Serving (57g)",
+          "calories": 34.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Tabbouleh Salad",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 148.0,
+          "fiber": 2.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Grilled Chicken Thigh",
+          "servingSize": "3 oz (85g)",
+          "calories": 132.0,
+          "fiber": 0.0,
+          "protein": 15.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense High",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Basil Parmesan Orzo",
+          "servingSize": "1/2 Cup (85g)",
+          "calories": 140.0,
+          "fiber": 1.0,
+          "protein": 5.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Zucchini and Summer Squash",
+          "servingSize": "3 oz serving (85g)",
+          "calories": 41.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Vita",
+          "name": "Cavatappi",
+          "servingSize": "3 oz Serving (50g)",
+          "calories": 78.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Vita",
+          "name": "Alfredo Sauce",
+          "servingSize": "3 Ounces (85g)",
+          "calories": 165.0,
+          "fiber": 0.0,
+          "protein": 6.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk"
+          ]
+        },
+        {
+          "station": "Vita",
+          "name": "Cacciatore Sauce",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 59.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Sabroso",
+          "name": "No Service at this Time",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "Pizziti",
+          "name": "Southwest Chicken Pizza",
+          "servingSize": "Slice (141g)",
+          "calories": 304.0,
+          "fiber": 2.0,
+          "protein": 16.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Pepperoni Pizza",
+          "servingSize": "Slice (113g)",
+          "calories": 311.0,
+          "fiber": 2.0,
+          "protein": 13.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Pizza",
+          "servingSize": "Slice (105g)",
+          "calories": 283.0,
+          "fiber": 2.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Beef and Mushroom Blended Burger",
+          "servingSize": "Hamburger (120g)",
+          "calories": 281.0,
+          "fiber": 1.0,
+          "protein": 21.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Homestyle Chicken Tenders",
+          "servingSize": "2 Pieces (85g)",
+          "calories": 215.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Seasoned Curly Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 297.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Two Oceans",
+          "name": "No Service at this Time",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "Kosher",
+          "name": "No Service at this Time",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "Deli",
+          "name": "Sandwiches Made to Order",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chunk Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 152.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Sugar Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 162.0,
+          "fiber": 0.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Tiramisu Cake",
+          "servingSize": "Piece (91g)",
+          "calories": 330.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Double Vanilla Cake",
+          "servingSize": "Slice (125g)",
+          "calories": 439.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ]
+    },
     "2026-10-08": {
       "breakfast": [
         {
@@ -15532,6 +18098,950 @@
     }
   },
   "east-quad": {
+    "2026-10-09": {
+      "breakfast": [
+        {
+          "station": "Hot Cereal",
+          "name": "Oatmeal",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 164.0,
+          "fiber": 4.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Scrambled Eggs",
+          "servingSize": "1/2 cup Serving (84g)",
+          "calories": 163.0,
+          "fiber": 0.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Garden Scrambled Tofu",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 74.0,
+          "fiber": 2.0,
+          "protein": 7.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Chicken Sausage Patties",
+          "servingSize": "Patty (43g)",
+          "calories": 81.0,
+          "fiber": 0.0,
+          "protein": 6.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Hash Browns",
+          "servingSize": "1/2 Cup (91g)",
+          "calories": 92.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Roasted Baby Carrots",
+          "servingSize": "6 oz serving (170g)",
+          "calories": 184.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Belgian Waffles",
+          "servingSize": "Waffle (57g)",
+          "calories": 224.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Cinnamon Sugar Donuts",
+          "servingSize": "Donut (85g)",
+          "calories": 314.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chocolate Chip Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 176.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Blueberry Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 164.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Wheat"
+          ]
+        }
+      ],
+      "lunch": [
+        {
+          "station": "Soup",
+          "name": "Beef Chili",
+          "servingSize": "1 Cup (227g)",
+          "calories": 155.0,
+          "fiber": 6.0,
+          "protein": 9.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense Medium High",
+            "Carbon Footprint High"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Soup",
+          "name": "Cream of Mushroom Soup",
+          "servingSize": "Cup (261g)",
+          "calories": 232.0,
+          "fiber": 1.0,
+          "protein": 8.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Spicy Chicken",
+          "servingSize": "Serving (109g)",
+          "calories": 351.0,
+          "fiber": 0.0,
+          "protein": 20.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Spicy",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Mexican Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 272.0,
+          "fiber": 0.0,
+          "protein": 6.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Corn and Black Bean Salsa",
+          "servingSize": "2 oz Serving (57g)",
+          "calories": 32.0,
+          "fiber": 2.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Sauteed Green Beans",
+          "servingSize": "6 oz Serving (170g)",
+          "calories": 80.0,
+          "fiber": 5.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Tofu Vietnamese Chili Stir Fry",
+          "servingSize": "1/2 Cup (119g)",
+          "calories": 119.0,
+          "fiber": 2.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Jasmine Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 156.0,
+          "fiber": 0.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Cauliflower Quinoa Burger on White Bun",
+          "servingSize": "Burger (148g)",
+          "calories": 225.0,
+          "fiber": 5.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Oats",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Roasted Papas en Salsa Verde",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 115.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "New Orleans Style Shrimp & Grits",
+          "servingSize": "5 oz Serving (141g)",
+          "calories": 318.0,
+          "fiber": 2.0,
+          "protein": 3.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Shellfish"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Pizza",
+          "servingSize": "Slice (105g)",
+          "calories": 283.0,
+          "fiber": 2.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Bread",
+          "servingSize": "Piece (51g)",
+          "calories": 216.0,
+          "fiber": 1.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Pepperoni Pizza",
+          "servingSize": "Slice (113g)",
+          "calories": 311.0,
+          "fiber": 2.0,
+          "protein": 13.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Blue Cheese Bacon & Green Onion Pizza",
+          "servingSize": "Slice (128g)",
+          "calories": 375.0,
+          "fiber": 2.0,
+          "protein": 17.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Beef and Mushroom Blended Burger",
+          "servingSize": "Hamburger (120g)",
+          "calories": 281.0,
+          "fiber": 1.0,
+          "protein": 21.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Beef & Mushroom Blend Burger w/ American",
+          "servingSize": "Hamburger (134g)",
+          "calories": 331.0,
+          "fiber": 1.0,
+          "protein": 24.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Potato Frips",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 297.0,
+          "fiber": 3.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Carolina Rub",
+          "servingSize": "1 oz Serving (14g)",
+          "calories": 30.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "MBakery",
+          "name": "Vegan Raspberry Hazelnut Linzer Cookies",
+          "servingSize": "Cookie (41g)",
+          "calories": 163.0,
+          "fiber": 2.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy",
+            "Tree Nuts",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Strawberry Torte",
+          "servingSize": "Piece  (130g)",
+          "calories": 532.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "White Chocolate Macadamia Nut Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 162.0,
+          "fiber": 0.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Peanuts",
+            "Soy",
+            "Tree Nuts",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Double Vanilla Cake",
+          "servingSize": "Slice (125g)",
+          "calories": 439.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ],
+      "dinner": [
+        {
+          "station": "Soup",
+          "name": "Beef Chili",
+          "servingSize": "Cups (227g)",
+          "calories": 155.0,
+          "fiber": 6.0,
+          "protein": 9.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense Medium High",
+            "Carbon Footprint High"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Soup",
+          "name": "Cream of Mushroom Soup",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 201.0,
+          "fiber": 1.0,
+          "protein": 7.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Grilled Jerk Pork w/ Curry Mango Relish",
+          "servingSize": "Piece (4 oz) (113g)",
+          "calories": 164.0,
+          "fiber": 0.0,
+          "protein": 19.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Long Grain Rice",
+          "servingSize": "1/2 Cup (74g)",
+          "calories": 111.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Caribbean Pink Beans with Plantains",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 56.0,
+          "fiber": 2.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Tempeh Fajitas",
+          "servingSize": "Fajita (156g)",
+          "calories": 210.0,
+          "fiber": 4.0,
+          "protein": 8.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Roasted Papas en Salsa Verde",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 115.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Korean Style BBQ Tofu",
+          "servingSize": "2 Pieces (71g)",
+          "calories": 97.0,
+          "fiber": 1.0,
+          "protein": 8.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Udon Noodles",
+          "servingSize": "1/2 Cup (57g)",
+          "calories": 89.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Cauliflower Quinoa Burger on Wheat Bun",
+          "servingSize": "Burger (170g)",
+          "calories": 282.0,
+          "fiber": 8.0,
+          "protein": 16.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Oats",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Montreal Top Round Beef",
+          "servingSize": "2 Slices (108g)",
+          "calories": 230.0,
+          "fiber": 0.0,
+          "protein": 23.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Yukon Gold Potatoes",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 148.0,
+          "fiber": 3.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Roasted Broccoli",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 42.0,
+          "fiber": 2.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Pizziti",
+          "name": "Blue Cheese Bacon & Green Onion Pizza",
+          "servingSize": "Slice (128g)",
+          "calories": 375.0,
+          "fiber": 2.0,
+          "protein": 17.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Pizza",
+          "servingSize": "Slice (105g)",
+          "calories": 283.0,
+          "fiber": 2.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Bread",
+          "servingSize": "Piece (51g)",
+          "calories": 216.0,
+          "fiber": 1.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Pepperoni Pizza",
+          "servingSize": "Slice (113g)",
+          "calories": 311.0,
+          "fiber": 2.0,
+          "protein": 13.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Homestyle Chicken Tenders",
+          "servingSize": "2 Pieces (85g)",
+          "calories": 215.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "French Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 186.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chunk Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 152.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Tiramisu Cake",
+          "servingSize": "Piece (91g)",
+          "calories": 330.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Double Vanilla Cake",
+          "servingSize": "Slice (125g)",
+          "calories": 439.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ]
+    },
     "2026-10-08": {
       "breakfast": [
         {
@@ -22517,6 +26027,875 @@
     }
   },
   "mosher-jordan": {
+    "2026-10-09": {
+      "breakfast": [
+        {
+          "station": "Hot Cereal",
+          "name": "Oatmeal",
+          "servingSize": "Cup (227g)",
+          "calories": 164.0,
+          "fiber": 4.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Sauteed Mixed Peppers & Onions",
+          "servingSize": "1 oz Serving (28g)",
+          "calories": 14.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Southwest Tofu Scramble",
+          "servingSize": "1/2 cup (95g)",
+          "calories": 122.0,
+          "fiber": 2.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Deep Fried Hashbrowns",
+          "servingSize": "Tritator (57g)",
+          "calories": 103.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Scrambled Eggs",
+          "servingSize": "1/2 Cup (84g)",
+          "calories": 163.0,
+          "fiber": 0.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Pork Sausage Links",
+          "servingSize": "2 Links (51g)",
+          "calories": 181.0,
+          "fiber": 0.0,
+          "protein": 9.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Blueberry Buttermilk Pancakes",
+          "servingSize": "Pancake (71g)",
+          "calories": 106.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk",
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chocolate Chip Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 176.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Blueberry Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 164.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Assorted Mini Scones",
+          "servingSize": "Scone (27g)",
+          "calories": 97.0,
+          "fiber": 0.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ],
+      "lunch": [
+        {
+          "station": "World Palate Maize",
+          "name": "Beef Pepper Steak",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 112.0,
+          "fiber": 1.0,
+          "protein": 10.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Alcohol",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "World Palate Maize",
+          "name": "Medium Grain Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 167.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "World Palate Maize",
+          "name": "Parsley",
+          "servingSize": "Tablespoon (14g)",
+          "calories": 5.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Sesame Tofu Edamame Bowl",
+          "servingSize": "Bowl (213g)",
+          "calories": 280.0,
+          "fiber": 5.0,
+          "protein": 15.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Alcohol",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Chopped Green Onions",
+          "servingSize": "Tablespoon (14g)",
+          "calories": 5.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Lime Tarragon Chicken",
+          "servingSize": "Piece (127g)",
+          "calories": 379.0,
+          "fiber": 0.0,
+          "protein": 21.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense Low",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Seasoned Roasted Potatoes",
+          "servingSize": "3 oz Portion (85g)",
+          "calories": 99.0,
+          "fiber": 2.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Sauteed Green Beans",
+          "servingSize": "3 oz serving (85g)",
+          "calories": 40.0,
+          "fiber": 3.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Pizziti",
+          "name": "Pepperoni Pizza",
+          "servingSize": "Slice (113g)",
+          "calories": 311.0,
+          "fiber": 2.0,
+          "protein": 13.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Pizza",
+          "servingSize": "Slice (105g)",
+          "calories": 283.0,
+          "fiber": 2.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Deli",
+          "name": "Sandwiches Made to Order",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Beef and Mushroom Blended Burger",
+          "servingSize": "Hamburger (130g)",
+          "calories": 335.0,
+          "fiber": 1.0,
+          "protein": 25.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Beef & Mushroom Blended Burger w/ Cheese",
+          "servingSize": "Hamburger (166g)",
+          "calories": 462.0,
+          "fiber": 2.0,
+          "protein": 31.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Chicken & Beef Meatballs",
+          "servingSize": "2 Meatballs (57g)",
+          "calories": 128.0,
+          "fiber": 0.0,
+          "protein": 9.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "King's Hawaiian Bun",
+          "servingSize": "Bun (45g)",
+          "calories": 138.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Marinara Sauce",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 80.0,
+          "fiber": 3.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Crispy Veggie Patty on Hawaiian Bun",
+          "servingSize": "Sandwich (120g)",
+          "calories": 390.0,
+          "fiber": 4.0,
+          "protein": 13.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Item Is Deep Fried",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Seasoned Curly Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 297.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Strawberry Crumb Cake",
+          "servingSize": "Piece (90g)",
+          "calories": 304.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Double Vanilla Cake",
+          "servingSize": "Slice (125g)",
+          "calories": 439.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chunk Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 152.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ],
+      "dinner": [
+        {
+          "station": "World Palate Maize",
+          "name": "Pork and Chicken Jambalaya",
+          "servingSize": "1/2 Cup (102g)",
+          "calories": 143.0,
+          "fiber": 0.0,
+          "protein": 8.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "World Palate Maize",
+          "name": "Hush Puppies",
+          "servingSize": "3 Hush Puppies (49g)",
+          "calories": 150.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "World Palate Maize",
+          "name": "Parsley",
+          "servingSize": "Tablespoon (14g)",
+          "calories": 5.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Alu Chole",
+          "servingSize": "4 oz serving  (113g)",
+          "calories": 112.0,
+          "fiber": 4.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Samosas",
+          "servingSize": "3 oz Serving (85g)",
+          "calories": 271.0,
+          "fiber": 2.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Basmati Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 193.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Cilantro Chutney",
+          "servingSize": "1 oz serving  (28g)",
+          "calories": 10.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "BBQ Chicken",
+          "servingSize": "4 oz Piece (133g)",
+          "calories": 281.0,
+          "fiber": 0.0,
+          "protein": 20.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense Low",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Sweet Potato Wedges",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 154.0,
+          "fiber": 3.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Steamed Broccoli",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 37.0,
+          "fiber": 3.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Pizziti",
+          "name": "Pepperoni Pizza",
+          "servingSize": "Slice (113g)",
+          "calories": 311.0,
+          "fiber": 2.0,
+          "protein": 13.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Pizziti",
+          "name": "Cheese Pizza",
+          "servingSize": "Slice (105g)",
+          "calories": 283.0,
+          "fiber": 2.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Deli",
+          "name": "Sandwiches Made to Order",
+          "servingSize": null,
+          "calories": null,
+          "fiber": null,
+          "protein": null,
+          "traits": [],
+          "allergens": []
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Beef and Mushroom Blended Burger",
+          "servingSize": "Hamburger (130g)",
+          "calories": 335.0,
+          "fiber": 1.0,
+          "protein": 25.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Beef & Mushroom Blended Burger w/ Cheese",
+          "servingSize": "Hamburger (166g)",
+          "calories": 462.0,
+          "fiber": 2.0,
+          "protein": 31.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Crispy Veggie Patty on Hawaiian Bun",
+          "servingSize": "Sandwich (120g)",
+          "calories": 390.0,
+          "fiber": 4.0,
+          "protein": 13.0,
+          "traits": [
+            "Nutrient Dense Medium High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Item Is Deep Fried",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Homestyle Chicken Tenders",
+          "servingSize": "2 Pieces (85g)",
+          "calories": 215.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Kings Hawaiian Grill",
+          "name": "Seasoned Curly Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 297.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Tiramisu Cake",
+          "servingSize": "Piece (91g)",
+          "calories": 330.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chunk Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 152.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ]
+    },
     "2026-10-08": {
       "breakfast": [
         {
@@ -27859,6 +32238,582 @@
     }
   },
   "markley": {
+    "2026-10-09": {
+      "breakfast": [
+        {
+          "station": "Hot Cereal",
+          "name": "Oatmeal",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 164.0,
+          "fiber": 4.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Bruschetta Tofu Scramble",
+          "servingSize": "1/2 cup (95g)",
+          "calories": 134.0,
+          "fiber": 2.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Spinach Saute",
+          "servingSize": "1/2 Serving (43g)",
+          "calories": 23.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Patatas Bravas",
+          "servingSize": "1/2 Cup (85g)",
+          "calories": 99.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Grilled Ham",
+          "servingSize": "Slice (71g)",
+          "calories": 76.0,
+          "fiber": 0.0,
+          "protein": 10.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Scrambled Eggs",
+          "servingSize": "1/2 cup Serving (84g)",
+          "calories": 163.0,
+          "fiber": 0.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Cinnamon Swirl French Toast",
+          "servingSize": "2 Slices (100g)",
+          "calories": 284.0,
+          "fiber": 2.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Blueberry Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 164.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Cinnamon Rolls",
+          "servingSize": "Roll (38g)",
+          "calories": 112.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ],
+      "lunch": [
+        {
+          "station": "Soup",
+          "name": "New England Clam Chowder",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 193.0,
+          "fiber": 1.0,
+          "protein": 7.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Shellfish",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "General Tso Chicken",
+          "servingSize": "1/2 Cup (129g)",
+          "calories": 263.0,
+          "fiber": 1.0,
+          "protein": 11.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Spicy",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Alcohol",
+            "Eggs",
+            "Item Is Deep Fried",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Medium Grain Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 167.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Sesame Green Beans",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 51.0,
+          "fiber": 4.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "General Tso's Tofu",
+          "servingSize": "1/2 Cup (129g)",
+          "calories": 231.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Alcohol",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Sesame Green Beans",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 51.0,
+          "fiber": 4.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Medium Grain Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 167.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Chicken Gyro",
+          "servingSize": "2 oz Serving (57g)",
+          "calories": 61.0,
+          "fiber": 1.0,
+          "protein": 6.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense High",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Medium Grain Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 167.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "MBakery",
+          "name": "Vegan Raspberry Hazelnut Linzer Cookies",
+          "servingSize": "Cookie (41g)",
+          "calories": 163.0,
+          "fiber": 2.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy",
+            "Tree Nuts",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "S'mores Cake",
+          "servingSize": "Piece (105g)",
+          "calories": 436.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Strawberry Torte",
+          "servingSize": "Piece  (130g)",
+          "calories": 532.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chunk Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 152.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ],
+      "dinner": [
+        {
+          "station": "Soup",
+          "name": "New England Clam Chowder",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 193.0,
+          "fiber": 1.0,
+          "protein": 7.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Low",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Shellfish",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Homestyle Chicken Tenders",
+          "servingSize": "2 Pieces (85g)",
+          "calories": 215.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "French Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 186.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Garlic Parsley Pinto Beans",
+          "servingSize": "1/2 Cup (82g)",
+          "calories": 134.0,
+          "fiber": 4.0,
+          "protein": 6.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "24 Carrots",
+          "name": "Roasted Cauliflower",
+          "servingSize": "2 oz (57g)",
+          "calories": 16.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Lemon Roasted Chicken",
+          "servingSize": "3 oz (85g)",
+          "calories": 154.0,
+          "fiber": 0.0,
+          "protein": 14.0,
+          "traits": [
+            "Gluten Free",
+            "Halal",
+            "Nutrient Dense High",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Red Lentil Rice Pilaf",
+          "servingSize": "1/3 Cup Serving (91g)",
+          "calories": 149.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chunk Cookies",
+          "servingSize": "Cookie (35g)",
+          "calories": 152.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Strawberry Torte",
+          "servingSize": "Piece  (130g)",
+          "calories": 532.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Tiramisu Cake",
+          "servingSize": "Piece (91g)",
+          "calories": 330.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Double Vanilla Cake",
+          "servingSize": "Slice (125g)",
+          "calories": 439.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ]
+    },
     "2026-10-08": {
       "breakfast": [
         {
@@ -30829,6 +35784,781 @@
     }
   },
   "twigs": {
+    "2026-10-09": {
+      "breakfast": [
+        {
+          "station": "Hot Cereal",
+          "name": "Oatmeal",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 164.0,
+          "fiber": 4.0,
+          "protein": 6.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Scrambled Eggs",
+          "servingSize": "1/2 cup Serving (84g)",
+          "calories": 163.0,
+          "fiber": 0.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Lyonnaise Potatoes",
+          "servingSize": "1/2 Cup (85g)",
+          "calories": 72.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Sauteed Mixed Peppers & Onions",
+          "servingSize": "1 oz Serving (28g)",
+          "calories": 14.0,
+          "fiber": 0.0,
+          "protein": 0.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Toast",
+          "name": "Bruschetta Tofu Scramble",
+          "servingSize": "1/2 cup (95g)",
+          "calories": 134.0,
+          "fiber": 2.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Cinnamon Pull Apart Bread",
+          "servingSize": "Serving (68g)",
+          "calories": 205.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Cajun Andouille Sausage",
+          "servingSize": "2 Ounces (57g)",
+          "calories": 182.0,
+          "fiber": 0.0,
+          "protein": 10.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
+          "name": "Breakfast Fried Rice",
+          "servingSize": "1/2 Cup (128g)",
+          "calories": 225.0,
+          "fiber": 0.0,
+          "protein": 9.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Sesame",
+            "Soy"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chocolate Chip Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 176.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Apple Cinnamon Muffins",
+          "servingSize": "Muffin (54g)",
+          "calories": 181.0,
+          "fiber": 1.0,
+          "protein": 2.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Blueberry Lemon Scones",
+          "servingSize": "Scones (57g)",
+          "calories": 325.0,
+          "fiber": 2.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Wheat"
+          ]
+        }
+      ],
+      "lunch": [
+        {
+          "station": "Signature",
+          "name": "Hamburger Buns",
+          "servingSize": "Bun (35g)",
+          "calories": 84.0,
+          "fiber": 1.0,
+          "protein": 0.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Soup",
+          "name": "Vegetable Soup",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 80.0,
+          "fiber": 3.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Tofu Vietnamese Chili Stir Fry",
+          "servingSize": "1/2 Cup (119g)",
+          "calories": 119.0,
+          "fiber": 2.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Medium Grain Rice",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 167.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Pulled Pork",
+          "servingSize": "4 oz Serving (105g)",
+          "calories": 250.0,
+          "fiber": 1.0,
+          "protein": 22.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Homestyle Chicken Tenders",
+          "servingSize": "2 Pieces (85g)",
+          "calories": 215.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Spicy Chicken",
+          "servingSize": "Serving (109g)",
+          "calories": 351.0,
+          "fiber": 0.0,
+          "protein": 20.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Spicy",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Paprika Roasted Potatoes",
+          "servingSize": "3 oz Portion (85g)",
+          "calories": 97.0,
+          "fiber": 2.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Sauteed Green Beans",
+          "servingSize": "3 oz serving (85g)",
+          "calories": 40.0,
+          "fiber": 3.0,
+          "protein": 2.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "French Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 186.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Black Bean Burger w/ White Bun",
+          "servingSize": "Sandwich (145g)",
+          "calories": 255.0,
+          "fiber": 7.0,
+          "protein": 16.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Beef and Mushroom Blended Burger",
+          "servingSize": "Hamburger (120g)",
+          "calories": 281.0,
+          "fiber": 1.0,
+          "protein": 21.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Beef & Mushroom Blend Burger w/ Cheddar",
+          "servingSize": "Burger (154g)",
+          "calories": 367.0,
+          "fiber": 1.0,
+          "protein": 26.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Turkey Burger on White Bun",
+          "servingSize": "Burger (165g)",
+          "calories": 264.0,
+          "fiber": 1.0,
+          "protein": 23.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Vegan Raspberry Hazelnut Linzer Cookies",
+          "servingSize": "Cookie (41g)",
+          "calories": 163.0,
+          "fiber": 2.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy",
+            "Tree Nuts",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Cherry Pie",
+          "servingSize": "Slice (85g)",
+          "calories": 257.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Alcohol",
+            "Tree Nuts",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Double Vanilla Cake",
+          "servingSize": "Slice (125g)",
+          "calories": 439.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Strawberry Crumb Cake",
+          "servingSize": "Piece (90g)",
+          "calories": 304.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ],
+      "dinner": [
+        {
+          "station": "Soup",
+          "name": "Vegetable Soup",
+          "servingSize": "8 oz Cup (227g)",
+          "calories": 80.0,
+          "fiber": 3.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Homestyle Chicken Tenders",
+          "servingSize": "2 Pieces (85g)",
+          "calories": 215.0,
+          "fiber": 3.0,
+          "protein": 12.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Item Is Deep Fried",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Korean Style BBQ Tofu",
+          "servingSize": "2 Pieces (71g)",
+          "calories": 97.0,
+          "fiber": 1.0,
+          "protein": 8.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Long Grain Rice",
+          "servingSize": "1/2 Cup (74g)",
+          "calories": 111.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Signature Maize",
+          "name": "Macaroni & Cheese",
+          "servingSize": "4 oz (113g)",
+          "calories": 231.0,
+          "fiber": 1.0,
+          "protein": 9.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Fresh Steamed Broccoli Florets",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 33.0,
+          "fiber": 3.0,
+          "protein": 4.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense High",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": []
+        },
+        {
+          "station": "Halal",
+          "name": "Garlic Bread",
+          "servingSize": "Piece (40g)",
+          "calories": 139.0,
+          "fiber": 1.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low Medium",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Halal",
+          "name": "Chicken Gnocchi Pasta Primavera",
+          "servingSize": "1/2 Cup (85g)",
+          "calories": 184.0,
+          "fiber": 0.0,
+          "protein": 6.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "French Fries",
+          "servingSize": "1/2 Cup (113g)",
+          "calories": 186.0,
+          "fiber": 1.0,
+          "protein": 1.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Item Is Deep Fried"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Black Bean Burger w/ White Bun",
+          "servingSize": "Sandwich (145g)",
+          "calories": 255.0,
+          "fiber": 7.0,
+          "protein": 16.0,
+          "traits": [
+            "Nutrient Dense High",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Beef and Mushroom Blended Burger",
+          "servingSize": "Hamburger (120g)",
+          "calories": 281.0,
+          "fiber": 1.0,
+          "protein": 21.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Beef & Mushroom Blend Burger w/ Cheddar",
+          "servingSize": "Burger (154g)",
+          "calories": 367.0,
+          "fiber": 1.0,
+          "protein": 26.0,
+          "traits": [
+            "Halal",
+            "Nutrient Dense Medium",
+            "Carbon Footprint High"
+          ],
+          "allergens": [
+            "Milk",
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "Wild Fire Maize",
+          "name": "Turkey Burger on White Bun",
+          "servingSize": "Burger (165g)",
+          "calories": 264.0,
+          "fiber": 1.0,
+          "protein": 23.0,
+          "traits": [
+            "Nutrient Dense Medium",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Sesame",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Tiramisu Cake",
+          "servingSize": "Piece (91g)",
+          "calories": 330.0,
+          "fiber": 0.0,
+          "protein": 3.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Medium"
+          ],
+          "allergens": [
+            "Eggs",
+            "Milk",
+            "Soy",
+            "Wheat"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Chocolate Chips",
+          "servingSize": "1 oz Serving (28g)",
+          "calories": 133.0,
+          "fiber": 2.0,
+          "protein": 1.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Low",
+            "Vegetarian",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Milk",
+            "Soy"
+          ]
+        },
+        {
+          "station": "MBakery",
+          "name": "Double Vanilla Cake",
+          "servingSize": "Slice (125g)",
+          "calories": 439.0,
+          "fiber": 1.0,
+          "protein": 4.0,
+          "traits": [
+            "Nutrient Dense Low",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Oats",
+            "Soy",
+            "Wheat"
+          ]
+        }
+      ]
+    },
     "2026-10-08": {
       "breakfast": [
         {
