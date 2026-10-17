@@ -1,13 +1,14 @@
 {
-  "attemptedAt": "2026-10-16T14:48:23.668793+00:00",
-  "date": "2026-10-16",
+  "attemptedAt": "2026-10-17T13:41:53.185694+00:00",
+  "date": "2026-10-17",
   "successfulHalls": [
     "bursley",
     "south-quad",
-    "east-quad",
     "mosher-jordan",
-    "markley",
-    "twigs"
+    "markley"
   ],
-  "failures": {}
+  "failures": {
+    "east-quad": "menu not published or empty",
+    "twigs": "menu not published or empty"
+  }
 }
