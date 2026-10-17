@@ -52586,6 +52586,23 @@
         },
         {
           "station": "Toast",
+          "name": "Southwest Tofu Scramble",
+          "servingSize": "1/2 cup (95g)",
+          "calories": 122.0,
+          "fiber": 2.0,
+          "protein": 11.0,
+          "traits": [
+            "Gluten Free",
+            "Nutrient Dense Medium",
+            "Vegan",
+            "Carbon Footprint Low"
+          ],
+          "allergens": [
+            "Soy"
+          ]
+        },
+        {
+          "station": "Toast",
           "name": "Hash Browns",
           "servingSize": "1/2 Cup (91g)",
           "calories": 92.0,
@@ -52616,23 +52633,6 @@
           ],
           "allergens": [
             "Eggs",
-            "Soy"
-          ]
-        },
-        {
-          "station": "Toast",
-          "name": "Southwest Tofu Scramble",
-          "servingSize": "1/2 cup (95g)",
-          "calories": 122.0,
-          "fiber": 2.0,
-          "protein": 11.0,
-          "traits": [
-            "Gluten Free",
-            "Nutrient Dense Medium",
-            "Vegan",
-            "Carbon Footprint Low"
-          ],
-          "allergens": [
             "Soy"
           ]
         },
@@ -52940,10 +52940,10 @@
         },
         {
           "station": "Halal",
-          "name": "Black Beans",
-          "servingSize": "1 oz Serving (28g)",
-          "calories": 20.0,
-          "fiber": 1.0,
+          "name": "Seasoned Pinto Beans",
+          "servingSize": "Ounce (28g)",
+          "calories": 26.0,
+          "fiber": 2.0,
           "protein": 1.0,
           "traits": [
             "Gluten Free",
